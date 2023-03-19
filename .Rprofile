@@ -7,3 +7,6 @@ if (!"reticulate" %in% installed.packages()) install.packages("reticulate")
 # Load the plumber and reticulate packages
 library(plumber)
 library(reticulate)
+
+# Specify Python virtual environment
+reticulate::use_condaenv("openbb_env")
