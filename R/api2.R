@@ -18,5 +18,5 @@ delay <- function(max_s = 1, fail = 0, req, res) {
 #' @return A running Plumber API
 #' @export
 run_api2 <- function(...) {
-    plumber::plumb(dir = system.file("plumber", "api2", package = "plumbpkg"))$run(...)
+    plumber::plumb(dir = system.file("plumber", "api2", package = "openBBr"))$run(...)
 }

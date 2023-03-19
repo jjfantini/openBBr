@@ -10,3 +10,8 @@ library(reticulate)
 
 # Specify Python virtual environment
 reticulate::use_condaenv("openbb_env")
+
+# Setup OpenBB
+# py_run_string("from openbb_terminal.sdk import openbb")
+#
+# py_available(initialize = T)
