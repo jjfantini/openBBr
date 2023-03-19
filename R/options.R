@@ -55,7 +55,28 @@ openbb_eod_option_chain <- function(symbol, date, quiet = FALSE) {
 }
 
 
-#' Run options API
+
+#' openbb_iv_surface ===========================================================================================
+#'
+#' @description A wrapper for the openbb.stocks.options.vsurf() function in Python
+#' @param symbol string. Stock ticker symbol to get
+#'
+openbb_iv_surface <- function(symbol) {
+
+    # Defensive checks
+    stopifnot(reticulate::py_available())
+    checkmate::check_character(symbol)
+
+    # Retrieve IV surface data for calls and puts
+    iv_surface_data <- py$openbb$stocks$options$vsurf(symbol = symbol)
+
+    # Convert to data.table
+    out <- data.table::as.data.table(iv_surface_data, keep.rownames = F)
+
+    return(out)
+}
+
+#' Run options API =============================================================================================
 #'
 #' @param ... Options passed to \code{plumber::plumb()$run()}
 #' @examples

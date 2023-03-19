@@ -2,7 +2,7 @@
 % Please edit documentation in R/options.R
 \name{run_options}
 \alias{run_options}
-\title{Run options API}
+\title{Run options API =============================================================================================}
 \usage{
 run_options(...)
 }
@@ -13,7 +13,7 @@ run_options(...)
 A running Plumber API
 }
 \description{
-Run options API
+Run options API =============================================================================================
 }
 \examples{
 \dontrun{
