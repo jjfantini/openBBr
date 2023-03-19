@@ -12,6 +12,6 @@ library(reticulate)
 reticulate::use_condaenv("openbb_env")
 
 # Setup OpenBB
-# py_run_string("from openbb_terminal.sdk import openbb")
-#
-# py_available(initialize = T)
+py_run_string("from openbb_terminal.sdk import openbb")
+
+py_available(initialize = T)
