@@ -1,4 +1,0 @@
-# .gitignore
-openbb_env/
-*.pyc
-__pycache__/
