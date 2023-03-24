@@ -16,5 +16,5 @@ py_run_string("from openbb_terminal.sdk import openbb")
 py_run_string("import pandas as pd")
 py_run_string("import numpy as np")
 
-
+cli::cat_boxx("Is Python Available?")
 py_available(initialize = T)
