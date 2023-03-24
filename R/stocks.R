@@ -9,36 +9,42 @@ echo <- function(msg) {
 #' openbb_stocks_load
 #'
 #' @description a wrapper for openbb.stocks.load() function in python
-#' @param interval  numeric. Default: 1440 - Interval (in minutes) to get data 1, 5, 15, 30, 60 or 1440 (24hrs)
-#' @param prepost boolean. Default: F - Append Pre/Post hours data
-#' @param source string. Default: yahooFinance -  Other sources:
-#'  AlphaVantage (https://www.alphavantage.co/documentation/)
-#'  Eod Historical Data (https://eodhistoricaldata.com/financial-apis/)
-#'  @param weekly boolean. Default: F
-#'  @param monthly boolean. Default: F
-#'  @param verbose boolean. Default: F
+#' @param symbol character. Ticker to get data.
+#' @param start_date Date. Start date to get data from with. Default: "1050-01-01".
+#' @param end_date Date. End date to get data from with. Default: Sys.Date().
+#' @param interval numeric. Default: 1440 - Interval (in minutes) to get data 1, 5, 15, 30, 60 or 1440 (24hrs).
+#' @param prepost logical. Default: F - Append Pre/Post hours data.
+#' @param source string. Default: YahooFinance - Other sources:
+#'                AlphaVantage (https://www.alphavantage.co/documentation/)
+#'                Eod Historical Data (https://eodhistoricaldata.com/financial-apis/)
+#' @param weekly logical. Default: F.
+#' @param monthly logical. Default: F.
+#' @param verbose logical. Default: F.
 
-openbb_stocks_load <- function( symbol = NULL, start_date = "1050-01-01", end_date = Sys.Date(), interval = 1440,
-                          prepost = F, source = "YahooFinance", weekly = F, monthly = F,
-                          verbose = F ) {
-    # Defensives ---------
+openbb_stocks_load <- function(symbol, start_date = "1950-01-01", end_date = Sys.Date(), interval = 1440,
+                               prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE,
+                               verbose = FALSE) {
+    # Check if Python is available
+    if (!reticulate::py_available()) {
+        stop("Python is not available")
+    }
 
-    # stop if Py Main Module is not available
-    stopifnot(reticulate::py_available())
+    # Transform Arguments
+    start_date <- as.Date(start_date)
 
-    # Check arguments are intended class
-    checkmate::check_character(symbol)
-    checkmate::check_date(start_date)
-    checkmate::check_date(end_date)
-    checkmate::check_number(interval, upper = 1450)
-    checkmate::check_choice(source, choices = c("YahooFinance", "AlphaVantage", "Eod Historical Data"))
-    stopifnot(is.logical(prepost))
-    stopifnot(is.logical(weekly))
-    stopifnot(is.logical(monthly))
-    stopifnot(is.logical(verbose))
+    # Defensive programming
+    checkmate::assert_character(symbol, any.missing = FALSE, len = 1)
+    checkmate::assert_date(start_date, any.missing = FALSE)
+    checkmate::assert_date(end_date, any.missing = FALSE)
+    checkmate::assert_number(interval, lower = 1, upper = 1450)
+    checkmate::assert_choice(source, choices = c("YahooFinance", "AlphaVantage", "Eod Historical Data"))
+    checkmate::assert_logical(prepost, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(weekly, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(monthly, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(verbose, any.missing = FALSE, len = 1)
 
-    # Retrieve stock data and measure time
 
+    # WRAPPER FUNCTION for stock data
     stock_data <- py$openbb$stocks$load(symbol = symbol,
                                         start_date = start_date,
                                         end_date = end_date,
@@ -47,18 +53,16 @@ openbb_stocks_load <- function( symbol = NULL, start_date = "1050-01-01", end_da
                                         source = source,
                                         weekly = weekly,
                                         monthly = monthly,
-                                        verbose = verbose
-    )
+                                        verbose = verbose)
 
     # Convert to data.table
-    out <- data.table::as.data.table(stock_data, keep.rownames = T)
+    out <- data.table::as.data.table(stock_data, keep.rownames = TRUE)
 
     # Change rn to date column
     colnames(out)[1] <- "Date"
 
     return(out)
 }
-
 
 
 

@@ -8,14 +8,19 @@
 openbb_option_chains <- function(symbol, source = "Nasdaq", expiration = NULL) {
 
     # Defensive checks
-    stopifnot(reticulate::py_available())
+    # Check if Python is available
+    if (!reticulate::py_available()) {
+        stop("Python is not available")
+    }
+
+    # Defensives
     checkmate::check_character(symbol)
     checkmate::check_choice(source, choices = c("Nasdaq", "YahooFinance", "Tradier", "Intrinio"))
     if (!is.null(expiration)) {
         checkmate::check_date(expiration)
     }
 
-    # Retrieve option chain data
+    # WRAPPER FUNCTION for option chain data
     option_chains_data <- py$openbb$stocks$options$chains(symbol = symbol,
                                                           source = source,
                                                           expiration = expiration
@@ -37,7 +42,11 @@ openbb_option_chains <- function(symbol, source = "Nasdaq", expiration = NULL) {
 openbb_eod_option_chain <- function(symbol, date, quiet = FALSE) {
 
     # Defensive checks
-    stopifnot(reticulate::py_available())
+    # Check if Python is available
+    if (!reticulate::py_available()) {
+        stop("Python is not available")
+    }
+
     checkmate::check_character(symbol)
     checkmate::check_date(date)
     stopifnot(is.logical(quiet))

@@ -12,9 +12,12 @@
 openbb_crypto_load <- function(symbol, start_date ="1950-01-01", end_date = NULL, interval = 1440,
                                exchange = "binance", to_symbol = "usd",
                                source = "CoinGecko") {
+    # Check if Python is available
+    if (!reticulate::py_available()) {
+        stop("Python is not available")
+    }
 
-    # Defensive checks
-    stopifnot(reticulate::py_available())
+    # Defensives
     checkmate::check_character(symbol)
     if (!is.null(start_date)) {
         checkmate::check_date(start_date)
@@ -27,8 +30,7 @@ openbb_crypto_load <- function(symbol, start_date ="1950-01-01", end_date = NULL
     checkmate::check_character(to_symbol)
     checkmate::check_choice(source, choices = c("CCXT", "CoinGecko", "YahooFinance"))
 
-    # Retrieve crypto data and measure time
-
+    # WRAPPER FUNCTION for crypto data
     crypto_data <- py$openbb$crypto$load(symbol = symbol,
                                          start_date = start_date,
                                          end_date = end_date,

@@ -11,7 +11,10 @@ library(reticulate)
 # Specify Python virtual environment
 reticulate::use_condaenv("openbb_env")
 
-# Setup OpenBB
+# Setup OpenBB, accessible from py$openbb
 py_run_string("from openbb_terminal.sdk import openbb")
+py_run_string("import pandas as pd")
+py_run_string("import numpy as np")
+
 
 py_available(initialize = T)
