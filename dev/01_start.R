@@ -32,14 +32,23 @@ virtualenv_create("myenv")
 virtualenv_install("myenv", packages = c("your_python_sdk_library", "other_dependency"))
 use_virtualenv("myenv")
 
+
 # START DEV: ===================================================================================================
 install.packages("reticulate")
 library(reticulate)
 
+# Step 1: You must create a local environment for Python to run in, I created a conda environment
+reticulate::conda_create(envname = here::here("openbb_env"))
 
+######################
+## RUN IN .RProfile ##
+######################
 
-# Document
-devtools::document()
+# Step 2: Then, these will run in .RProfile -- Specify Python virtual environment
+reticulate::use_condaenv("openbb_env")
 
-# Use packages
-usethis::use_package("tidytable")
+# Step 3: Setup OpenBB, accessible from py$openbb
+py_run_string("from openbb_terminal.sdk import openbb")
+py_run_string("import pandas as pd")
+py_run_string("import numpy as np")
+
