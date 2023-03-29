@@ -28,9 +28,15 @@ result_vector <- sapply(r_vector, function(x) python_sdk$example_function(x))
 
 # Tip 4: If the Python SDK library has many dependencies, consider using a virtual environment
 # Example: Create a virtual environment and install the Python SDK library and its dependencies
-reticulate::conda_create(envname = "openbb_env")
+reticulate::conda_create(envname = here::here("openbb_env"), python_version = "3.11")
 reticulate::conda_install("openbb_env", packages = c("openbb_terminal.sdk", "pandas", "numpy"))
+
+# Activate conda_env
 reticulate::use_condaenv("openbb_env")
+
+#Update conda_env
+reticulate::conda_update("python = 3.10")
+
 
 
 # START DEV: ===================================================================================================
@@ -38,7 +44,7 @@ install.packages("reticulate")
 library(reticulate)
 
 # Step 1: You must create a local environment for Python to run in, I created a conda environment
-reticulate::conda_create(envname = "openbb_env")
+reticulate::conda_create(envname = here::here("openbb_env"), python_version = "3.11")
 reticulate::conda_install("openbb_env", packages = c("openbb_terminal.sdk", "pandas", "numpy"))
 reticulate::use_condaenv("openbb_env")
 
