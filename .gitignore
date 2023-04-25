@@ -3,3 +3,5 @@ openbb_env/
 *.pyc
 __pycache__/
 .Rproj.user
+.Rhistory
+.Rdata
