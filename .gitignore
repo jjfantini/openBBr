@@ -2,6 +2,6 @@
 openbb_env/
 *.pyc
 __pycache__/
-.Rproj.user
+.Rproj.user/
 .Rhistory
 .Rdata
