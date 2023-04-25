@@ -16,7 +16,12 @@ openbb_etf_load <- function(symbol, start_date = '1950-01-01', end_date = NULL, 
                             verbose = F) {
 
     # Defensive checks
-    stopifnot(reticulate::py_available())
+    # Check if Python is available
+    if (!reticulate::py_available()) {
+        stop("Python is not available")
+    }
+
+    # Defensives
     checkmate::check_character(symbol)
     if (!is.null(start_date)) {
         checkmate::check_date(start_date)
@@ -26,13 +31,12 @@ openbb_etf_load <- function(symbol, start_date = '1950-01-01', end_date = NULL, 
     }
     checkmate::check_number(interval, upper = 1450)
     checkmate::check_choice(source, choices = c("YahooFinance"))
-    stopifnot(is.logical(prepost))
-    stopifnot(is.logical(weekly))
-    stopifnot(is.logical(monthly))
-    stopifnot(is.logical(verbose))
+    checkmate::assert_logical(prepost, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(weekly, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(monthly, any.missing = FALSE, len = 1)
+    checkmate::assert_logical(verbose, any.missing = FALSE, len = 1)
 
-    # Retrieve ETF data and measure time
-
+    # WRAPPER FUNCTION for ETF data
     etf_data <- py$openbb$etf$load(symbol = symbol,
                                    start_date = start_date,
                                    end_date = end_date,
