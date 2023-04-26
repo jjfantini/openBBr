@@ -43,20 +43,17 @@ reticulate::conda_update("python = 3.10")
 install.packages("reticulate")
 library(reticulate)
 
-# Step 1: You must create a local environment for Python to run in, I created a conda environment
+# Step 1: Create a local Conda environment ----
 reticulate::conda_create(envname = here::here("openbb_env"), python_version = "3.11")
-reticulate::conda_install("openbb_env", packages = c("openbb_terminal.sdk", "pandas", "numpy"))
-reticulate::use_condaenv("openbb_env")
 
-######################
-## RUN IN .RProfile ##
-######################
+# Step 1.1: Use the created Conda environment
+reticulate::use_condaenv(here::here("openbb_env"))
 
-# Step 2: Then, these will run in .RProfile -- Specify Python virtual environment
-reticulate::use_condaenv("openbb_env")
+# Step 1.2: Install pandas and numpy in the environment
+reticulate::conda_install("openbb_env", packages = c("pandas", "numpy"))
 
-# Step 3: Setup OpenBB, accessible from py$openbb
-py_run_string("from openbb_terminal.sdk import openbb")
-py_run_string("import pandas as pd")
-py_run_string("import numpy as np")
+# Step 1.3: Install openbb package using pip
+reticulate::py_install("openbb", envname = "openbb_env", pip = T)
 
+# Step 2: Run openBBr::init() ----
+openBBr::init()
