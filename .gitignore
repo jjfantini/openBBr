@@ -1,5 +1,5 @@
 # .gitignore
-openbb_env/
+obb/
 *.pyc
 __pycache__/
 .Rproj.user/

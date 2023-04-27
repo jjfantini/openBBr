@@ -28,11 +28,11 @@ result_vector <- sapply(r_vector, function(x) python_sdk$example_function(x))
 
 # Tip 4: If the Python SDK library has many dependencies, consider using a virtual environment
 # Example: Create a virtual environment and install the Python SDK library and its dependencies
-reticulate::conda_create(envname = here::here("openbb_env"), python_version = "3.11")
-reticulate::conda_install("openbb_env", packages = c("openbb_terminal.sdk", "pandas", "numpy"))
+reticulate::conda_create(envname = here::here("obb"), python_version = "3.11")
+reticulate::conda_install("obb", packages = c("openbb_terminal.sdk", "pandas", "numpy"))
 
 # Activate conda_env
-reticulate::use_condaenv("openbb_env")
+reticulate::use_condaenv("obb")
 
 #Update conda_env
 reticulate::conda_update("python = 3.10")
@@ -44,16 +44,16 @@ install.packages("reticulate")
 library(reticulate)
 
 # Step 1: Create a local Conda environment ----
-reticulate::conda_create(envname = here::here("openbb_env"), python_version = "3.11")
+reticulate::conda_create(envname = here::here("obb"), python_version = "3.10")
 
 # Step 1.1: Use the created Conda environment
-reticulate::use_condaenv(here::here("openbb_env"))
+reticulate::use_condaenv(here::here("obb"))
 
 # Step 1.2: Install pandas and numpy in the environment
-reticulate::conda_install("openbb_env", packages = c("pandas", "numpy"))
+reticulate::conda_install("obb", packages = c("pandas", "numpy"))
 
 # Step 1.3: Install openbb package using pip
-reticulate::py_install("openbb", envname = "openbb_env", pip = T)
+reticulate::py_install("openbb", pip = T)
 
 # Step 2: Run openBBr::init() ----
 openBBr::init()
