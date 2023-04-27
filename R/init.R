@@ -15,5 +15,6 @@ init <- function() {
     reticulate::py_run_string("import numpy as np")
 
     # Check if Python is available
-    reticulate::py_available(initialize = T)
+    o <- reticulate::py_available(initialize = T)
+    print("Python Available: ", o)
 }
