@@ -5,7 +5,7 @@
 #'
 #' @return A logical value indicating whether the Python environment is available.
 #' @export
-init <- function() {
+init <- function(assign_py = T) {
     # Specify Python virtual environment
     reticulate::use_condaenv(here::here("obb"))
 
@@ -16,5 +16,10 @@ init <- function() {
 
     # Check if Python is available
     o <- reticulate::py_available(initialize = T)
-    print("Python Available: ", o)
+    print(paste("Python Available:", o))
+
+    # Assign python __main__ module to 'py' object in R environment
+    if (assign_py == T) {
+    py <<- reticulate::py
+    }
 }
