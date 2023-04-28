@@ -25,3 +25,11 @@ library(openBBr)
 
 ```
 
+## Plumber API Usage Examples
+- example of how to use `stocks.load` and `stocks.options.chains` via plumber API
+
+1. load the package `devtools::load_all('.')`
+2. start plumber API `plumber::plumb(file="./R/functions.R")$run()`
+3. run API calls (example):
+  - `curl http://127.0.0.1:3121/stocks.opions.chains?symbol=GOOGL`
+  - `curl http://127.0.0.1:3121/stocks.load?symbol=GOOGL&monthly=TRUE`
