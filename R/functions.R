@@ -9,6 +9,7 @@
 #' @param keep_session (logical length 1) Keep the session, i.e., next time the user logs in,
 #'     there is no need to enter the email and password or the token.
 #' @export
+#* @get /login
 login <- function(email = "", password = "", token = "", keep_session = FALSE) {
   o <- do.call(what=py$openbb$login, args=as.list(rlang::call_match())[-1])
   o
@@ -20,6 +21,7 @@ login <- function(email = "", password = "", token = "", keep_session = FALSE) {
 #' @description Wrapper for Python function logout from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /logout
 logout <- function() {
   o <- do.call(what=py$openbb$logout, args=as.list(rlang::call_match())[-1])
   o
@@ -36,6 +38,7 @@ logout <- function() {
 #' @examples
 #' news(sort='published')
 #' @export
+#* @get /news
 news <- function(term = "", sources = "", sort = "published") {
   o <- do.call(what=py$openbb$news, args=as.list(rlang::call_match())[-1])
   o
@@ -47,6 +50,7 @@ news <- function(term = "", sources = "", sort = "published") {
 #' @description Wrapper for Python function whoami from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /whoami
 whoami <- function() {
   o <- do.call(what=py$openbb$whoami, args=as.list(rlang::call_match())[-1])
   o
@@ -57,6 +61,7 @@ whoami <- function() {
 #' @description Wrapper for Python function alt.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /alt.about
 alt.about <- function() {
   o <- do.call(what=py$openbb$alt$about, args=as.list(rlang::call_match())[-1])
   o
@@ -69,6 +74,7 @@ alt.about <- function() {
 #'
 #' @param limit (integer length 1) Number of stories to return
 #' @export
+#* @get /alt.hn
 alt.hn <- function(limit = 10) {
   o <- do.call(what=py$openbb$alt$hn, args=as.list(rlang::call_match())[-1])
   o
@@ -82,6 +88,7 @@ alt.hn <- function(limit = 10) {
 #' @param limit (integer length 1) Number of stories to return
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /alt.hn_chart
 alt.hn_chart <- function(limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$alt$hn_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -92,6 +99,7 @@ alt.hn_chart <- function(limit = 10, export = "", sheet_name) {
 #' @description Wrapper for Python function alt.covid.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /alt.covid.about
 alt.covid.about <- function() {
   o <- do.call(what=py$openbb$alt$covid$about, args=as.list(rlang::call_match())[-1])
   o
@@ -106,6 +114,7 @@ alt.covid.about <- function() {
 #' @examples
 #' alt.covid.global_cases(country='Canada')
 #' @export
+#* @get /alt.covid.global_cases
 alt.covid.global_cases <- function(country) {
   o <- do.call(what=py$openbb$alt$covid$global_cases, args=as.list(rlang::call_match())[-1])
   o
@@ -120,6 +129,7 @@ alt.covid.global_cases <- function(country) {
 #' @examples
 #' alt.covid.global_deaths(country='Canada')
 #' @export
+#* @get /alt.covid.global_deaths
 alt.covid.global_deaths <- function(country) {
   o <- do.call(what=py$openbb$alt$covid$global_deaths, args=as.list(rlang::call_match())[-1])
   o
@@ -135,6 +145,7 @@ alt.covid.global_deaths <- function(country) {
 #' @examples
 #' alt.covid.ov(country='Canada', limit=100)
 #' @export
+#* @get /alt.covid.ov
 alt.covid.ov <- function(country, limit = 100) {
   o <- do.call(what=py$openbb$alt$covid$ov, args=as.list(rlang::call_match())[-1])
   o
@@ -153,6 +164,7 @@ alt.covid.ov <- function(country, limit = 100) {
 #' @examples
 #' alt.covid.ov_chart(country='Canada', raw=FALSE, limit=10, plot=TRUE)
 #' @export
+#* @get /alt.covid.ov_chart
 alt.covid.ov_chart <- function(country, raw = FALSE, limit = 10, export = "", sheet_name, plot = TRUE) {
   o <- do.call(what=py$openbb$alt$covid$ov_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -170,6 +182,7 @@ alt.covid.ov_chart <- function(country, raw = FALSE, limit = 10, export = "", sh
 #' @examples
 #' alt.covid.slopes(days_back=30, limit=50, threshold=10000, ascend=FALSE)
 #' @export
+#* @get /alt.covid.slopes
 alt.covid.slopes <- function(days_back = 30, limit = 50, threshold = 10000, ascend = FALSE) {
   o <- do.call(what=py$openbb$alt$covid$slopes, args=as.list(rlang::call_match())[-1])
   o
@@ -188,6 +201,7 @@ alt.covid.slopes <- function(days_back = 30, limit = 50, threshold = 10000, asce
 #' @examples
 #' alt.covid.slopes_chart(days_back=30, limit=10, ascend=FALSE, threshold=10000)
 #' @export
+#* @get /alt.covid.slopes_chart
 alt.covid.slopes_chart <- function(days_back = 30, limit = 10, threshold = 10000, ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$alt$covid$slopes_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -204,6 +218,7 @@ alt.covid.slopes_chart <- function(days_back = 30, limit = 10, threshold = 10000
 #' @examples
 #' alt.covid.stat(country='Canada', stat='cases', limit=10)
 #' @export
+#* @get /alt.covid.stat
 alt.covid.stat <- function(country, stat = "cases", limit = 10) {
   o <- do.call(what=py$openbb$alt$covid$stat, args=as.list(rlang::call_match())[-1])
   o
@@ -223,6 +238,7 @@ alt.covid.stat <- function(country, stat = "cases", limit = 10) {
 #' @examples
 #' alt.covid.stat_chart(country='Canada', stat='cases', raw=FALSE, limit=10, plot=TRUE)
 #' @export
+#* @get /alt.covid.stat_chart
 alt.covid.stat_chart <- function(country, stat = "cases", raw = FALSE, limit = 10, export = "", sheet_name, plot = TRUE) {
   o <- do.call(what=py$openbb$alt$covid$stat_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -233,6 +249,7 @@ alt.covid.stat_chart <- function(country, stat = "cases", raw = FALSE, limit = 1
 #' @description Wrapper for Python function alt.oss.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /alt.oss.about
 alt.oss.about <- function() {
   o <- do.call(what=py$openbb$alt$oss$about, args=as.list(rlang::call_match())[-1])
   o
@@ -245,6 +262,7 @@ alt.oss.about <- function() {
 #'
 #' @param url (character length 1) github api endpoint
 #' @export
+#* @get /alt.oss.github_data
 alt.oss.github_data <- function(url, kwargs) {
   o <- do.call(what=py$openbb$alt$oss$github_data, args=as.list(rlang::call_match())[-1])
   o
@@ -257,6 +275,7 @@ alt.oss.github_data <- function(url, kwargs) {
 #'
 #' @param repo (character length 1) Repo to search for Format: org/repo, e.g., openbb-finance/openbbterminal
 #' @export
+#* @get /alt.oss.history
 alt.oss.history <- function(repo) {
   o <- do.call(what=py$openbb$alt$oss$history, args=as.list(rlang::call_match())[-1])
   o
@@ -270,6 +289,7 @@ alt.oss.history <- function(repo) {
 #' @param repo (character length 1) Repository to display star history. Format: org/repo, e.g., openbb-finance/openbbterminal
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /alt.oss.history_chart
 alt.oss.history_chart <- function(repo, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$alt$oss$history_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -281,6 +301,7 @@ alt.oss.history_chart <- function(repo, export = "", sheet_name, external_axes) 
 #' @description Wrapper for Python function alt.oss.ross from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /alt.oss.ross
 alt.oss.ross <- function() {
   o <- do.call(what=py$openbb$alt$oss$ross, args=as.list(rlang::call_match())[-1])
   o
@@ -301,6 +322,7 @@ alt.oss.ross <- function() {
 #' @examples
 #' alt.oss.ross_chart(limit=10, sortby='Stars AGR [%]', ascend=FALSE, show_chart=FALSE, show_growth=TRUE, chart_type='stars')
 #' @export
+#* @get /alt.oss.ross_chart
 alt.oss.ross_chart <- function(limit = 10, sortby = "Stars AGR [%]", ascend = FALSE, show_chart = FALSE, show_growth = TRUE, chart_type = "stars", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$alt$oss$ross_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -317,6 +339,7 @@ alt.oss.ross_chart <- function(limit = 10, sortby = "Stars AGR [%]", ascend = FA
 #' @examples
 #' alt.oss.search(sortby='stars', page=1)
 #' @export
+#* @get /alt.oss.search
 alt.oss.search <- function(sortby = "stars", page = 1, categories = "") {
   o <- do.call(what=py$openbb$alt$oss$search, args=as.list(rlang::call_match())[-1])
   o
@@ -329,6 +352,7 @@ alt.oss.search <- function(sortby = "stars", page = 1, categories = "") {
 #'
 #' @param repo (character length 1) Repo to search for Format: org/repo, e.g., openbb-finance/openbbterminal
 #' @export
+#* @get /alt.oss.summary
 alt.oss.summary <- function(repo) {
   o <- do.call(what=py$openbb$alt$oss$summary, args=as.list(rlang::call_match())[-1])
   o
@@ -342,6 +366,7 @@ alt.oss.summary <- function(repo) {
 #' @param repo (character length 1) Repository to display summary. Format: org/repo, e.g., openbb-finance/openbbterminal
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /alt.oss.summary_chart
 alt.oss.summary_chart <- function(repo, export = "", sheet_name) {
   o <- do.call(what=py$openbb$alt$oss$summary_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -358,6 +383,7 @@ alt.oss.summary_chart <- function(repo, export = "", sheet_name) {
 #' @examples
 #' alt.oss.top(limit=50)
 #' @export
+#* @get /alt.oss.top
 alt.oss.top <- function(sortby, limit = 50, categories = "") {
   o <- do.call(what=py$openbb$alt$oss$top, args=as.list(rlang::call_match())[-1])
   o
@@ -375,6 +401,7 @@ alt.oss.top <- function(sortby, limit = 50, categories = "") {
 #' @examples
 #' alt.oss.top_chart(limit=10)
 #' @export
+#* @get /alt.oss.top_chart
 alt.oss.top_chart <- function(sortby, categories = "", limit = 10, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$alt$oss$top_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -385,6 +412,7 @@ alt.oss.top_chart <- function(sortby, categories = "", limit = 10, export = "", 
 #' @description Wrapper for Python function alt.realestate.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /alt.realestate.about
 alt.realestate.about <- function() {
   o <- do.call(what=py$openbb$alt$realestate$about, args=as.list(rlang::call_match())[-1])
   o
@@ -397,6 +425,7 @@ alt.realestate.about <- function() {
 #'
 #' @param postcode (character length 1) Postcode
 #' @export
+#* @get /alt.realestate.get_estate_sales
 alt.realestate.get_estate_sales <- function(postcode, limit = 25) {
   o <- do.call(what=py$openbb$alt$realestate$get_estate_sales, args=as.list(rlang::call_match())[-1])
   o
@@ -409,6 +438,7 @@ alt.realestate.get_estate_sales <- function(postcode, limit = 25) {
 #'
 #' @param region (character length 1) region
 #' @export
+#* @get /alt.realestate.get_region_stats
 alt.realestate.get_region_stats <- function(region, start_date = "2010-01-01", end_date = "") {
   o <- do.call(what=py$openbb$alt$realestate$get_region_stats, args=as.list(rlang::call_match())[-1])
   o
@@ -421,6 +451,7 @@ alt.realestate.get_region_stats <- function(region, start_date = "2010-01-01", e
 #'
 #' @param town (character length 1) town
 #' @export
+#* @get /alt.realestate.get_towns_sold_prices
 alt.realestate.get_towns_sold_prices <- function(town, start_date, end_date, limit = 25) {
   o <- do.call(what=py$openbb$alt$realestate$get_towns_sold_prices, args=as.list(rlang::call_match())[-1])
   o
@@ -431,6 +462,7 @@ alt.realestate.get_towns_sold_prices <- function(town, start_date, end_date, lim
 #' @description Wrapper for Python function crypto.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.about
 crypto.about <- function() {
   o <- do.call(what=py$openbb$crypto$about, args=as.list(rlang::call_match())[-1])
   o
@@ -450,6 +482,7 @@ crypto.about <- function() {
 #' @param title (character length 1) Title of graph, by default ""
 #' @param yscale (character length 1) Scaling for y axis.  Either linear or log
 #' @export
+#* @get /crypto.candle
 crypto.candle <- function(symbol, data, start_date, end_date, interval, exchange = "binance", to_symbol = "usdt", source = "CCXT", volume = TRUE, ylabel = "", title = "", external_axes, yscale = "linear", raw = FALSE) {
   o <- do.call(what=py$openbb$crypto$candle, args=as.list(rlang::call_match())[-1])
   o
@@ -467,6 +500,7 @@ crypto.candle <- function(symbol, data, start_date, end_date, interval, exchange
 #' @examples
 #' crypto.chart(yscale='linear')
 #' @export
+#* @get /crypto.chart
 crypto.chart <- function(prices_df, to_symbol = "", from_symbol = "", source = "", exchange = "", interval = "", external_axes, yscale = "linear") {
   o <- do.call(what=py$openbb$crypto$chart, args=as.list(rlang::call_match())[-1])
   o
@@ -484,6 +518,7 @@ crypto.chart <- function(prices_df, to_symbol = "", from_symbol = "", source = "
 #' @examples
 #' crypto.find(source='CoinGecko', key='symbol', limit=10)
 #' @export
+#* @get /crypto.find
 crypto.find <- function(query, source = "CoinGecko", key = "symbol", limit = 10) {
   o <- do.call(what=py$openbb$crypto$find, args=as.list(rlang::call_match())[-1])
   o
@@ -502,6 +537,7 @@ crypto.find <- function(query, source = "CoinGecko", key = "symbol", limit = 10)
 #' @examples
 #' crypto.load(symbol='AMZN', interval=1440, exchange='binance', vs_currency='usdt', source='CCXT')
 #' @export
+#* @get /crypto.load
 crypto.load <- function(symbol, start_date, interval, exchange = "binance", to_symbol = "usd", end_date, source = "CoinGecko") {
   o <- do.call(what=py$openbb$crypto$load, args=as.list(rlang::call_match())[-1])
   o
@@ -516,6 +552,7 @@ crypto.load <- function(symbol, start_date, interval, exchange = "binance", to_s
 #' @examples
 #' crypto.price(symbol='AMZN')
 #' @export
+#* @get /crypto.price
 crypto.price <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$price, args=as.list(rlang::call_match())[-1])
   o
@@ -526,6 +563,7 @@ crypto.price <- function(symbol) {
 #' @description Wrapper for Python function crypto.dd.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.about
 crypto.dd.about <- function() {
   o <- do.call(what=py$openbb$crypto$dd$about, args=as.list(rlang::call_match())[-1])
   o
@@ -542,6 +580,7 @@ crypto.dd.about <- function() {
 #' @examples
 #' crypto.dd.active(symbol='AMZN', interval='24h', start_date='2010-01-01')
 #' @export
+#* @get /crypto.dd.active
 crypto.dd.active <- function(symbol, interval = "24h", start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$dd$active, args=as.list(rlang::call_match())[-1])
   o
@@ -559,6 +598,7 @@ crypto.dd.active <- function(symbol, interval = "24h", start_date = "2010-01-01"
 #' @examples
 #' crypto.dd.active_chart(symbol='AMZN', start_date='2010-01-01', interval='24h')
 #' @export
+#* @get /crypto.dd.active_chart
 crypto.dd.active_chart <- function(symbol, start_date = "2010-01-01", end_date, interval = "24h", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$active_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -570,6 +610,7 @@ crypto.dd.active_chart <- function(symbol, start_date = "2010-01-01", end_date, 
 #' @description Wrapper for Python function crypto.dd.all_binance_trading_pairs from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.all_binance_trading_pairs
 crypto.dd.all_binance_trading_pairs <- function() {
   o <- do.call(what=py$openbb$crypto$dd$all_binance_trading_pairs, args=as.list(rlang::call_match())[-1])
   o
@@ -583,6 +624,7 @@ crypto.dd.all_binance_trading_pairs <- function() {
 #' @param symbol (character length 1) Coin to get all time high for
 #' @param currency (character length 1) Currency to get all time high in
 #' @export
+#* @get /crypto.dd.ath
 crypto.dd.ath <- function(symbol, currency = "USD") {
   o <- do.call(what=py$openbb$crypto$dd$ath, args=as.list(rlang::call_match())[-1])
   o
@@ -596,6 +638,7 @@ crypto.dd.ath <- function(symbol, currency = "USD") {
 #' @param symbol (character length 1) Coin to get all time low for
 #' @param currency (character length 1) Currency to get all time low in
 #' @export
+#* @get /crypto.dd.atl
 crypto.dd.atl <- function(symbol, currency = "USD") {
   o <- do.call(what=py$openbb$crypto$dd$atl, args=as.list(rlang::call_match())[-1])
   o
@@ -611,6 +654,7 @@ crypto.dd.atl <- function(symbol, currency = "USD") {
 #' @examples
 #' crypto.dd.balance(to_symbol='USDT')
 #' @export
+#* @get /crypto.dd.balance
 crypto.dd.balance <- function(from_symbol, to_symbol = "USDT") {
   o <- do.call(what=py$openbb$crypto$dd$balance, args=as.list(rlang::call_match())[-1])
   o
@@ -627,6 +671,7 @@ crypto.dd.balance <- function(from_symbol, to_symbol = "USDT") {
 #' @examples
 #' crypto.dd.balance_chart(to_symbol='USDT')
 #' @export
+#* @get /crypto.dd.balance_chart
 crypto.dd.balance_chart <- function(from_symbol, to_symbol = "USDT", export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$balance_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -641,6 +686,7 @@ crypto.dd.balance_chart <- function(from_symbol, to_symbol = "USDT", export = ""
 #' @examples
 #' crypto.dd.basic(symbol='BTC')
 #' @export
+#* @get /crypto.dd.basic
 crypto.dd.basic <- function(symbol = "BTC") {
   o <- do.call(what=py$openbb$crypto$dd$basic, args=as.list(rlang::call_match())[-1])
   o
@@ -656,6 +702,7 @@ crypto.dd.basic <- function(symbol = "BTC") {
 #' @examples
 #' crypto.dd.basic_chart(symbol='BTC')
 #' @export
+#* @get /crypto.dd.basic_chart
 crypto.dd.basic_chart <- function(symbol = "BTC", export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$basic_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -667,6 +714,7 @@ crypto.dd.basic_chart <- function(symbol = "BTC", export = "", sheet_name) {
 #' @description Wrapper for Python function crypto.dd.binance_available_quotes_for_each_coin from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.binance_available_quotes_for_each_coin
 crypto.dd.binance_available_quotes_for_each_coin <- function() {
   o <- do.call(what=py$openbb$crypto$dd$binance_available_quotes_for_each_coin, args=as.list(rlang::call_match())[-1])
   o
@@ -680,6 +728,7 @@ crypto.dd.binance_available_quotes_for_each_coin <- function() {
 #' @param symbol (character length 1) Trading pair of coins on Coinbase e.g ETH-USDT or UNI-ETH
 #' @param interval (character length 1) Time interval. One from 1min, 5min ,15min, 1hour, 6hour, 24hour, 1day
 #' @export
+#* @get /crypto.dd.candle
 crypto.dd.candle <- function(symbol, interval = "24hour") {
   o <- do.call(what=py$openbb$crypto$dd$candle, args=as.list(rlang::call_match())[-1])
   o
@@ -696,6 +745,7 @@ crypto.dd.candle <- function(symbol, interval = "24hour") {
 #' @examples
 #' crypto.dd.change(symbol='AMZN', exchange='binance', start_date='2010-01-01')
 #' @export
+#* @get /crypto.dd.change
 crypto.dd.change <- function(symbol, exchange = "binance", start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$dd$change, args=as.list(rlang::call_match())[-1])
   o
@@ -715,6 +765,7 @@ crypto.dd.change <- function(symbol, exchange = "binance", start_date = "2010-01
 #' @examples
 #' crypto.dd.change_chart(symbol='AMZN', exchange='binance', start_date='2010-01-01')
 #' @export
+#* @get /crypto.dd.change_chart
 crypto.dd.change_chart <- function(symbol, exchange = "binance", start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$change_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -726,6 +777,7 @@ crypto.dd.change_chart <- function(symbol, exchange = "binance", start_date = "2
 #' @description Wrapper for Python function crypto.dd.check_valid_binance_str from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.check_valid_binance_str
 crypto.dd.check_valid_binance_str <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$check_valid_binance_str, args=as.list(rlang::call_match())[-1])
   o
@@ -742,6 +794,7 @@ crypto.dd.check_valid_binance_str <- function(symbol) {
 #' @examples
 #' crypto.dd.close(symbol='ETH', start_date='2010-01-01', print_errors=TRUE)
 #' @export
+#* @get /crypto.dd.close
 crypto.dd.close <- function(symbol, start_date = "2010-01-01", end_date, print_errors = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$close, args=as.list(rlang::call_match())[-1])
   o
@@ -756,6 +809,7 @@ crypto.dd.close <- function(symbol, start_date = "2010-01-01", end_date, print_e
 #' @examples
 #' crypto.dd.coin(symbol='eth-ethereum')
 #' @export
+#* @get /crypto.dd.coin
 crypto.dd.coin <- function(symbol = "eth-ethereum") {
   o <- do.call(what=py$openbb$crypto$dd$coin, args=as.list(rlang::call_match())[-1])
   o
@@ -771,6 +825,7 @@ crypto.dd.coin <- function(symbol = "eth-ethereum") {
 #' @examples
 #' crypto.dd.coin_market_chart(vs_currency='usd', days=30)
 #' @export
+#* @get /crypto.dd.coin_market_chart
 crypto.dd.coin_market_chart <- function(symbol = "", vs_currency = "usd", days = 30, kwargs) {
   o <- do.call(what=py$openbb$crypto$dd$coin_market_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -783,6 +838,7 @@ crypto.dd.coin_market_chart <- function(symbol = "", vs_currency = "usd", days =
 #'
 #' @param symbol (character length 1) Coin to get stats for
 #' @export
+#* @get /crypto.dd.dev
 crypto.dd.dev <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$dev, args=as.list(rlang::call_match())[-1])
   o
@@ -800,6 +856,7 @@ crypto.dd.dev <- function(symbol) {
 #' @examples
 #' crypto.dd.eb(symbol='AMZN', exchange='aggregated')
 #' @export
+#* @get /crypto.dd.eb
 crypto.dd.eb <- function(symbol, exchange = "aggregated", start_date, end_date) {
   o <- do.call(what=py$openbb$crypto$dd$eb, args=as.list(rlang::call_match())[-1])
   o
@@ -819,6 +876,7 @@ crypto.dd.eb <- function(symbol, exchange = "aggregated", start_date, end_date) 
 #' @examples
 #' crypto.dd.eb_chart(symbol='AMZN', exchange='aggregated', percentage=FALSE)
 #' @export
+#* @get /crypto.dd.eb_chart
 crypto.dd.eb_chart <- function(symbol, exchange = "aggregated", start_date, end_date, percentage = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$eb_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -837,6 +895,7 @@ crypto.dd.eb_chart <- function(symbol, exchange = "aggregated", start_date, end_
 #' @examples
 #' crypto.dd.events(symbol='BTC', sortby='date', ascend=FALSE)
 #' @export
+#* @get /crypto.dd.events
 crypto.dd.events <- function(symbol = "BTC", sortby = "date", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$dd$events, args=as.list(rlang::call_match())[-1])
   o
@@ -858,6 +917,7 @@ crypto.dd.events <- function(symbol = "BTC", sortby = "date", ascend = FALSE) {
 #' @examples
 #' crypto.dd.events_chart(symbol='BTC', limit=10, sortby='date', ascend=FALSE, links=FALSE)
 #' @export
+#* @get /crypto.dd.events_chart
 crypto.dd.events_chart <- function(symbol = "BTC", limit = 10, sortby = "date", ascend = FALSE, links = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$events_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -875,6 +935,7 @@ crypto.dd.events_chart <- function(symbol = "BTC", limit = 10, sortby = "date", 
 #' @examples
 #' crypto.dd.ex(symbol='BTC', sortby='adjusted_volume_24h_share', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.ex
 crypto.dd.ex <- function(symbol = "BTC", sortby = "adjusted_volume_24h_share", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$ex, args=as.list(rlang::call_match())[-1])
   o
@@ -894,6 +955,7 @@ crypto.dd.ex <- function(symbol = "BTC", sortby = "adjusted_volume_24h_share", a
 #' @examples
 #' crypto.dd.ex_chart(symbol='btc', limit=10, sortby='adjusted_volume_24h_share', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.ex_chart
 crypto.dd.ex_chart <- function(symbol = "btc", limit = 10, sortby = "adjusted_volume_24h_share", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$ex_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -905,6 +967,7 @@ crypto.dd.ex_chart <- function(symbol = "btc", limit = 10, sortby = "adjusted_vo
 #' @description Wrapper for Python function crypto.dd.exchanges from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.exchanges
 crypto.dd.exchanges <- function() {
   o <- do.call(what=py$openbb$crypto$dd$exchanges, args=as.list(rlang::call_match())[-1])
   o
@@ -919,6 +982,7 @@ crypto.dd.exchanges <- function() {
 #' @examples
 #' crypto.dd.fr(symbol='ETH')
 #' @export
+#* @get /crypto.dd.fr
 crypto.dd.fr <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$fr, args=as.list(rlang::call_match())[-1])
   o
@@ -934,6 +998,7 @@ crypto.dd.fr <- function(symbol) {
 #' @examples
 #' crypto.dd.fr_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.fr_chart
 crypto.dd.fr_chart <- function(symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$fr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -948,6 +1013,7 @@ crypto.dd.fr_chart <- function(symbol, export = "", sheet_name, external_axes) {
 #' @examples
 #' crypto.dd.get_mt(only_free=TRUE)
 #' @export
+#* @get /crypto.dd.get_mt
 crypto.dd.get_mt <- function(only_free = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$get_mt, args=as.list(rlang::call_match())[-1])
   o
@@ -965,6 +1031,7 @@ crypto.dd.get_mt <- function(only_free = TRUE) {
 #' @examples
 #' crypto.dd.get_mt_chart(limit=10, only_free=TRUE)
 #' @export
+#* @get /crypto.dd.get_mt_chart
 crypto.dd.get_mt_chart <- function(limit = 10, query = "", only_free = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$get_mt_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -981,6 +1048,7 @@ crypto.dd.get_mt_chart <- function(limit = 10, query = "", only_free = TRUE, exp
 #' @examples
 #' crypto.dd.gh(symbol='ETH', dev_activity=FALSE, interval='1d')
 #' @export
+#* @get /crypto.dd.gh
 crypto.dd.gh <- function(symbol, dev_activity = FALSE, interval = "1d", start_date, end_date) {
   o <- do.call(what=py$openbb$crypto$dd$gh, args=as.list(rlang::call_match())[-1])
   o
@@ -998,6 +1066,7 @@ crypto.dd.gh <- function(symbol, dev_activity = FALSE, interval = "1d", start_da
 #' @examples
 #' crypto.dd.gh_chart(symbol='ETH', dev_activity=FALSE, interval='1d')
 #' @export
+#* @get /crypto.dd.gh_chart
 crypto.dd.gh_chart <- function(symbol, start_date, dev_activity = FALSE, end_date, interval = "1d", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$gh_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1012,6 +1081,7 @@ crypto.dd.gh_chart <- function(symbol, start_date, dev_activity = FALSE, end_dat
 #' @examples
 #' crypto.dd.gov(symbol='ETH')
 #' @export
+#* @get /crypto.dd.gov
 crypto.dd.gov <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$gov, args=as.list(rlang::call_match())[-1])
   o
@@ -1027,6 +1097,7 @@ crypto.dd.gov <- function(symbol) {
 #' @examples
 #' crypto.dd.gov_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.gov_chart
 crypto.dd.gov_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$gov_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1041,6 +1112,7 @@ crypto.dd.gov_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.headlines(symbol='AMZN')
 #' @export
+#* @get /crypto.dd.headlines
 crypto.dd.headlines <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$headlines, args=as.list(rlang::call_match())[-1])
   o
@@ -1057,6 +1129,7 @@ crypto.dd.headlines <- function(symbol) {
 #' @examples
 #' crypto.dd.headlines_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.headlines_chart
 crypto.dd.headlines_chart <- function(symbol, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$headlines_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1071,6 +1144,7 @@ crypto.dd.headlines_chart <- function(symbol, raw = FALSE, export = "", sheet_na
 #' @examples
 #' crypto.dd.inv(symbol='ETH')
 #' @export
+#* @get /crypto.dd.inv
 crypto.dd.inv <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$inv, args=as.list(rlang::call_match())[-1])
   o
@@ -1086,6 +1160,7 @@ crypto.dd.inv <- function(symbol) {
 #' @examples
 #' crypto.dd.inv_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.inv_chart
 crypto.dd.inv_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$inv_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1100,6 +1175,7 @@ crypto.dd.inv_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.links(symbol='ETH')
 #' @export
+#* @get /crypto.dd.links
 crypto.dd.links <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$links, args=as.list(rlang::call_match())[-1])
   o
@@ -1115,6 +1191,7 @@ crypto.dd.links <- function(symbol) {
 #' @examples
 #' crypto.dd.links_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.links_chart
 crypto.dd.links_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$links_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1130,6 +1207,7 @@ crypto.dd.links_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.mcapdom(symbol='ETH', interval='1d')
 #' @export
+#* @get /crypto.dd.mcapdom
 crypto.dd.mcapdom <- function(symbol, interval = "1d", start_date, end_date) {
   o <- do.call(what=py$openbb$crypto$dd$mcapdom, args=as.list(rlang::call_match())[-1])
   o
@@ -1146,6 +1224,7 @@ crypto.dd.mcapdom <- function(symbol, interval = "1d", start_date, end_date) {
 #' @examples
 #' crypto.dd.mcapdom_chart(symbol='ETH', interval='1d')
 #' @export
+#* @get /crypto.dd.mcapdom_chart
 crypto.dd.mcapdom_chart <- function(symbol, start_date, end_date, interval = "1d", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$mcapdom_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1169,6 +1248,7 @@ crypto.dd.mcapdom_chart <- function(symbol, start_date, end_date, interval = "1d
 #' @examples
 #' crypto.dd.mkt(symbol='BTC', quotes='USD', sortby='pct_volume_share', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.mkt
 crypto.dd.mkt <- function(symbol = "BTC", quotes = "USD", sortby = "pct_volume_share", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$mkt, args=as.list(rlang::call_match())[-1])
   o
@@ -1190,6 +1270,7 @@ crypto.dd.mkt <- function(symbol = "BTC", quotes = "USD", sortby = "pct_volume_s
 #' @examples
 #' crypto.dd.mkt_chart(from_symbol='BTC', to_symbol='USD', limit=20, sortby='pct_volume_share', ascend=TRUE, links=FALSE)
 #' @export
+#* @get /crypto.dd.mkt_chart
 crypto.dd.mkt_chart <- function(from_symbol = "BTC", to_symbol = "USD", limit = 20, sortby = "pct_volume_share", ascend = TRUE, links = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$mkt_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1206,6 +1287,7 @@ crypto.dd.mkt_chart <- function(from_symbol = "BTC", to_symbol = "USD", limit = 
 #' @examples
 #' crypto.dd.mt(symbol='ETH', interval='1d')
 #' @export
+#* @get /crypto.dd.mt
 crypto.dd.mt <- function(symbol, timeseries_id, interval = "1d", start_date, end_date) {
   o <- do.call(what=py$openbb$crypto$dd$mt, args=as.list(rlang::call_match())[-1])
   o
@@ -1223,6 +1305,7 @@ crypto.dd.mt <- function(symbol, timeseries_id, interval = "1d", start_date, end
 #' @examples
 #' crypto.dd.mt_chart(symbol='ETH', interval='1d')
 #' @export
+#* @get /crypto.dd.mt_chart
 crypto.dd.mt_chart <- function(symbol, timeseries_id, start_date, end_date, interval = "1d", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$mt_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1242,6 +1325,7 @@ crypto.dd.mt_chart <- function(symbol, timeseries_id, start_date, end_date, inte
 #' @examples
 #' crypto.dd.news(limit=60, post_kind='news', region='en', sortby='published_at', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.news
 crypto.dd.news <- function(limit = 60, post_kind = "news", filter_, region = "en", source, symbol, sortby = "published_at", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$news, args=as.list(rlang::call_match())[-1])
   o
@@ -1261,6 +1345,7 @@ crypto.dd.news <- function(limit = 60, post_kind = "news", filter_, region = "en
 #' @examples
 #' crypto.dd.news_chart(limit=25, post_kind='news', region='en', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.news_chart
 crypto.dd.news_chart <- function(post_kind = "news", region = "en", filter_, source, symbol, limit = 25, ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$news_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1276,6 +1361,7 @@ crypto.dd.news_chart <- function(post_kind = "news", region = "en", filter_, sou
 #' @examples
 #' crypto.dd.nonzero(symbol='AMZN', start_date='2010-01-01')
 #' @export
+#* @get /crypto.dd.nonzero
 crypto.dd.nonzero <- function(symbol, start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$dd$nonzero, args=as.list(rlang::call_match())[-1])
   o
@@ -1292,6 +1378,7 @@ crypto.dd.nonzero <- function(symbol, start_date = "2010-01-01", end_date) {
 #' @examples
 #' crypto.dd.nonzero_chart(symbol='AMZN', start_date='2010-01-01')
 #' @export
+#* @get /crypto.dd.nonzero_chart
 crypto.dd.nonzero_chart <- function(symbol, start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$nonzero_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1308,6 +1395,7 @@ crypto.dd.nonzero_chart <- function(symbol, start_date = "2010-01-01", end_date,
 #' @examples
 #' crypto.dd.ob(symbol='AMZN')
 #' @export
+#* @get /crypto.dd.ob
 crypto.dd.ob <- function(exchange, symbol, to_symbol) {
   o <- do.call(what=py$openbb$crypto$dd$ob, args=as.list(rlang::call_match())[-1])
   o
@@ -1324,6 +1412,7 @@ crypto.dd.ob <- function(exchange, symbol, to_symbol) {
 #' @examples
 #' crypto.dd.ob_chart(symbol='AMZN')
 #' @export
+#* @get /crypto.dd.ob_chart
 crypto.dd.ob_chart <- function(exchange, symbol, to_symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$ob_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1339,6 +1428,7 @@ crypto.dd.ob_chart <- function(exchange, symbol, to_symbol, export = "", sheet_n
 #' @examples
 #' crypto.dd.oi(symbol='ETH', interval=0)
 #' @export
+#* @get /crypto.dd.oi
 crypto.dd.oi <- function(symbol, interval = 0) {
   o <- do.call(what=py$openbb$crypto$dd$oi, args=as.list(rlang::call_match())[-1])
   o
@@ -1355,6 +1445,7 @@ crypto.dd.oi <- function(symbol, interval = 0) {
 #' @examples
 #' crypto.dd.oi_chart(symbol='ETH', interval=0)
 #' @export
+#* @get /crypto.dd.oi_chart
 crypto.dd.oi_chart <- function(symbol, interval = 0, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$oi_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1369,6 +1460,7 @@ crypto.dd.oi_chart <- function(symbol, interval = 0, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.pi(symbol='ETH')
 #' @export
+#* @get /crypto.dd.pi
 crypto.dd.pi <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$pi, args=as.list(rlang::call_match())[-1])
   o
@@ -1384,6 +1476,7 @@ crypto.dd.pi <- function(symbol) {
 #' @examples
 #' crypto.dd.pi_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.pi_chart
 crypto.dd.pi_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$pi_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1398,6 +1491,7 @@ crypto.dd.pi_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.pr(to_symbol='Coin to compare main_coin with (e.g., bitcoin)')
 #' @export
+#* @get /crypto.dd.pr
 crypto.dd.pr <- function(main_coin, to_symbol, limit, price) {
   o <- do.call(what=py$openbb$crypto$dd$pr, args=as.list(rlang::call_match())[-1])
   o
@@ -1413,6 +1507,7 @@ crypto.dd.pr <- function(main_coin, to_symbol, limit, price) {
 #' @examples
 #' crypto.dd.pr_chart(from_symbol='Coin to compare main_coin with (e.g., bitcoin)')
 #' @export
+#* @get /crypto.dd.pr_chart
 crypto.dd.pr_chart <- function(to_symbol, from_symbol, limit, price, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$pr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1428,6 +1523,7 @@ crypto.dd.pr_chart <- function(to_symbol, from_symbol, limit, price, export = ""
 #' @examples
 #' crypto.dd.ps(symbol='BTC', quotes='USD')
 #' @export
+#* @get /crypto.dd.ps
 crypto.dd.ps <- function(symbol = "BTC", quotes = "USD") {
   o <- do.call(what=py$openbb$crypto$dd$ps, args=as.list(rlang::call_match())[-1])
   o
@@ -1444,6 +1540,7 @@ crypto.dd.ps <- function(symbol = "BTC", quotes = "USD") {
 #' @examples
 #' crypto.dd.ps_chart(from_symbol='BTC', to_symbol='USD')
 #' @export
+#* @get /crypto.dd.ps_chart
 crypto.dd.ps_chart <- function(from_symbol = "BTC", to_symbol = "USD", export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$ps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1459,6 +1556,7 @@ crypto.dd.ps_chart <- function(from_symbol = "BTC", to_symbol = "USD", export = 
 #' @examples
 #' crypto.dd.rm(symbol='ETH', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.rm
 crypto.dd.rm <- function(symbol, ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$rm, args=as.list(rlang::call_match())[-1])
   o
@@ -1476,6 +1574,7 @@ crypto.dd.rm <- function(symbol, ascend = TRUE) {
 #' @examples
 #' crypto.dd.rm_chart(symbol='ETH', ascend=TRUE, limit=5)
 #' @export
+#* @get /crypto.dd.rm_chart
 crypto.dd.rm_chart <- function(symbol, ascend = TRUE, limit = 5, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$rm_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1488,6 +1587,7 @@ crypto.dd.rm_chart <- function(symbol, ascend = TRUE, limit = 5, export = "", sh
 #'
 #' @param symbol (character length 1) Coin to get scores for
 #' @export
+#* @get /crypto.dd.score
 crypto.dd.score <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$score, args=as.list(rlang::call_match())[-1])
   o
@@ -1502,6 +1602,7 @@ crypto.dd.score <- function(symbol) {
 #' @examples
 #' crypto.dd.show_available_pairs_for_given_symbol(symbol='ETH')
 #' @export
+#* @get /crypto.dd.show_available_pairs_for_given_symbol
 crypto.dd.show_available_pairs_for_given_symbol <- function(symbol = "ETH") {
   o <- do.call(what=py$openbb$crypto$dd$show_available_pairs_for_given_symbol, args=as.list(rlang::call_match())[-1])
   o
@@ -1514,6 +1615,7 @@ crypto.dd.show_available_pairs_for_given_symbol <- function(symbol = "ETH") {
 #'
 #' @param symbol (character length 1) Coin to get social stats for
 #' @export
+#* @get /crypto.dd.social
 crypto.dd.social <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$social, args=as.list(rlang::call_match())[-1])
   o
@@ -1528,6 +1630,7 @@ crypto.dd.social <- function(symbol) {
 #' @examples
 #' crypto.dd.stats(symbol='UNI-ETH')
 #' @export
+#* @get /crypto.dd.stats
 crypto.dd.stats <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$stats, args=as.list(rlang::call_match())[-1])
   o
@@ -1543,6 +1646,7 @@ crypto.dd.stats <- function(symbol) {
 #' @examples
 #' crypto.dd.stats_chart(symbol='UNI-ETH')
 #' @export
+#* @get /crypto.dd.stats_chart
 crypto.dd.stats_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$stats_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1557,6 +1661,7 @@ crypto.dd.stats_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.team(symbol='ETH')
 #' @export
+#* @get /crypto.dd.team
 crypto.dd.team <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$team, args=as.list(rlang::call_match())[-1])
   o
@@ -1572,6 +1677,7 @@ crypto.dd.team <- function(symbol) {
 #' @examples
 #' crypto.dd.team_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.team_chart
 crypto.dd.team_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$team_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1587,6 +1693,7 @@ crypto.dd.team_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' crypto.dd.tk(symbol='ETH')
 #' @export
+#* @get /crypto.dd.tk
 crypto.dd.tk <- function(symbol, coingecko_id) {
   o <- do.call(what=py$openbb$crypto$dd$tk, args=as.list(rlang::call_match())[-1])
   o
@@ -1602,6 +1709,7 @@ crypto.dd.tk <- function(symbol, coingecko_id) {
 #' @examples
 #' crypto.dd.tk_chart(symbol='ETH')
 #' @export
+#* @get /crypto.dd.tk_chart
 crypto.dd.tk_chart <- function(symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$dd$tk_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1614,6 +1722,7 @@ crypto.dd.tk_chart <- function(symbol, export = "", sheet_name, external_axes) {
 #'
 #' @param symbol (character length 1) coin symbol to check tokenomics
 #' @export
+#* @get /crypto.dd.tokenomics
 crypto.dd.tokenomics <- function(symbol = "") {
   o <- do.call(what=py$openbb$crypto$dd$tokenomics, args=as.list(rlang::call_match())[-1])
   o
@@ -1630,6 +1739,7 @@ crypto.dd.tokenomics <- function(symbol = "") {
 #' @examples
 #' crypto.dd.trades(symbol='AMZN')
 #' @export
+#* @get /crypto.dd.trades
 crypto.dd.trades <- function(exchange_id, symbol, to_symbol) {
   o <- do.call(what=py$openbb$crypto$dd$trades, args=as.list(rlang::call_match())[-1])
   o
@@ -1648,6 +1758,7 @@ crypto.dd.trades <- function(exchange_id, symbol, to_symbol) {
 #' @examples
 #' crypto.dd.trades_chart(symbol='AMZN', limit=10)
 #' @export
+#* @get /crypto.dd.trades_chart
 crypto.dd.trades_chart <- function(exchange, symbol, to_symbol, limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$trades_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1662,6 +1773,7 @@ crypto.dd.trades_chart <- function(exchange, symbol, to_symbol, limit = 10, expo
 #' @examples
 #' crypto.dd.trading_pair_info(symbol='UNI-ETH')
 #' @export
+#* @get /crypto.dd.trading_pair_info
 crypto.dd.trading_pair_info <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$dd$trading_pair_info, args=as.list(rlang::call_match())[-1])
   o
@@ -1673,6 +1785,7 @@ crypto.dd.trading_pair_info <- function(symbol) {
 #' @description Wrapper for Python function crypto.dd.trading_pairs from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.dd.trading_pairs
 crypto.dd.trading_pairs <- function() {
   o <- do.call(what=py$openbb$crypto$dd$trading_pairs, args=as.list(rlang::call_match())[-1])
   o
@@ -1691,6 +1804,7 @@ crypto.dd.trading_pairs <- function() {
 #' @examples
 #' crypto.dd.twitter(symbol='BTC', sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.twitter
 crypto.dd.twitter <- function(symbol = "BTC", sortby = "date", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$dd$twitter, args=as.list(rlang::call_match())[-1])
   o
@@ -1711,6 +1825,7 @@ crypto.dd.twitter <- function(symbol = "BTC", sortby = "date", ascend = TRUE) {
 #' @examples
 #' crypto.dd.twitter_chart(symbol='BTC', limit=10, sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.dd.twitter_chart
 crypto.dd.twitter_chart <- function(symbol = "BTC", limit = 10, sortby = "date", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$dd$twitter_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1721,6 +1836,7 @@ crypto.dd.twitter_chart <- function(symbol = "BTC", limit = 10, sortby = "date",
 #' @description Wrapper for Python function crypto.defi.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.about
 crypto.defi.about <- function() {
   o <- do.call(what=py$openbb$crypto$defi$about, args=as.list(rlang::call_match())[-1])
   o
@@ -1733,6 +1849,7 @@ crypto.defi.about <- function() {
 #'
 #' @param address (character length 1) Terra address. Valid terra addresses start with 'terra'
 #' @export
+#* @get /crypto.defi.anchor_data
 crypto.defi.anchor_data <- function(address = "") {
   o <- do.call(what=py$openbb$crypto$defi$anchor_data, args=as.list(rlang::call_match())[-1])
   o
@@ -1749,6 +1866,7 @@ crypto.defi.anchor_data <- function(address = "") {
 #' @examples
 #' crypto.defi.anchor_data_chart(show_transactions=FALSE)
 #' @export
+#* @get /crypto.defi.anchor_data_chart
 crypto.defi.anchor_data_chart <- function(address = "", export = "", sheet_name, show_transactions = FALSE, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$anchor_data_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1764,6 +1882,7 @@ crypto.defi.anchor_data_chart <- function(address = "", export = "", sheet_name,
 #' @examples
 #' crypto.defi.aterra(asset='ust', address='terra1tmnqgvg567ypvsvk6rwsga3srp7e3lg6u0elp8')
 #' @export
+#* @get /crypto.defi.aterra
 crypto.defi.aterra <- function(asset = "ust", address = "terra1tmnqgvg567ypvsvk6rwsga3srp7e3lg6u0elp8") {
   o <- do.call(what=py$openbb$crypto$defi$aterra, args=as.list(rlang::call_match())[-1])
   o
@@ -1778,6 +1897,7 @@ crypto.defi.aterra <- function(asset = "ust", address = "terra1tmnqgvg567ypvsvk6
 #' @param address (character length 1) Terra address. Valid terra addresses start with 'terra'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.defi.aterra_chart
 crypto.defi.aterra_chart <- function(asset = "", address = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$aterra_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1789,6 +1909,7 @@ crypto.defi.aterra_chart <- function(asset = "", address = "", export = "", shee
 #' @description Wrapper for Python function crypto.defi.ayr from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.ayr
 crypto.defi.ayr <- function() {
   o <- do.call(what=py$openbb$crypto$defi$ayr, args=as.list(rlang::call_match())[-1])
   o
@@ -1801,6 +1922,7 @@ crypto.defi.ayr <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file, by default False
 #' @export
+#* @get /crypto.defi.ayr_chart
 crypto.defi.ayr_chart <- function(export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$ayr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1813,6 +1935,7 @@ crypto.defi.ayr_chart <- function(export = "", sheet_name, external_axes) {
 #'
 #' @param protocol (character length 1) Name of the protocol
 #' @export
+#* @get /crypto.defi.dtvl
 crypto.defi.dtvl <- function(protocol) {
   o <- do.call(what=py$openbb$crypto$defi$dtvl, args=as.list(rlang::call_match())[-1])
   o
@@ -1826,6 +1949,7 @@ crypto.defi.dtvl <- function(protocol) {
 #' @param dapps (character length 1) dApps to search historical TVL. Should be split by , e.g.: anchor,sushiswap,pancakeswap
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.defi.dtvl_chart
 crypto.defi.dtvl_chart <- function(dapps = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$dtvl_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1840,6 +1964,7 @@ crypto.defi.dtvl_chart <- function(dapps = "", export = "", sheet_name, external
 #' @examples
 #' crypto.defi.gacc(cumulative=TRUE)
 #' @export
+#* @get /crypto.defi.gacc
 crypto.defi.gacc <- function(cumulative = TRUE) {
   o <- do.call(what=py$openbb$crypto$defi$gacc, args=as.list(rlang::call_match())[-1])
   o
@@ -1857,6 +1982,7 @@ crypto.defi.gacc <- function(cumulative = TRUE) {
 #' @examples
 #' crypto.defi.gacc_chart(limit=90, kind='total', cumulative=FALSE)
 #' @export
+#* @get /crypto.defi.gacc_chart
 crypto.defi.gacc_chart <- function(kind = "total", cumulative = FALSE, limit = 90, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$gacc_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1871,6 +1997,7 @@ crypto.defi.gacc_chart <- function(kind = "total", cumulative = FALSE, limit = 9
 #' @examples
 #' crypto.defi.gdapps(limit=50)
 #' @export
+#* @get /crypto.defi.gdapps
 crypto.defi.gdapps <- function(limit = 50) {
   o <- do.call(what=py$openbb$crypto$defi$gdapps, args=as.list(rlang::call_match())[-1])
   o
@@ -1883,6 +2010,7 @@ crypto.defi.gdapps <- function(limit = 50) {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.defi.gdapps_chart
 crypto.defi.gdapps_chart <- function(limit = 50, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$gdapps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1900,6 +2028,7 @@ crypto.defi.gdapps_chart <- function(limit = 50, export = "", sheet_name, extern
 #' @examples
 #' crypto.defi.gov_proposals(sortby='id', ascend=TRUE, limit=10)
 #' @export
+#* @get /crypto.defi.gov_proposals
 crypto.defi.gov_proposals <- function(status = "", sortby = "id", ascend = TRUE, limit = 10) {
   o <- do.call(what=py$openbb$crypto$defi$gov_proposals, args=as.list(rlang::call_match())[-1])
   o
@@ -1918,6 +2047,7 @@ crypto.defi.gov_proposals <- function(status = "", sortby = "id", ascend = TRUE,
 #' @examples
 #' crypto.defi.gov_proposals_chart(limit=10, status='all', sortby='id', ascend=TRUE)
 #' @export
+#* @get /crypto.defi.gov_proposals_chart
 crypto.defi.gov_proposals_chart <- function(limit = 10, status = "all", sortby = "id", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$gov_proposals_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1936,6 +2066,7 @@ crypto.defi.gov_proposals_chart <- function(limit = 10, status = "all", sortby =
 #' @examples
 #' crypto.defi.ldapps(limit=100, ascend=FALSE, description=FALSE, drop_chain=TRUE)
 #' @export
+#* @get /crypto.defi.ldapps
 crypto.defi.ldapps <- function(limit = 100, sortby = "", ascend = FALSE, description = FALSE, drop_chain = TRUE) {
   o <- do.call(what=py$openbb$crypto$defi$ldapps, args=as.list(rlang::call_match())[-1])
   o
@@ -1954,6 +2085,7 @@ crypto.defi.ldapps <- function(limit = 100, sortby = "", ascend = FALSE, descrip
 #' @examples
 #' crypto.defi.ldapps_chart(limit=20, ascend=FALSE, description=FALSE)
 #' @export
+#* @get /crypto.defi.ldapps_chart
 crypto.defi.ldapps_chart <- function(sortby, limit = 20, ascend = FALSE, description = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$ldapps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1969,6 +2101,7 @@ crypto.defi.ldapps_chart <- function(sortby, limit = 20, ascend = FALSE, descrip
 #' @examples
 #' crypto.defi.luna_supply(supply_type='lunaSupplyChallengeStats', days=30)
 #' @export
+#* @get /crypto.defi.luna_supply
 crypto.defi.luna_supply <- function(supply_type = "lunaSupplyChallengeStats", days = 30) {
   o <- do.call(what=py$openbb$crypto$defi$luna_supply, args=as.list(rlang::call_match())[-1])
   o
@@ -1987,6 +2120,7 @@ crypto.defi.luna_supply <- function(supply_type = "lunaSupplyChallengeStats", da
 #' @examples
 #' crypto.defi.luna_supply_chart(days=30, supply_type='lunaSupplyChallengeStats', limit=5)
 #' @export
+#* @get /crypto.defi.luna_supply_chart
 crypto.defi.luna_supply_chart <- function(days = 30, export = "", sheet_name, supply_type = "lunaSupplyChallengeStats", limit = 5, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$luna_supply_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -1998,6 +2132,7 @@ crypto.defi.luna_supply_chart <- function(days = 30, export = "", sheet_name, su
 #' @description Wrapper for Python function crypto.defi.newsletters from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.newsletters
 crypto.defi.newsletters <- function() {
   o <- do.call(what=py$openbb$crypto$defi$newsletters, args=as.list(rlang::call_match())[-1])
   o
@@ -2013,6 +2148,7 @@ crypto.defi.newsletters <- function() {
 #' @examples
 #' crypto.defi.newsletters_chart(limit=10)
 #' @export
+#* @get /crypto.defi.newsletters_chart
 crypto.defi.newsletters_chart <- function(limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$newsletters_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2030,6 +2166,7 @@ crypto.defi.newsletters_chart <- function(limit = 10, export = "", sheet_name) {
 #' @examples
 #' crypto.defi.pairs(last_days=14, min_volume=100, min_liquidity=0, min_tx=100)
 #' @export
+#* @get /crypto.defi.pairs
 crypto.defi.pairs <- function(last_days = 14, min_volume = 100, min_liquidity = 0, min_tx = 100) {
   o <- do.call(what=py$openbb$crypto$defi$pairs, args=as.list(rlang::call_match())[-1])
   o
@@ -2051,6 +2188,7 @@ crypto.defi.pairs <- function(last_days = 14, min_volume = 100, min_liquidity = 
 #' @examples
 #' crypto.defi.pairs_chart(limit=20, days=7, min_volume=20, min_liquidity=0, min_tx=100, sortby='created', ascend=FALSE)
 #' @export
+#* @get /crypto.defi.pairs_chart
 crypto.defi.pairs_chart <- function(limit = 20, days = 7, min_volume = 20, min_liquidity = 0, min_tx = 100, sortby = "created", ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$pairs_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2062,6 +2200,7 @@ crypto.defi.pairs_chart <- function(limit = 20, days = 7, min_volume = 20, min_l
 #' @description Wrapper for Python function crypto.defi.pools from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.pools
 crypto.defi.pools <- function() {
   o <- do.call(what=py$openbb$crypto$defi$pools, args=as.list(rlang::call_match())[-1])
   o
@@ -2080,6 +2219,7 @@ crypto.defi.pools <- function() {
 #' @examples
 #' crypto.defi.pools_chart(limit=20, sortby='volumeUSD', ascend=TRUE)
 #' @export
+#* @get /crypto.defi.pools_chart
 crypto.defi.pools_chart <- function(limit = 20, sortby = "volumeUSD", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$pools_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2092,6 +2232,7 @@ crypto.defi.pools_chart <- function(limit = 20, sortby = "volumeUSD", ascend = T
 #'
 #' @param address (character length 1) terra blockchain address e.g. terra1jvwelvs7rdk6j3mqdztq5tya99w8lxk6l9hcqg
 #' @export
+#* @get /crypto.defi.sinfo
 crypto.defi.sinfo <- function(address = "") {
   o <- do.call(what=py$openbb$crypto$defi$sinfo, args=as.list(rlang::call_match())[-1])
   o
@@ -2108,6 +2249,7 @@ crypto.defi.sinfo <- function(address = "") {
 #' @examples
 #' crypto.defi.sinfo_chart(limit=10)
 #' @export
+#* @get /crypto.defi.sinfo_chart
 crypto.defi.sinfo_chart <- function(address = "", limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$sinfo_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2122,6 +2264,7 @@ crypto.defi.sinfo_chart <- function(address = "", limit = 10, export = "", sheet
 #' @examples
 #' crypto.defi.sratio(limit=200)
 #' @export
+#* @get /crypto.defi.sratio
 crypto.defi.sratio <- function(limit = 200) {
   o <- do.call(what=py$openbb$crypto$defi$sratio, args=as.list(rlang::call_match())[-1])
   o
@@ -2137,6 +2280,7 @@ crypto.defi.sratio <- function(limit = 200) {
 #' @examples
 #' crypto.defi.sratio_chart(limit=90)
 #' @export
+#* @get /crypto.defi.sratio_chart
 crypto.defi.sratio_chart <- function(limit = 90, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$sratio_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2151,6 +2295,7 @@ crypto.defi.sratio_chart <- function(limit = 90, export = "", sheet_name, extern
 #' @examples
 #' crypto.defi.sreturn(limit=200)
 #' @export
+#* @get /crypto.defi.sreturn
 crypto.defi.sreturn <- function(limit = 200) {
   o <- do.call(what=py$openbb$crypto$defi$sreturn, args=as.list(rlang::call_match())[-1])
   o
@@ -2166,6 +2311,7 @@ crypto.defi.sreturn <- function(limit = 200) {
 #' @examples
 #' crypto.defi.sreturn_chart(limit=90)
 #' @export
+#* @get /crypto.defi.sreturn_chart
 crypto.defi.sreturn_chart <- function(limit = 90, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$sreturn_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2177,6 +2323,7 @@ crypto.defi.sreturn_chart <- function(limit = 90, export = "", sheet_name, exter
 #' @description Wrapper for Python function crypto.defi.stats from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.stats
 crypto.defi.stats <- function() {
   o <- do.call(what=py$openbb$crypto$defi$stats, args=as.list(rlang::call_match())[-1])
   o
@@ -2188,6 +2335,7 @@ crypto.defi.stats <- function() {
 #' @description Wrapper for Python function crypto.defi.stats_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.stats_chart
 crypto.defi.stats_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$stats_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2199,6 +2347,7 @@ crypto.defi.stats_chart <- function(export = "", sheet_name) {
 #' @description Wrapper for Python function crypto.defi.stvl from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.stvl
 crypto.defi.stvl <- function() {
   o <- do.call(what=py$openbb$crypto$defi$stvl, args=as.list(rlang::call_match())[-1])
   o
@@ -2214,6 +2363,7 @@ crypto.defi.stvl <- function() {
 #' @examples
 #' crypto.defi.stvl_chart(limit=5)
 #' @export
+#* @get /crypto.defi.stvl_chart
 crypto.defi.stvl_chart <- function(limit = 5, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$defi$stvl_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2231,6 +2381,7 @@ crypto.defi.stvl_chart <- function(limit = 5, export = "", sheet_name, external_
 #' @examples
 #' crypto.defi.swaps(limit=100, sortby='timestamp', ascend=FALSE)
 #' @export
+#* @get /crypto.defi.swaps
 crypto.defi.swaps <- function(limit = 100, sortby = "timestamp", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$defi$swaps, args=as.list(rlang::call_match())[-1])
   o
@@ -2249,6 +2400,7 @@ crypto.defi.swaps <- function(limit = 100, sortby = "timestamp", ascend = FALSE)
 #' @examples
 #' crypto.defi.swaps_chart(limit=10, sortby='timestamp', ascend=FALSE)
 #' @export
+#* @get /crypto.defi.swaps_chart
 crypto.defi.swaps_chart <- function(limit = 10, sortby = "timestamp", ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$swaps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2266,6 +2418,7 @@ crypto.defi.swaps_chart <- function(limit = 10, sortby = "timestamp", ascend = F
 #' @examples
 #' crypto.defi.tokens(skip=0, limit=100, sortby='index', ascend=FALSE)
 #' @export
+#* @get /crypto.defi.tokens
 crypto.defi.tokens <- function(skip = 0, limit = 100, sortby = "index", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$defi$tokens, args=as.list(rlang::call_match())[-1])
   o
@@ -2284,6 +2437,7 @@ crypto.defi.tokens <- function(skip = 0, limit = 100, sortby = "index", ascend =
 #' @examples
 #' crypto.defi.tokens_chart(skip=0, limit=20, sortby='index', ascend=FALSE)
 #' @export
+#* @get /crypto.defi.tokens_chart
 crypto.defi.tokens_chart <- function(skip = 0, limit = 20, sortby = "index", ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$tokens_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2298,6 +2452,7 @@ crypto.defi.tokens_chart <- function(skip = 0, limit = 20, sortby = "index", asc
 #'     validatorName, tokensAmount, votingPower, commissionRate, status, uptime
 #' @param ascend (logical length 1) Flag to sort data descending
 #' @export
+#* @get /crypto.defi.validators
 crypto.defi.validators <- function(sortby = "votingPower", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$defi$validators, args=as.list(rlang::call_match())[-1])
   o
@@ -2316,6 +2471,7 @@ crypto.defi.validators <- function(sortby = "votingPower", ascend = TRUE) {
 #' @examples
 #' crypto.defi.validators_chart(limit=10, sortby='votingPower', ascend=TRUE)
 #' @export
+#* @get /crypto.defi.validators_chart
 crypto.defi.validators_chart <- function(limit = 10, sortby = "votingPower", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$validators_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2327,6 +2483,7 @@ crypto.defi.validators_chart <- function(limit = 10, sortby = "votingPower", asc
 #' @description Wrapper for Python function crypto.defi.vaults from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.defi.vaults
 crypto.defi.vaults <- function(chain, protocol, kind, ascend = TRUE, sortby = "apy") {
   o <- do.call(what=py$openbb$crypto$defi$vaults, args=as.list(rlang::call_match())[-1])
   o
@@ -2345,6 +2502,7 @@ crypto.defi.vaults <- function(chain, protocol, kind, ascend = TRUE, sortby = "a
 #' @examples
 #' crypto.defi.vaults_chart(limit=10, sortby='apy', ascend=TRUE, link=FALSE)
 #' @export
+#* @get /crypto.defi.vaults_chart
 crypto.defi.vaults_chart <- function(chain, protocol, kind, limit = 10, sortby = "apy", ascend = TRUE, link = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$defi$vaults_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2355,6 +2513,7 @@ crypto.defi.vaults_chart <- function(chain, protocol, kind, limit = 10, sortby =
 #' @description Wrapper for Python function crypto.disc.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.disc.about
 crypto.disc.about <- function() {
   o <- do.call(what=py$openbb$crypto$disc$about, args=as.list(rlang::call_match())[-1])
   o
@@ -2366,6 +2525,7 @@ crypto.disc.about <- function() {
 #' @description Wrapper for Python function crypto.disc.categories_keys from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.disc.categories_keys
 crypto.disc.categories_keys <- function() {
   o <- do.call(what=py$openbb$crypto$disc$categories_keys, args=as.list(rlang::call_match())[-1])
   o
@@ -2377,6 +2537,7 @@ crypto.disc.categories_keys <- function() {
 #' @description Wrapper for Python function crypto.disc.coin_list from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.disc.coin_list
 crypto.disc.coin_list <- function() {
   o <- do.call(what=py$openbb$crypto$disc$coin_list, args=as.list(rlang::call_match())[-1])
   o
@@ -2394,6 +2555,7 @@ crypto.disc.coin_list <- function() {
 #' @examples
 #' crypto.disc.coins(limit=250, sortby='Symbol', ascend=FALSE)
 #' @export
+#* @get /crypto.disc.coins
 crypto.disc.coins <- function(limit = 250, category = "", sortby = "Symbol", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$disc$coins, args=as.list(rlang::call_match())[-1])
   o
@@ -2412,6 +2574,7 @@ crypto.disc.coins <- function(limit = 250, category = "", sortby = "Symbol", asc
 #' @examples
 #' crypto.disc.coins_chart(limit=250, sortby='Symbol', ascend=FALSE)
 #' @export
+#* @get /crypto.disc.coins_chart
 crypto.disc.coins_chart <- function(category, limit = 250, sortby = "Symbol", export = "", sheet_name, ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$disc$coins_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2427,6 +2590,7 @@ crypto.disc.coins_chart <- function(category, limit = 250, sortby = "Symbol", ex
 #' @examples
 #' crypto.disc.coins_for_given_exchange(exchange_id='binance', page=1)
 #' @export
+#* @get /crypto.disc.coins_for_given_exchange
 crypto.disc.coins_for_given_exchange <- function(exchange_id = "binance", page = 1) {
   o <- do.call(what=py$openbb$crypto$disc$coins_for_given_exchange, args=as.list(rlang::call_match())[-1])
   o
@@ -2444,6 +2608,7 @@ crypto.disc.coins_for_given_exchange <- function(exchange_id = "binance", page =
 #' @examples
 #' crypto.disc.cpsearch(sortby='id', ascend=TRUE)
 #' @export
+#* @get /crypto.disc.cpsearch
 crypto.disc.cpsearch <- function(query, category, modifier, sortby = "id", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$disc$cpsearch, args=as.list(rlang::call_match())[-1])
   o
@@ -2464,6 +2629,7 @@ crypto.disc.cpsearch <- function(query, category, modifier, sortby = "id", ascen
 #' @examples
 #' crypto.disc.cpsearch_chart(category='all', limit=10, sortby='id', ascend=TRUE)
 #' @export
+#* @get /crypto.disc.cpsearch_chart
 crypto.disc.cpsearch_chart <- function(query, category = "all", limit = 10, sortby = "id", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$disc$cpsearch_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2482,6 +2648,7 @@ crypto.disc.cpsearch_chart <- function(query, category = "all", limit = 10, sort
 #' @examples
 #' crypto.disc.gainers(interval='1h', limit=50, sortby='market_cap_rank')
 #' @export
+#* @get /crypto.disc.gainers
 crypto.disc.gainers <- function(interval = "1h", limit = 50, sortby = "market_cap_rank", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$disc$gainers, args=as.list(rlang::call_match())[-1])
   o
@@ -2501,6 +2668,7 @@ crypto.disc.gainers <- function(interval = "1h", limit = 50, sortby = "market_ca
 #' @examples
 #' crypto.disc.gainers_chart(interval='1h', limit=20, sortby='market_cap_rank')
 #' @export
+#* @get /crypto.disc.gainers_chart
 crypto.disc.gainers_chart <- function(interval = "1h", limit = 20, sortby = "market_cap_rank", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$disc$gainers_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2519,6 +2687,7 @@ crypto.disc.gainers_chart <- function(interval = "1h", limit = 20, sortby = "mar
 #' @examples
 #' crypto.disc.losers(interval='1h', limit=50, sortby='market_cap_rank')
 #' @export
+#* @get /crypto.disc.losers
 crypto.disc.losers <- function(interval = "1h", limit = 50, sortby = "market_cap_rank", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$disc$losers, args=as.list(rlang::call_match())[-1])
   o
@@ -2538,6 +2707,7 @@ crypto.disc.losers <- function(interval = "1h", limit = 50, sortby = "market_cap
 #' @examples
 #' crypto.disc.losers_chart(interval='1h', limit=20, sortby='Market Cap Rank')
 #' @export
+#* @get /crypto.disc.losers_chart
 crypto.disc.losers_chart <- function(interval = "1h", limit = 20, export = "", sheet_name, sortby = "Market Cap Rank", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$disc$losers_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2553,6 +2723,7 @@ crypto.disc.losers_chart <- function(interval = "1h", limit = 20, export = "", s
 #' @examples
 #' crypto.disc.top_coins(source='CoinGecko', limit=10)
 #' @export
+#* @get /crypto.disc.top_coins
 crypto.disc.top_coins <- function(source = "CoinGecko", limit = 10) {
   o <- do.call(what=py$openbb$crypto$disc$top_coins, args=as.list(rlang::call_match())[-1])
   o
@@ -2565,6 +2736,7 @@ crypto.disc.top_coins <- function(source = "CoinGecko", limit = 10) {
 #'
 #' @param sortby (character length 1) Key by which to sort data
 #' @export
+#* @get /crypto.disc.top_dapps
 crypto.disc.top_dapps <- function(sortby = "", limit = 10) {
   o <- do.call(what=py$openbb$crypto$disc$top_dapps, args=as.list(rlang::call_match())[-1])
   o
@@ -2581,6 +2753,7 @@ crypto.disc.top_dapps <- function(sortby = "", limit = 10) {
 #' @examples
 #' crypto.disc.top_dapps_chart(limit=10)
 #' @export
+#* @get /crypto.disc.top_dapps_chart
 crypto.disc.top_dapps_chart <- function(limit = 10, export = "", sheet_name, sortby = "") {
   o <- do.call(what=py$openbb$crypto$disc$top_dapps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2593,6 +2766,7 @@ crypto.disc.top_dapps_chart <- function(limit = 10, export = "", sheet_name, sor
 #'
 #' @param sortby (character length 1) Key by which to sort data
 #' @export
+#* @get /crypto.disc.top_dexes
 crypto.disc.top_dexes <- function(sortby = "", limit = 10) {
   o <- do.call(what=py$openbb$crypto$disc$top_dexes, args=as.list(rlang::call_match())[-1])
   o
@@ -2609,6 +2783,7 @@ crypto.disc.top_dexes <- function(sortby = "", limit = 10) {
 #' @examples
 #' crypto.disc.top_dexes_chart(limit=10)
 #' @export
+#* @get /crypto.disc.top_dexes_chart
 crypto.disc.top_dexes_chart <- function(limit = 10, export = "", sheet_name, sortby = "") {
   o <- do.call(what=py$openbb$crypto$disc$top_dexes_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2624,6 +2799,7 @@ crypto.disc.top_dexes_chart <- function(limit = 10, export = "", sheet_name, sor
 #' @examples
 #' crypto.disc.top_games(limit=10)
 #' @export
+#* @get /crypto.disc.top_games
 crypto.disc.top_games <- function(sortby = "", limit = 10) {
   o <- do.call(what=py$openbb$crypto$disc$top_games, args=as.list(rlang::call_match())[-1])
   o
@@ -2640,6 +2816,7 @@ crypto.disc.top_games <- function(sortby = "", limit = 10) {
 #' @examples
 #' crypto.disc.top_games_chart(limit=10)
 #' @export
+#* @get /crypto.disc.top_games_chart
 crypto.disc.top_games_chart <- function(limit = 10, export = "", sheet_name, sortby = "") {
   o <- do.call(what=py$openbb$crypto$disc$top_games_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2652,6 +2829,7 @@ crypto.disc.top_games_chart <- function(limit = 10, export = "", sheet_name, sor
 #'
 #' @param sortby (character length 1) Key by which to sort data
 #' @export
+#* @get /crypto.disc.top_nfts
 crypto.disc.top_nfts <- function(sortby = "", limit = 10) {
   o <- do.call(what=py$openbb$crypto$disc$top_nfts, args=as.list(rlang::call_match())[-1])
   o
@@ -2668,6 +2846,7 @@ crypto.disc.top_nfts <- function(sortby = "", limit = 10) {
 #' @examples
 #' crypto.disc.top_nfts_chart(limit=10)
 #' @export
+#* @get /crypto.disc.top_nfts_chart
 crypto.disc.top_nfts_chart <- function(limit = 10, sortby = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$disc$top_nfts_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2679,6 +2858,7 @@ crypto.disc.top_nfts_chart <- function(limit = 10, sortby = "", export = "", she
 #' @description Wrapper for Python function crypto.disc.trending from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.disc.trending
 crypto.disc.trending <- function() {
   o <- do.call(what=py$openbb$crypto$disc$trending, args=as.list(rlang::call_match())[-1])
   o
@@ -2691,6 +2871,7 @@ crypto.disc.trending <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.disc.trending_chart
 crypto.disc.trending_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$disc$trending_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2701,6 +2882,7 @@ crypto.disc.trending_chart <- function(export = "", sheet_name) {
 #' @description Wrapper for Python function crypto.nft.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.nft.about
 crypto.nft.about <- function() {
   o <- do.call(what=py$openbb$crypto$nft$about, args=as.list(rlang::call_match())[-1])
   o
@@ -2712,6 +2894,7 @@ crypto.nft.about <- function() {
 #' @description Wrapper for Python function crypto.nft.collections from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.nft.collections
 crypto.nft.collections <- function() {
   o <- do.call(what=py$openbb$crypto$nft$collections, args=as.list(rlang::call_match())[-1])
   o
@@ -2728,6 +2911,7 @@ crypto.nft.collections <- function() {
 #' @examples
 #' crypto.nft.collections_chart(show_fp=FALSE, limit=5)
 #' @export
+#* @get /crypto.nft.collections_chart
 crypto.nft.collections_chart <- function(show_fp = FALSE, show_sales = FALSE, limit = 5, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$nft$collections_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2740,6 +2924,7 @@ crypto.nft.collections_chart <- function(show_fp = FALSE, show_sales = FALSE, li
 #'
 #' @param slug (character length 1) nft collection slug
 #' @export
+#* @get /crypto.nft.fp
 crypto.nft.fp <- function(slug) {
   o <- do.call(what=py$openbb$crypto$nft$fp, args=as.list(rlang::call_match())[-1])
   o
@@ -2757,6 +2942,7 @@ crypto.nft.fp <- function(slug) {
 #' @examples
 #' crypto.nft.fp_chart(raw=FALSE, limit=10)
 #' @export
+#* @get /crypto.nft.fp_chart
 crypto.nft.fp_chart <- function(slug, limit = 10, export = "", sheet_name, external_axes, raw = FALSE) {
   o <- do.call(what=py$openbb$crypto$nft$fp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2769,6 +2955,7 @@ crypto.nft.fp_chart <- function(slug, limit = 10, export = "", sheet_name, exter
 #'
 #' @param slug (character length 1) Opensea collection slug. If the name of the collection is Mutant Ape Yacht Club the slug is mutant-ape-yacht-club
 #' @export
+#* @get /crypto.nft.stats
 crypto.nft.stats <- function(slug) {
   o <- do.call(what=py$openbb$crypto$nft$stats, args=as.list(rlang::call_match())[-1])
   o
@@ -2783,6 +2970,7 @@ crypto.nft.stats <- function(slug) {
 #'     If the name of the collection is Mutant Ape Yacht Club the slug is mutant-ape-yacht-club
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.nft.stats_chart
 crypto.nft.stats_chart <- function(slug, export, sheet_name) {
   o <- do.call(what=py$openbb$crypto$nft$stats_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2793,6 +2981,7 @@ crypto.nft.stats_chart <- function(slug, export, sheet_name) {
 #' @description Wrapper for Python function crypto.onchain.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.about
 crypto.onchain.about <- function() {
   o <- do.call(what=py$openbb$crypto$onchain$about, args=as.list(rlang::call_match())[-1])
   o
@@ -2811,6 +3000,7 @@ crypto.onchain.about <- function() {
 #' @examples
 #' crypto.onchain.baas(symbol='WETH', to_symbol='USDT', limit=10, sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.baas
 crypto.onchain.baas <- function(symbol = "WETH", to_symbol = "USDT", limit = 10, sortby = "date", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$baas, args=as.list(rlang::call_match())[-1])
   o
@@ -2830,6 +3020,7 @@ crypto.onchain.baas <- function(symbol = "WETH", to_symbol = "USDT", limit = 10,
 #' @examples
 #' crypto.onchain.baas_chart(symbol='WETH', to_symbol='USDT', limit=10, sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.baas_chart
 crypto.onchain.baas_chart <- function(symbol = "WETH", to_symbol = "USDT", limit = 10, sortby = "date", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$baas_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2846,6 +3037,7 @@ crypto.onchain.baas_chart <- function(symbol = "WETH", to_symbol = "USDT", limit
 #' @examples
 #' crypto.onchain.balance(sortby='index', ascend='False')
 #' @export
+#* @get /crypto.onchain.balance
 crypto.onchain.balance <- function(address, sortby = "index", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$onchain$balance, args=as.list(rlang::call_match())[-1])
   o
@@ -2864,6 +3056,7 @@ crypto.onchain.balance <- function(address, sortby = "index", ascend = FALSE) {
 #' @examples
 #' crypto.onchain.balance_chart(limit=15, sortby='index', ascend='False')
 #' @export
+#* @get /crypto.onchain.balance_chart
 crypto.onchain.balance_chart <- function(address, limit = 15, sortby = "index", ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$balance_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2875,6 +3068,7 @@ crypto.onchain.balance_chart <- function(address, limit = 15, sortby = "index", 
 #' @description Wrapper for Python function crypto.onchain.btc_supply from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.btc_supply
 crypto.onchain.btc_supply <- function() {
   o <- do.call(what=py$openbb$crypto$onchain$btc_supply, args=as.list(rlang::call_match())[-1])
   o
@@ -2890,6 +3084,7 @@ crypto.onchain.btc_supply <- function() {
 #' @examples
 #' crypto.onchain.btc_supply_chart(start_date='2010-01-01')
 #' @export
+#* @get /crypto.onchain.btc_supply_chart
 crypto.onchain.btc_supply_chart <- function(start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$onchain$btc_supply_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2901,6 +3096,7 @@ crypto.onchain.btc_supply_chart <- function(start_date = "2010-01-01", end_date,
 #' @description Wrapper for Python function crypto.onchain.btc_transac from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.btc_transac
 crypto.onchain.btc_transac <- function() {
   o <- do.call(what=py$openbb$crypto$onchain$btc_transac, args=as.list(rlang::call_match())[-1])
   o
@@ -2916,6 +3112,7 @@ crypto.onchain.btc_transac <- function() {
 #' @examples
 #' crypto.onchain.btc_transac_chart(start_date='2010-01-01')
 #' @export
+#* @get /crypto.onchain.btc_transac_chart
 crypto.onchain.btc_transac_chart <- function(start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$onchain$btc_transac_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2927,6 +3124,7 @@ crypto.onchain.btc_transac_chart <- function(start_date = "2010-01-01", end_date
 #' @description Wrapper for Python function crypto.onchain.btcsingleblock from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.btcsingleblock
 crypto.onchain.btcsingleblock <- function(blockhash) {
   o <- do.call(what=py$openbb$crypto$onchain$btcsingleblock, args=as.list(rlang::call_match())[-1])
   o
@@ -2940,6 +3138,7 @@ crypto.onchain.btcsingleblock <- function(blockhash) {
 #' @param blockhash (character length 1) Hash of the block you are looking for.
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.onchain.btcsingleblock_chart
 crypto.onchain.btcsingleblock_chart <- function(blockhash, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$btcsingleblock_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -2957,6 +3156,7 @@ crypto.onchain.btcsingleblock_chart <- function(blockhash, export = "", sheet_na
 #' @examples
 #' crypto.onchain.dex_trades_monthly(trade_amount_currency='USD', limit=90, ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.dex_trades_monthly
 crypto.onchain.dex_trades_monthly <- function(trade_amount_currency = "USD", limit = 90, ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$dex_trades_monthly, args=as.list(rlang::call_match())[-1])
   o
@@ -2975,6 +3175,7 @@ crypto.onchain.dex_trades_monthly <- function(trade_amount_currency = "USD", lim
 #' @examples
 #' crypto.onchain.dvcp(limit=100, symbol='UNI', to_symbol='USDT', sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.dvcp
 crypto.onchain.dvcp <- function(limit = 100, symbol = "UNI", to_symbol = "USDT", sortby = "date", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$dvcp, args=as.list(rlang::call_match())[-1])
   o
@@ -2994,6 +3195,7 @@ crypto.onchain.dvcp <- function(limit = 100, symbol = "UNI", to_symbol = "USDT",
 #' @examples
 #' crypto.onchain.dvcp_chart(symbol='WBTC', to_symbol='USDT', limit=20, sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.dvcp_chart
 crypto.onchain.dvcp_chart <- function(symbol = "WBTC", to_symbol = "USDT", limit = 20, sortby = "date", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$dvcp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3005,6 +3207,7 @@ crypto.onchain.dvcp_chart <- function(symbol = "WBTC", to_symbol = "USDT", limit
 #' @description Wrapper for Python function crypto.onchain.erc20_tokens from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.erc20_tokens
 crypto.onchain.erc20_tokens <- function() {
   o <- do.call(what=py$openbb$crypto$onchain$erc20_tokens, args=as.list(rlang::call_match())[-1])
   o
@@ -3016,6 +3219,7 @@ crypto.onchain.erc20_tokens <- function() {
 #' @description Wrapper for Python function crypto.onchain.gwei from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.onchain.gwei
 crypto.onchain.gwei <- function() {
   o <- do.call(what=py$openbb$crypto$onchain$gwei, args=as.list(rlang::call_match())[-1])
   o
@@ -3028,6 +3232,7 @@ crypto.onchain.gwei <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.onchain.gwei_chart
 crypto.onchain.gwei_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$gwei_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3044,6 +3249,7 @@ crypto.onchain.gwei_chart <- function(export = "", sheet_name) {
 #' @examples
 #' crypto.onchain.hist(sortby='timestamp', ascend='True')
 #' @export
+#* @get /crypto.onchain.hist
 crypto.onchain.hist <- function(address, sortby = "timestamp", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$hist, args=as.list(rlang::call_match())[-1])
   o
@@ -3062,6 +3268,7 @@ crypto.onchain.hist <- function(address, sortby = "timestamp", ascend = TRUE) {
 #' @examples
 #' crypto.onchain.hist_chart(limit=10, sortby='timestamp', ascend='True')
 #' @export
+#* @get /crypto.onchain.hist_chart
 crypto.onchain.hist_chart <- function(address, limit = 10, sortby = "timestamp", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$hist_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3078,6 +3285,7 @@ crypto.onchain.hist_chart <- function(address, limit = 10, sortby = "timestamp",
 #' @examples
 #' crypto.onchain.holders(sortby='balance', ascend='True')
 #' @export
+#* @get /crypto.onchain.holders
 crypto.onchain.holders <- function(address, sortby = "balance", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$holders, args=as.list(rlang::call_match())[-1])
   o
@@ -3096,6 +3304,7 @@ crypto.onchain.holders <- function(address, sortby = "balance", ascend = TRUE) {
 #' @examples
 #' crypto.onchain.holders_chart(limit=10, sortby='balance', ascend='True')
 #' @export
+#* @get /crypto.onchain.holders_chart
 crypto.onchain.holders_chart <- function(address, limit = 10, sortby = "balance", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$holders_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3112,6 +3321,7 @@ crypto.onchain.holders_chart <- function(address, limit = 10, sortby = "balance"
 #' @examples
 #' crypto.onchain.hr(symbol='AMZN', start_date='2010-01-01', interval='24h')
 #' @export
+#* @get /crypto.onchain.hr
 crypto.onchain.hr <- function(symbol, interval = "24h", start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$onchain$hr, args=as.list(rlang::call_match())[-1])
   o
@@ -3129,6 +3339,7 @@ crypto.onchain.hr <- function(symbol, interval = "24h", start_date = "2010-01-01
 #' @examples
 #' crypto.onchain.hr_chart(symbol='AMZN', start_date='2010-01-01', interval='24h')
 #' @export
+#* @get /crypto.onchain.hr_chart
 crypto.onchain.hr_chart <- function(symbol, start_date = "2010-01-01", end_date, interval = "24h", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$onchain$hr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3141,6 +3352,7 @@ crypto.onchain.hr_chart <- function(symbol, start_date = "2010-01-01", end_date,
 #'
 #' @param address (Python type: inspect._empty) Token balance e.g. 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984
 #' @export
+#* @get /crypto.onchain.info
 crypto.onchain.info <- function(address) {
   o <- do.call(what=py$openbb$crypto$onchain$info, args=as.list(rlang::call_match())[-1])
   o
@@ -3157,6 +3369,7 @@ crypto.onchain.info <- function(address) {
 #' @examples
 #' crypto.onchain.info_chart(social=FALSE)
 #' @export
+#* @get /crypto.onchain.info_chart
 crypto.onchain.info_chart <- function(address, social = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$info_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3175,6 +3388,7 @@ crypto.onchain.info_chart <- function(address, social = FALSE, export = "", shee
 #' @examples
 #' crypto.onchain.lt(trade_amount_currency='USD', limit=90, sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.lt
 crypto.onchain.lt <- function(trade_amount_currency = "USD", limit = 90, sortby = "tradeAmount", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$lt, args=as.list(rlang::call_match())[-1])
   o
@@ -3196,6 +3410,7 @@ crypto.onchain.lt <- function(trade_amount_currency = "USD", limit = 90, sortby 
 #' @examples
 #' crypto.onchain.lt_chart(kind='dex', trade_amount_currency='USD', limit=20, sortby='tradeAmount', ascend=TRUE, days=90)
 #' @export
+#* @get /crypto.onchain.lt_chart
 crypto.onchain.lt_chart <- function(trade_amount_currency = "USD", kind = "dex", limit = 20, days = 90, sortby = "tradeAmount", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$lt_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3212,6 +3427,7 @@ crypto.onchain.lt_chart <- function(trade_amount_currency = "USD", kind = "dex",
 #' @examples
 #' crypto.onchain.prices(sortby='date', ascend='False')
 #' @export
+#* @get /crypto.onchain.prices
 crypto.onchain.prices <- function(address, sortby = "date", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$onchain$prices, args=as.list(rlang::call_match())[-1])
   o
@@ -3230,6 +3446,7 @@ crypto.onchain.prices <- function(address, sortby = "date", ascend = FALSE) {
 #' @examples
 #' crypto.onchain.prices_chart(limit=30, sortby='date', ascend='False')
 #' @export
+#* @get /crypto.onchain.prices_chart
 crypto.onchain.prices_chart <- function(address, limit = 30, sortby = "date", ascend = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$prices_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3243,6 +3460,7 @@ crypto.onchain.prices_chart <- function(address, limit = 30, sortby = "date", as
 #' @param url (character length 1) Endpoint url
 #' @param query (character length 1) Graphql query
 #' @export
+#* @get /crypto.onchain.query_graph
 crypto.onchain.query_graph <- function(url, query) {
   o <- do.call(what=py$openbb$crypto$onchain$query_graph, args=as.list(rlang::call_match())[-1])
   o
@@ -3259,6 +3477,7 @@ crypto.onchain.query_graph <- function(url, query) {
 #' @examples
 #' crypto.onchain.th(sortby='timestamp', ascend='False')
 #' @export
+#* @get /crypto.onchain.th
 crypto.onchain.th <- function(address, sortby = "timestamp", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$onchain$th, args=as.list(rlang::call_match())[-1])
   o
@@ -3278,6 +3497,7 @@ crypto.onchain.th <- function(address, sortby = "timestamp", ascend = FALSE) {
 #' @examples
 #' crypto.onchain.th_chart(limit=10, sortby='timestamp', ascend='False', hash_=FALSE)
 #' @export
+#* @get /crypto.onchain.th_chart
 crypto.onchain.th_chart <- function(address, limit = 10, sortby = "timestamp", ascend = FALSE, hash_ = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$th_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3290,6 +3510,7 @@ crypto.onchain.th_chart <- function(address, limit = 10, sortby = "timestamp", a
 #'
 #' @param address (character length 1) Blockchain balance e.g. 0x1f9840a85d5af5bf1d1762f925bdaddc4201f984
 #' @export
+#* @get /crypto.onchain.token_decimals
 crypto.onchain.token_decimals <- function(address) {
   o <- do.call(what=py$openbb$crypto$onchain$token_decimals, args=as.list(rlang::call_match())[-1])
   o
@@ -3305,6 +3526,7 @@ crypto.onchain.token_decimals <- function(address) {
 #' @examples
 #' crypto.onchain.top(sortby='rank', ascend='False')
 #' @export
+#* @get /crypto.onchain.top
 crypto.onchain.top <- function(sortby = "rank", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$onchain$top, args=as.list(rlang::call_match())[-1])
   o
@@ -3322,6 +3544,7 @@ crypto.onchain.top <- function(sortby = "rank", ascend = FALSE) {
 #' @examples
 #' crypto.onchain.top_chart(limit=15, sortby='rank', ascend='True')
 #' @export
+#* @get /crypto.onchain.top_chart
 crypto.onchain.top_chart <- function(limit = 15, sortby = "rank", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$top_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3340,6 +3563,7 @@ crypto.onchain.top_chart <- function(limit = 15, sortby = "rank", ascend = TRUE,
 #' @examples
 #' crypto.onchain.ttcp(network='ethereum', exchange='Uniswap', limit=90, sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.ttcp
 crypto.onchain.ttcp <- function(network = "ethereum", exchange = "Uniswap", limit = 90, sortby = "tradeAmount", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$ttcp, args=as.list(rlang::call_match())[-1])
   o
@@ -3358,6 +3582,7 @@ crypto.onchain.ttcp <- function(network = "ethereum", exchange = "Uniswap", limi
 #' @examples
 #' crypto.onchain.ttcp_chart(exchange='Uniswap', days=10, sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.ttcp_chart
 crypto.onchain.ttcp_chart <- function(exchange = "Uniswap", days = 10, limit = 10, sortby = "tradeAmount", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$ttcp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3375,6 +3600,7 @@ crypto.onchain.ttcp_chart <- function(exchange = "Uniswap", days = 10, limit = 1
 #' @examples
 #' crypto.onchain.tv(symbol='UNI', trade_amount_currency='USD', sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.tv
 crypto.onchain.tv <- function(symbol = "UNI", trade_amount_currency = "USD", sortby = "tradeAmount", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$tv, args=as.list(rlang::call_match())[-1])
   o
@@ -3394,6 +3620,7 @@ crypto.onchain.tv <- function(symbol = "UNI", trade_amount_currency = "USD", sor
 #' @examples
 #' crypto.onchain.tv_chart(symbol='WBTC', trade_amount_currency='USD', limit=10, sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.tv_chart
 crypto.onchain.tv_chart <- function(symbol = "WBTC", trade_amount_currency = "USD", limit = 10, sortby = "tradeAmount", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$tv_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3406,6 +3633,7 @@ crypto.onchain.tv_chart <- function(symbol = "WBTC", trade_amount_currency = "US
 #'
 #' @param tx_hash (character length 1) Transaction hash e.g. 0x9dc7b43ad4288c624fdd236b2ecb9f2b81c93e706b2ffd1d19b112c1df7849e6
 #' @export
+#* @get /crypto.onchain.tx
 crypto.onchain.tx <- function(tx_hash) {
   o <- do.call(what=py$openbb$crypto$onchain$tx, args=as.list(rlang::call_match())[-1])
   o
@@ -3419,6 +3647,7 @@ crypto.onchain.tx <- function(tx_hash) {
 #' @param tx_hash (character length 1) Transaction hash e.g. 0x9dc7b43ad4288c624fdd236b2ecb9f2b81c93e706b2ffd1d19b112c1df7849e6
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.onchain.tx_chart
 crypto.onchain.tx_chart <- function(tx_hash, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$tx_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3437,6 +3666,7 @@ crypto.onchain.tx_chart <- function(tx_hash, export = "", sheet_name) {
 #' @examples
 #' crypto.onchain.ueat(interval='day', limit=90, sortby='tradeAmount', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.ueat
 crypto.onchain.ueat <- function(interval = "day", limit = 90, sortby = "tradeAmount", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$onchain$ueat, args=as.list(rlang::call_match())[-1])
   o
@@ -3458,6 +3688,7 @@ crypto.onchain.ueat <- function(interval = "day", limit = 90, sortby = "tradeAmo
 #' @examples
 #' crypto.onchain.ueat_chart(interval='days', limit=10, sortby='date', ascend=TRUE)
 #' @export
+#* @get /crypto.onchain.ueat_chart
 crypto.onchain.ueat_chart <- function(interval = "days", limit = 10, sortby = "date", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$ueat_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3475,6 +3706,7 @@ crypto.onchain.ueat_chart <- function(interval = "days", limit = 10, sortby = "d
 #' @examples
 #' crypto.onchain.whales(min_value=800000, limit=100, sortby='date', ascend='False')
 #' @export
+#* @get /crypto.onchain.whales
 crypto.onchain.whales <- function(min_value = 800000, limit = 100, sortby = "date", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$onchain$whales, args=as.list(rlang::call_match())[-1])
   o
@@ -3494,6 +3726,7 @@ crypto.onchain.whales <- function(min_value = 800000, limit = 100, sortby = "dat
 #' @examples
 #' crypto.onchain.whales_chart(min_value=800000, limit=100, sortby='date', ascend='False', show_address=FALSE)
 #' @export
+#* @get /crypto.onchain.whales_chart
 crypto.onchain.whales_chart <- function(min_value = 800000, limit = 100, sortby = "date", ascend = FALSE, show_address = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$onchain$whales_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3504,6 +3737,7 @@ crypto.onchain.whales_chart <- function(min_value = 800000, limit = 100, sortby 
 #' @description Wrapper for Python function crypto.ov.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.about
 crypto.ov.about <- function() {
   o <- do.call(what=py$openbb$crypto$ov$about, args=as.list(rlang::call_match())[-1])
   o
@@ -3519,6 +3753,7 @@ crypto.ov.about <- function() {
 #'     30 will check monthly performance (30 days).
 #' @param start_date (character length 1) Initial date, format YYYY-MM-DD
 #' @export
+#* @get /crypto.ov.altindex
 crypto.ov.altindex <- function(period = 30, start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$ov$altindex, args=as.list(rlang::call_match())[-1])
   o
@@ -3535,6 +3770,7 @@ crypto.ov.altindex <- function(period = 30, start_date = "2010-01-01", end_date)
 #' @param start_date (character length 1) Initial date, format YYYY-MM-DD
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.ov.altindex_chart
 crypto.ov.altindex_chart <- function(period = 365, start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$ov$altindex_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3549,6 +3785,7 @@ crypto.ov.altindex_chart <- function(period = 365, start_date = "2010-01-01", en
 #' @examples
 #' crypto.ov.btcrb(start_date='2010-01-01')
 #' @export
+#* @get /crypto.ov.btcrb
 crypto.ov.btcrb <- function(start_date = "2010-01-01", end_date) {
   o <- do.call(what=py$openbb$crypto$ov$btcrb, args=as.list(rlang::call_match())[-1])
   o
@@ -3564,6 +3801,7 @@ crypto.ov.btcrb <- function(start_date = "2010-01-01", end_date) {
 #' @examples
 #' crypto.ov.btcrb_chart(start_date='2010-01-01')
 #' @export
+#* @get /crypto.ov.btcrb_chart
 crypto.ov.btcrb_chart <- function(start_date = "2010-01-01", end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$ov$btcrb_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3579,6 +3817,7 @@ crypto.ov.btcrb_chart <- function(start_date = "2010-01-01", end_date, export = 
 #' @examples
 #' crypto.ov.categories(sort_filter='market_cap_desc')
 #' @export
+#* @get /crypto.ov.categories
 crypto.ov.categories <- function(sort_filter = "market_cap_desc") {
   o <- do.call(what=py$openbb$crypto$ov$categories, args=as.list(rlang::call_match())[-1])
   o
@@ -3596,6 +3835,7 @@ crypto.ov.categories <- function(sort_filter = "market_cap_desc") {
 #' @examples
 #' crypto.ov.categories_chart(sortby='market_cap_desc', limit=15, pie=FALSE)
 #' @export
+#* @get /crypto.ov.categories_chart
 crypto.ov.categories_chart <- function(sortby = "market_cap_desc", limit = 15, export = "", sheet_name, pie = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$categories_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3612,6 +3852,7 @@ crypto.ov.categories_chart <- function(sortby = "market_cap_desc", limit = 15, e
 #' @examples
 #' crypto.ov.cbpairs(limit=50, sortby='quote_increment', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.cbpairs
 crypto.ov.cbpairs <- function(limit = 50, sortby = "quote_increment", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$cbpairs, args=as.list(rlang::call_match())[-1])
   o
@@ -3629,6 +3870,7 @@ crypto.ov.cbpairs <- function(limit = 50, sortby = "quote_increment", ascend = T
 #' @examples
 #' crypto.ov.cbpairs_chart(limit=20, sortby='quote_increment', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.cbpairs_chart
 crypto.ov.cbpairs_chart <- function(limit = 20, sortby = "quote_increment", ascend = TRUE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$cbpairs_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3640,6 +3882,7 @@ crypto.ov.cbpairs_chart <- function(limit = 20, sortby = "quote_increment", asce
 #' @description Wrapper for Python function crypto.ov.coin_list from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.coin_list
 crypto.ov.coin_list <- function() {
   o <- do.call(what=py$openbb$crypto$ov$coin_list, args=as.list(rlang::call_match())[-1])
   o
@@ -3656,6 +3899,7 @@ crypto.ov.coin_list <- function() {
 #' @examples
 #' crypto.ov.contracts(platform_id='eth-ethereum', sortby='active', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.contracts
 crypto.ov.contracts <- function(platform_id = "eth-ethereum", sortby = "active", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$contracts, args=as.list(rlang::call_match())[-1])
   o
@@ -3673,6 +3917,7 @@ crypto.ov.contracts <- function(platform_id = "eth-ethereum", sortby = "active",
 #' @examples
 #' crypto.ov.contracts_chart(limit=15, sortby='active', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.contracts_chart
 crypto.ov.contracts_chart <- function(symbol, sortby = "active", ascend = TRUE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$contracts_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3687,6 +3932,7 @@ crypto.ov.contracts_chart <- function(symbol, sortby = "active", ascend = TRUE, 
 #' @examples
 #' crypto.ov.cr(rate_type='borrow')
 #' @export
+#* @get /crypto.ov.cr
 crypto.ov.cr <- function(rate_type = "borrow") {
   o <- do.call(what=py$openbb$crypto$ov$cr, args=as.list(rlang::call_match())[-1])
   o
@@ -3705,6 +3951,7 @@ crypto.ov.cr <- function(rate_type = "borrow") {
 #' @examples
 #' crypto.ov.cr_chart(rate_type='borrow', limit=10)
 #' @export
+#* @get /crypto.ov.cr_chart
 crypto.ov.cr_chart <- function(symbols, platforms, rate_type = "borrow", limit = 10, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$ov$cr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3717,6 +3964,7 @@ crypto.ov.cr_chart <- function(symbols, platforms, rate_type = "borrow", limit =
 #'
 #' @param slug (character length 1) slug of crypto hack
 #' @export
+#* @get /crypto.ov.crypto_hack
 crypto.ov.crypto_hack <- function(slug) {
   o <- do.call(what=py$openbb$crypto$ov$crypto_hack, args=as.list(rlang::call_match())[-1])
   o
@@ -3728,6 +3976,7 @@ crypto.ov.crypto_hack <- function(slug) {
 #' @description Wrapper for Python function crypto.ov.crypto_hack_slugs from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.crypto_hack_slugs
 crypto.ov.crypto_hack_slugs <- function() {
   o <- do.call(what=py$openbb$crypto$ov$crypto_hack_slugs, args=as.list(rlang::call_match())[-1])
   o
@@ -3743,6 +3992,7 @@ crypto.ov.crypto_hack_slugs <- function() {
 #' @examples
 #' crypto.ov.crypto_hacks(sortby='Platform', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.crypto_hacks
 crypto.ov.crypto_hacks <- function(sortby = "Platform", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$crypto_hacks, args=as.list(rlang::call_match())[-1])
   o
@@ -3761,6 +4011,7 @@ crypto.ov.crypto_hacks <- function(sortby = "Platform", ascend = FALSE) {
 #' @examples
 #' crypto.ov.crypto_hacks_chart(slug='polyntwork-rekt', limit=15, sortby='Platform', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.crypto_hacks_chart
 crypto.ov.crypto_hacks_chart <- function(limit = 15, sortby = "Platform", ascend = FALSE, slug = "polyntwork-rekt", export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$crypto_hacks_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3772,6 +4023,7 @@ crypto.ov.crypto_hacks_chart <- function(limit = 15, sortby = "Platform", ascend
 #' @description Wrapper for Python function crypto.ov.defi from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.defi
 crypto.ov.defi <- function() {
   o <- do.call(what=py$openbb$crypto$ov$defi, args=as.list(rlang::call_match())[-1])
   o
@@ -3784,6 +4036,7 @@ crypto.ov.defi <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.ov.defi_chart
 crypto.ov.defi_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$defi_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3799,6 +4052,7 @@ crypto.ov.defi_chart <- function(export = "", sheet_name) {
 #' @examples
 #' crypto.ov.derivatives(sortby='Rank', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.derivatives
 crypto.ov.derivatives <- function(sortby = "Rank", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$derivatives, args=as.list(rlang::call_match())[-1])
   o
@@ -3816,6 +4070,7 @@ crypto.ov.derivatives <- function(sortby = "Rank", ascend = FALSE) {
 #' @examples
 #' crypto.ov.derivatives_chart(limit=15, sortby='Rank', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.derivatives_chart
 crypto.ov.derivatives_chart <- function(sortby = "Rank", ascend = FALSE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$derivatives_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3827,6 +4082,7 @@ crypto.ov.derivatives_chart <- function(sortby = "Rank", ascend = FALSE, limit =
 #' @description Wrapper for Python function crypto.ov.ewf from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.ewf
 crypto.ov.ewf <- function() {
   o <- do.call(what=py$openbb$crypto$ov$ewf, args=as.list(rlang::call_match())[-1])
   o
@@ -3839,6 +4095,7 @@ crypto.ov.ewf <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.ov.ewf_chart
 crypto.ov.ewf_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$ewf_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3853,6 +4110,7 @@ crypto.ov.ewf_chart <- function(export = "", sheet_name) {
 #' @examples
 #' crypto.ov.exchanges(source='CoinGecko')
 #' @export
+#* @get /crypto.ov.exchanges
 crypto.ov.exchanges <- function(source = "CoinGecko") {
   o <- do.call(what=py$openbb$crypto$ov$exchanges, args=as.list(rlang::call_match())[-1])
   o
@@ -3870,6 +4128,7 @@ crypto.ov.exchanges <- function(source = "CoinGecko") {
 #' @examples
 #' crypto.ov.exmarkets(exchange_id='binance', symbols='USD', sortby='pair', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.exmarkets
 crypto.ov.exmarkets <- function(exchange_id = "binance", symbols = "USD", sortby = "pair", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$exmarkets, args=as.list(rlang::call_match())[-1])
   o
@@ -3889,6 +4148,7 @@ crypto.ov.exmarkets <- function(exchange_id = "binance", symbols = "USD", sortby
 #' @examples
 #' crypto.ov.exmarkets_chart(exchange='binance', limit=15, sortby='pair', ascend=TRUE, links=FALSE)
 #' @export
+#* @get /crypto.ov.exmarkets_chart
 crypto.ov.exmarkets_chart <- function(exchange = "binance", sortby = "pair", ascend = TRUE, limit = 15, links = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$exmarkets_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3904,6 +4164,7 @@ crypto.ov.exmarkets_chart <- function(exchange = "binance", sortby = "pair", asc
 #' @examples
 #' crypto.ov.exrates(sortby='Name', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.exrates
 crypto.ov.exrates <- function(sortby = "Name", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$exrates, args=as.list(rlang::call_match())[-1])
   o
@@ -3921,6 +4182,7 @@ crypto.ov.exrates <- function(sortby = "Name", ascend = FALSE) {
 #' @examples
 #' crypto.ov.exrates_chart(limit=15, sortby='Name', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.exrates_chart
 crypto.ov.exrates_chart <- function(sortby = "Name", ascend = FALSE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$exrates_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3935,6 +4197,7 @@ crypto.ov.exrates_chart <- function(sortby = "Name", ascend = FALSE, limit = 15,
 #' @examples
 #' crypto.ov.globe(source='CoinGecko')
 #' @export
+#* @get /crypto.ov.globe
 crypto.ov.globe <- function(source = "CoinGecko") {
   o <- do.call(what=py$openbb$crypto$ov$globe, args=as.list(rlang::call_match())[-1])
   o
@@ -3952,6 +4215,7 @@ crypto.ov.globe <- function(source = "CoinGecko") {
 #' @examples
 #' crypto.ov.hm(limit=250, sortby='Symbol', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.hm
 crypto.ov.hm <- function(limit = 250, category = "", sortby = "Symbol", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$hm, args=as.list(rlang::call_match())[-1])
   o
@@ -3967,6 +4231,7 @@ crypto.ov.hm <- function(limit = 250, category = "", sortby = "Symbol", ascend =
 #' @examples
 #' crypto.ov.hm_chart(limit=15)
 #' @export
+#* @get /crypto.ov.hm_chart
 crypto.ov.hm_chart <- function(category = "", limit = 15, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$crypto$ov$hm_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -3981,6 +4246,7 @@ crypto.ov.hm_chart <- function(category = "", limit = 15, export = "", sheet_nam
 #' @examples
 #' crypto.ov.hold(endpoint='bitcoin')
 #' @export
+#* @get /crypto.ov.hold
 crypto.ov.hold <- function(endpoint = "bitcoin") {
   o <- do.call(what=py$openbb$crypto$ov$hold, args=as.list(rlang::call_match())[-1])
   o
@@ -3998,6 +4264,7 @@ crypto.ov.hold <- function(endpoint = "bitcoin") {
 #' @examples
 #' crypto.ov.hold_chart(symbol='ETH', show_bar=FALSE, limit=15)
 #' @export
+#* @get /crypto.ov.hold_chart
 crypto.ov.hold_chart <- function(symbol, show_bar = FALSE, export = "", sheet_name, limit = 15) {
   o <- do.call(what=py$openbb$crypto$ov$hold_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4013,6 +4280,7 @@ crypto.ov.hold_chart <- function(symbol, show_bar = FALSE, export = "", sheet_na
 #' @examples
 #' crypto.ov.indexes(sortby='Name', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.indexes
 crypto.ov.indexes <- function(sortby = "Name", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$indexes, args=as.list(rlang::call_match())[-1])
   o
@@ -4030,6 +4298,7 @@ crypto.ov.indexes <- function(sortby = "Name", ascend = TRUE) {
 #' @examples
 #' crypto.ov.indexes_chart(limit=15, sortby='Name', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.indexes_chart
 crypto.ov.indexes_chart <- function(sortby = "Name", ascend = TRUE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$indexes_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4046,6 +4315,7 @@ crypto.ov.indexes_chart <- function(sortby = "Name", ascend = TRUE, limit = 15, 
 #' @examples
 #' crypto.ov.info(symbols='USD', sortby='rank', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.info
 crypto.ov.info <- function(symbols = "USD", sortby = "rank", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$info, args=as.list(rlang::call_match())[-1])
   o
@@ -4064,6 +4334,7 @@ crypto.ov.info <- function(symbols = "USD", sortby = "rank", ascend = TRUE) {
 #' @examples
 #' crypto.ov.info_chart(symbol='AMZN', limit=15, sortby='rank', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.info_chart
 crypto.ov.info_chart <- function(symbol, sortby = "rank", ascend = TRUE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$info_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4080,6 +4351,7 @@ crypto.ov.info_chart <- function(symbol, sortby = "rank", ascend = TRUE, limit =
 #' @examples
 #' crypto.ov.markets(symbols='USD', sortby='rank', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.markets
 crypto.ov.markets <- function(symbols = "USD", sortby = "rank", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$markets, args=as.list(rlang::call_match())[-1])
   o
@@ -4098,6 +4370,7 @@ crypto.ov.markets <- function(symbols = "USD", sortby = "rank", ascend = TRUE) {
 #' @examples
 #' crypto.ov.markets_chart(symbol='AMZN', limit=15, sortby='rank', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.markets_chart
 crypto.ov.markets_chart <- function(symbol, sortby = "rank", ascend = TRUE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$markets_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4117,6 +4390,7 @@ crypto.ov.markets_chart <- function(symbol, sortby = "rank", ascend = TRUE, limi
 #' @examples
 #' crypto.ov.news(limit=60, post_kind='news', region='en', sortby='published_at', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.news
 crypto.ov.news <- function(limit = 60, post_kind = "news", filter_, region = "en", source, symbol, sortby = "published_at", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$news, args=as.list(rlang::call_match())[-1])
   o
@@ -4138,6 +4412,7 @@ crypto.ov.news <- function(limit = 60, post_kind = "news", filter_, region = "en
 #' @examples
 #' crypto.ov.news_chart(limit=25, post_kind='news', region='en', sortby='published_at', ascend=FALSE, links=FALSE)
 #' @export
+#* @get /crypto.ov.news_chart
 crypto.ov.news_chart <- function(post_kind = "news", region = "en", filter_, limit = 25, sortby = "published_at", ascend = FALSE, links = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$news_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4149,6 +4424,7 @@ crypto.ov.news_chart <- function(post_kind = "news", region = "en", filter_, lim
 #' @description Wrapper for Python function crypto.ov.platforms from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.ov.platforms
 crypto.ov.platforms <- function() {
   o <- do.call(what=py$openbb$crypto$ov$platforms, args=as.list(rlang::call_match())[-1])
   o
@@ -4161,6 +4437,7 @@ crypto.ov.platforms <- function() {
 #'
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /crypto.ov.platforms_chart
 crypto.ov.platforms_chart <- function(export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$platforms_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4176,6 +4453,7 @@ crypto.ov.platforms_chart <- function(export = "", sheet_name) {
 #' @examples
 #' crypto.ov.products(sortby='Name', ascend=TRUE)
 #' @export
+#* @get /crypto.ov.products
 crypto.ov.products <- function(sortby = "Name", ascend = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$products, args=as.list(rlang::call_match())[-1])
   o
@@ -4193,6 +4471,7 @@ crypto.ov.products <- function(sortby = "Name", ascend = TRUE) {
 #' @examples
 #' crypto.ov.products_chart(limit=15, sortby='Platform', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.products_chart
 crypto.ov.products_chart <- function(sortby = "Platform", ascend = FALSE, limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$products_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4209,6 +4488,7 @@ crypto.ov.products_chart <- function(sortby = "Platform", ascend = FALSE, limit 
 #' @examples
 #' crypto.ov.stables(limit=15, sortby='Market_Cap_[$]', ascend=FALSE)
 #' @export
+#* @get /crypto.ov.stables
 crypto.ov.stables <- function(limit = 15, sortby = "Market_Cap_[$]", ascend = FALSE) {
   o <- do.call(what=py$openbb$crypto$ov$stables, args=as.list(rlang::call_match())[-1])
   o
@@ -4227,6 +4507,7 @@ crypto.ov.stables <- function(limit = 15, sortby = "Market_Cap_[$]", ascend = FA
 #' @examples
 #' crypto.ov.stables_chart(limit=15, sortby='Market_Cap_[$]', ascend=FALSE, pie=TRUE, pie=TRUE)
 #' @export
+#* @get /crypto.ov.stables_chart
 crypto.ov.stables_chart <- function(limit = 15, export = "", sheet_name, sortby = "Market_Cap_[$]", ascend = FALSE, pie = TRUE) {
   o <- do.call(what=py$openbb$crypto$ov$stables_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4241,6 +4522,7 @@ crypto.ov.stables_chart <- function(limit = 15, export = "", sheet_name, sortby 
 #' @examples
 #' crypto.ov.wf(limit=100)
 #' @export
+#* @get /crypto.ov.wf
 crypto.ov.wf <- function(limit = 100) {
   o <- do.call(what=py$openbb$crypto$ov$wf, args=as.list(rlang::call_match())[-1])
   o
@@ -4256,6 +4538,7 @@ crypto.ov.wf <- function(limit = 100) {
 #' @examples
 #' crypto.ov.wf_chart(limit=15)
 #' @export
+#* @get /crypto.ov.wf_chart
 crypto.ov.wf_chart <- function(limit = 15, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$wf_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4270,6 +4553,7 @@ crypto.ov.wf_chart <- function(limit = 15, export = "", sheet_name) {
 #' @examples
 #' crypto.ov.wfpe(symbol='AMZN')
 #' @export
+#* @get /crypto.ov.wfpe
 crypto.ov.wfpe <- function(symbol) {
   o <- do.call(what=py$openbb$crypto$ov$wfpe, args=as.list(rlang::call_match())[-1])
   o
@@ -4285,6 +4569,7 @@ crypto.ov.wfpe <- function(symbol) {
 #' @examples
 #' crypto.ov.wfpe_chart(symbol='AMZN')
 #' @export
+#* @get /crypto.ov.wfpe_chart
 crypto.ov.wfpe_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$ov$wfpe_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4295,6 +4580,7 @@ crypto.ov.wfpe_chart <- function(symbol, export = "", sheet_name) {
 #' @description Wrapper for Python function crypto.tools.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /crypto.tools.about
 crypto.tools.about <- function() {
   o <- do.call(what=py$openbb$crypto$tools$about, args=as.list(rlang::call_match())[-1])
   o
@@ -4308,6 +4594,7 @@ crypto.tools.about <- function() {
 #' @param apr (numeric length 1) value in percentage
 #' @param compounding_times (integer length 1) number of compounded periods in a year
 #' @export
+#* @get /crypto.tools.apy
 crypto.tools.apy <- function(apr, compounding_times) {
   o <- do.call(what=py$openbb$crypto$tools$apy, args=as.list(rlang::call_match())[-1])
   o
@@ -4325,6 +4612,7 @@ crypto.tools.apy <- function(apr, compounding_times) {
 #' @examples
 #' crypto.tools.apy_chart(narrative='False')
 #' @export
+#* @get /crypto.tools.apy_chart
 crypto.tools.apy_chart <- function(apr, compounding_times, narrative = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$tools$apy_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4340,6 +4628,7 @@ crypto.tools.apy_chart <- function(apr, compounding_times, narrative = FALSE, ex
 #' @param proportion (numeric length 1) percentage of first token in pool
 #' @param initial_pool_value (numeric length 1) initial value that pool contains
 #' @export
+#* @get /crypto.tools.il
 crypto.tools.il <- function(price_changeA, price_changeB, proportion, initial_pool_value) {
   o <- do.call(what=py$openbb$crypto$tools$il, args=as.list(rlang::call_match())[-1])
   o
@@ -4359,6 +4648,7 @@ crypto.tools.il <- function(price_changeA, price_changeB, proportion, initial_po
 #' @examples
 #' crypto.tools.il_chart(narrative='False')
 #' @export
+#* @get /crypto.tools.il_chart
 crypto.tools.il_chart <- function(price_changeA, price_changeB, proportion, initial_pool_value, narrative = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$crypto$tools$il_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4369,6 +4659,7 @@ crypto.tools.il_chart <- function(price_changeA, price_changeB, proportion, init
 #' @description Wrapper for Python function econometrics.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /econometrics.about
 econometrics.about <- function() {
   o <- do.call(what=py$openbb$econometrics$about, args=as.list(rlang::call_match())[-1])
   o
@@ -4384,6 +4675,7 @@ econometrics.about <- function() {
 #' @examples
 #' econometrics.bgod(lags=3)
 #' @export
+#* @get /econometrics.bgod
 econometrics.bgod <- function(model, lags = 3) {
   o <- do.call(what=py$openbb$econometrics$bgod, args=as.list(rlang::call_match())[-1])
   o
@@ -4400,6 +4692,7 @@ econometrics.bgod <- function(model, lags = 3) {
 #' @examples
 #' econometrics.bgod_chart(lags=3)
 #' @export
+#* @get /econometrics.bgod_chart
 econometrics.bgod_chart <- function(model, lags = 3, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$bgod_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4411,6 +4704,7 @@ econometrics.bgod_chart <- function(model, lags = 3, export = "", sheet_name) {
 #' @description Wrapper for Python function econometrics.bols from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /econometrics.bols
 econometrics.bols <- function(Y, X) {
   o <- do.call(what=py$openbb$econometrics$bols, args=as.list(rlang::call_match())[-1])
   o
@@ -4423,6 +4717,7 @@ econometrics.bols <- function(Y, X) {
 #'
 #' @param model (Python type: statsmodels.regression.linear_model.RegressionResultsWrapper) Model containing residual values.
 #' @export
+#* @get /econometrics.bpag
 econometrics.bpag <- function(model) {
   o <- do.call(what=py$openbb$econometrics$bpag, args=as.list(rlang::call_match())[-1])
   o
@@ -4436,6 +4731,7 @@ econometrics.bpag <- function(model) {
 #' @param model (Python type: statsmodels.regression.linear_model.RegressionResultsWrapper) OLS model that has been fit.
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /econometrics.bpag_chart
 econometrics.bpag_chart <- function(model, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$bpag_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4452,6 +4748,7 @@ econometrics.bpag_chart <- function(model, export = "", sheet_name) {
 #' @param drop (character length 1) The method of dropping NaNs. Choose from:
 #'     rdrop, cdrop
 #' @export
+#* @get /econometrics.clean
 econometrics.clean <- function(dataset, fill = "", drop = "", limit) {
   o <- do.call(what=py$openbb$econometrics$clean, args=as.list(rlang::call_match())[-1])
   o
@@ -4467,6 +4764,7 @@ econometrics.clean <- function(dataset, fill = "", drop = "", limit) {
 #' @examples
 #' econometrics.coint(return_z=FALSE)
 #' @export
+#* @get /econometrics.coint
 econometrics.coint <- function(datasets, return_z = FALSE) {
   o <- do.call(what=py$openbb$econometrics$coint, args=as.list(rlang::call_match())[-1])
   o
@@ -4484,6 +4782,7 @@ econometrics.coint <- function(datasets, return_z = FALSE) {
 #' @examples
 #' econometrics.coint_chart(plot=TRUE)
 #' @export
+#* @get /econometrics.coint_chart
 econometrics.coint_chart <- function(datasets, significant = FALSE, plot = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$econometrics$coint_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4496,6 +4795,7 @@ econometrics.coint_chart <- function(datasets, significant = FALSE, plot = TRUE,
 #'
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /econometrics.comparison
 econometrics.comparison <- function(regressions, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$comparison, args=as.list(rlang::call_match())[-1])
   o
@@ -4508,6 +4808,7 @@ econometrics.comparison <- function(regressions, export = "", sheet_name) {
 #'
 #' @param model (Python type: statsmodels.regression.linear_model.RegressionResultsWrapper) Previously fit statsmodels OLS.
 #' @export
+#* @get /econometrics.dwat
 econometrics.dwat <- function(model) {
   o <- do.call(what=py$openbb$econometrics$dwat, args=as.list(rlang::call_match())[-1])
   o
@@ -4525,6 +4826,7 @@ econometrics.dwat <- function(model) {
 #' @examples
 #' econometrics.dwat_chart(plot=TRUE)
 #' @export
+#* @get /econometrics.dwat_chart
 econometrics.dwat_chart <- function(model, dependent_variable, plot = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$econometrics$dwat_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4536,6 +4838,7 @@ econometrics.dwat_chart <- function(model, dependent_variable, plot = TRUE, expo
 #' @description Wrapper for Python function econometrics.fdols from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /econometrics.fdols
 econometrics.fdols <- function(Y, X) {
   o <- do.call(what=py$openbb$econometrics$fdols, args=as.list(rlang::call_match())[-1])
   o
@@ -4551,6 +4854,7 @@ econometrics.fdols <- function(Y, X) {
 #' @examples
 #' econometrics.fe(entity_effects=FALSE, time_effects=FALSE)
 #' @export
+#* @get /econometrics.fe
 econometrics.fe <- function(Y, X, entity_effects = FALSE, time_effects = FALSE) {
   o <- do.call(what=py$openbb$econometrics$fe, args=as.list(rlang::call_match())[-1])
   o
@@ -4563,6 +4867,7 @@ econometrics.fe <- function(Y, X, entity_effects = FALSE, time_effects = FALSE) 
 #'
 #' @param regression_type (character length 1) The type of regression that is executed.
 #' @export
+#* @get /econometrics.get_regression_data
 econometrics.get_regression_data <- function(regression_variables, data, regression_type = "") {
   o <- do.call(what=py$openbb$econometrics$get_regression_data, args=as.list(rlang::call_match())[-1])
   o
@@ -4579,6 +4884,7 @@ econometrics.get_regression_data <- function(regression_variables, data, regress
 #' @examples
 #' econometrics.granger(lags=3)
 #' @export
+#* @get /econometrics.granger
 econometrics.granger <- function(dependent_series, independent_series, lags = 3) {
   o <- do.call(what=py$openbb$econometrics$granger, args=as.list(rlang::call_match())[-1])
   o
@@ -4597,6 +4903,7 @@ econometrics.granger <- function(dependent_series, independent_series, lags = 3)
 #' @examples
 #' econometrics.granger_chart(lags=3, confidence_level=0.05)
 #' @export
+#* @get /econometrics.granger_chart
 econometrics.granger_chart <- function(dependent_series, independent_series, lags = 3, confidence_level = 0.05, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$granger_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4609,6 +4916,7 @@ econometrics.granger_chart <- function(dependent_series, independent_series, lag
 #'
 #' @param file (character length 1) Path to file
 #' @export
+#* @get /econometrics.load
 econometrics.load <- function(file, data_files, data_examples) {
   o <- do.call(what=py$openbb$econometrics$load, args=as.list(rlang::call_match())[-1])
   o
@@ -4621,6 +4929,7 @@ econometrics.load <- function(file, data_files, data_examples) {
 #'
 #' @param data (Python type: pandas.core.series.Series) A series or column of a DataFrame to test normality for
 #' @export
+#* @get /econometrics.norm
 econometrics.norm <- function(data) {
   o <- do.call(what=py$openbb$econometrics$norm, args=as.list(rlang::call_match())[-1])
   o
@@ -4639,6 +4948,7 @@ econometrics.norm <- function(data) {
 #' @examples
 #' econometrics.norm_chart(plot=TRUE)
 #' @export
+#* @get /econometrics.norm_chart
 econometrics.norm_chart <- function(data, dataset = "", column = "", plot = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$econometrics$norm_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4652,6 +4962,7 @@ econometrics.norm_chart <- function(data, dataset = "", column = "", plot = TRUE
 #' @param Y (data.frame) Dependent variable series.
 #' @param X (data.frame) Dataframe of independent variables series.
 #' @export
+#* @get /econometrics.ols
 econometrics.ols <- function(Y, X) {
   o <- do.call(what=py$openbb$econometrics$ols, args=as.list(rlang::call_match())[-1])
   o
@@ -4664,6 +4975,7 @@ econometrics.ols <- function(Y, X) {
 #'
 #' @param dataset_name (character length 1) The dataset you wish to show the options for.
 #' @export
+#* @get /econometrics.options
 econometrics.options <- function(datasets, dataset_name = "") {
   o <- do.call(what=py$openbb$econometrics$options, args=as.list(rlang::call_match())[-1])
   o
@@ -4676,6 +4988,7 @@ econometrics.options <- function(datasets, dataset_name = "") {
 #'
 #' @param export (character length 1) Format to export image
 #' @export
+#* @get /econometrics.options_chart
 econometrics.options_chart <- function(datasets, dataset_name, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$options_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4694,6 +5007,7 @@ econometrics.options_chart <- function(datasets, dataset_name, export = "", shee
 #' @examples
 #' econometrics.panel(regression_type='OLS', entity_effects=FALSE, time_effects=FALSE)
 #' @export
+#* @get /econometrics.panel
 econometrics.panel <- function(Y, X, regression_type = "OLS", entity_effects = FALSE, time_effects = FALSE) {
   o <- do.call(what=py$openbb$econometrics$panel, args=as.list(rlang::call_match())[-1])
   o
@@ -4712,6 +5026,7 @@ econometrics.panel <- function(Y, X, regression_type = "OLS", entity_effects = F
 #' @examples
 #' econometrics.panel_chart(regression_type='OLS', entity_effects=FALSE, time_effects=FALSE)
 #' @export
+#* @get /econometrics.panel_chart
 econometrics.panel_chart <- function(Y, X, regression_type = "OLS", entity_effects = FALSE, time_effects = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$panel_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4723,6 +5038,7 @@ econometrics.panel_chart <- function(Y, X, regression_type = "OLS", entity_effec
 #' @description Wrapper for Python function econometrics.pols from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /econometrics.pols
 econometrics.pols <- function(Y, X) {
   o <- do.call(what=py$openbb$econometrics$pols, args=as.list(rlang::call_match())[-1])
   o
@@ -4734,6 +5050,7 @@ econometrics.pols <- function(Y, X) {
 #' @description Wrapper for Python function econometrics.re from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /econometrics.re
 econometrics.re <- function(Y, X) {
   o <- do.call(what=py$openbb$econometrics$re, args=as.list(rlang::call_match())[-1])
   o
@@ -4750,6 +5067,7 @@ econometrics.re <- function(Y, X) {
 #' @examples
 #' econometrics.root(fuller_reg='c', kpss_reg='c')
 #' @export
+#* @get /econometrics.root
 econometrics.root <- function(data, fuller_reg = "c", kpss_reg = "c") {
   o <- do.call(what=py$openbb$econometrics$root, args=as.list(rlang::call_match())[-1])
   o
@@ -4769,6 +5087,7 @@ econometrics.root <- function(data, fuller_reg = "c", kpss_reg = "c") {
 #' @examples
 #' econometrics.root_chart(fuller_reg='c', kpss_reg='c')
 #' @export
+#* @get /econometrics.root_chart
 econometrics.root_chart <- function(data, dataset = "", column = "", fuller_reg = "c", kpss_reg = "c", export = "", sheet_name) {
   o <- do.call(what=py$openbb$econometrics$root_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4779,6 +5098,7 @@ econometrics.root_chart <- function(data, dataset = "", column = "", fuller_reg 
 #' @description Wrapper for Python function economy.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.about
 economy.about <- function() {
   o <- do.call(what=py$openbb$economy$about, args=as.list(rlang::call_match())[-1])
   o
@@ -4790,6 +5110,7 @@ economy.about <- function() {
 #' @description Wrapper for Python function economy.available_indices from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.available_indices
 economy.available_indices <- function() {
   o <- do.call(what=py$openbb$economy$available_indices, args=as.list(rlang::call_match())[-1])
   o
@@ -4801,6 +5122,7 @@ economy.available_indices <- function() {
 #' @description Wrapper for Python function economy.bigmac from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.bigmac
 economy.bigmac <- function(country_codes) {
   o <- do.call(what=py$openbb$economy$bigmac, args=as.list(rlang::call_match())[-1])
   o
@@ -4816,6 +5138,7 @@ economy.bigmac <- function(country_codes) {
 #' @examples
 #' economy.bigmac_chart(raw=FALSE)
 #' @export
+#* @get /economy.bigmac_chart
 economy.bigmac_chart <- function(country_codes, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$economy$bigmac_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4827,6 +5150,7 @@ economy.bigmac_chart <- function(country_codes, raw = FALSE, export = "", sheet_
 #' @description Wrapper for Python function economy.country_codes from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.country_codes
 economy.country_codes <- function() {
   o <- do.call(what=py$openbb$economy$country_codes, args=as.list(rlang::call_match())[-1])
   o
@@ -4846,6 +5170,7 @@ economy.country_codes <- function() {
 #' @examples
 #' economy.cpi(interval='m', start_year=2010)
 #' @export
+#* @get /economy.cpi
 economy.cpi <- function(countries, units = "", frequency = "", harmonized = FALSE, smart_select = TRUE, options = FALSE, start_date, end_date) {
   o <- do.call(what=py$openbb$economy$cpi, args=as.list(rlang::call_match())[-1])
   o
@@ -4868,6 +5193,7 @@ economy.cpi <- function(countries, units = "", frequency = "", harmonized = FALS
 #' @examples
 #' economy.cpi_chart(interval='m', start_year=2010, raw=FALSE)
 #' @export
+#* @get /economy.cpi_chart
 economy.cpi_chart <- function(countries, units = "growth_same", frequency = "monthly", harmonized = FALSE, smart_select = TRUE, options = FALSE, start_date, end_date, raw = FALSE, export = "", sheet_name = "", external_axes) {
   o <- do.call(what=py$openbb$economy$cpi_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4879,6 +5205,7 @@ economy.cpi_chart <- function(countries, units = "growth_same", frequency = "mon
 #' @description Wrapper for Python function economy.currencies from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.currencies
 economy.currencies <- function() {
   o <- do.call(what=py$openbb$economy$currencies, args=as.list(rlang::call_match())[-1])
   o
@@ -4890,6 +5217,7 @@ economy.currencies <- function() {
 #' @description Wrapper for Python function economy.events from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.events
 economy.events <- function(countries, start_date, end_date) {
   o <- do.call(what=py$openbb$economy$events, args=as.list(rlang::call_match())[-1])
   o
@@ -4901,6 +5229,7 @@ economy.events <- function(countries, start_date, end_date) {
 #' @description Wrapper for Python function economy.fred from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.fred
 economy.fred <- function(series_ids, start_date, end_date) {
   o <- do.call(what=py$openbb$economy$fred, args=as.list(rlang::call_match())[-1])
   o
@@ -4917,6 +5246,7 @@ economy.fred <- function(series_ids, start_date, end_date) {
 #' @examples
 #' economy.fred_chart(limit=10, raw=FALSE)
 #' @export
+#* @get /economy.fred_chart
 economy.fred_chart <- function(series_ids, start_date, end_date, limit = 10, get_data = FALSE, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$economy$fred_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -4932,6 +5262,7 @@ economy.fred_chart <- function(series_ids, start_date, end_date, limit = 10, get
 #' @examples
 #' economy.fred_ids(limit=-1)
 #' @export
+#* @get /economy.fred_ids
 economy.fred_ids <- function(search_query, limit = -1) {
   o <- do.call(what=py$openbb$economy$fred_ids, args=as.list(rlang::call_match())[-1])
   o
@@ -4947,6 +5278,7 @@ economy.fred_ids <- function(search_query, limit = -1) {
 #' @examples
 #' economy.fred_notes(limit=-1)
 #' @export
+#* @get /economy.fred_notes
 economy.fred_notes <- function(search_query, limit = -1) {
   o <- do.call(what=py$openbb$economy$fred_notes, args=as.list(rlang::call_match())[-1])
   o
@@ -4963,6 +5295,7 @@ economy.fred_notes <- function(search_query, limit = -1) {
 #' @examples
 #' economy.future(future_type='Indices', sortby='ticker', ascend=FALSE)
 #' @export
+#* @get /economy.future
 economy.future <- function(future_type = "Indices", sortby = "ticker", ascend = FALSE) {
   o <- do.call(what=py$openbb$economy$future, args=as.list(rlang::call_match())[-1])
   o
@@ -4978,6 +5311,7 @@ economy.future <- function(future_type = "Indices", sortby = "ticker", ascend = 
 #' @examples
 #' economy.futures(source='WSJ', future_type='Indices')
 #' @export
+#* @get /economy.futures
 economy.futures <- function(source, future_type = "Indices") {
   o <- do.call(what=py$openbb$economy$futures, args=as.list(rlang::call_match())[-1])
   o
@@ -4989,6 +5323,7 @@ economy.futures <- function(source, future_type = "Indices") {
 #' @description Wrapper for Python function economy.get_groups from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.get_groups
 economy.get_groups <- function() {
   o <- do.call(what=py$openbb$economy$get_groups, args=as.list(rlang::call_match())[-1])
   o
@@ -5000,6 +5335,7 @@ economy.get_groups <- function() {
 #' @description Wrapper for Python function economy.glbonds from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.glbonds
 economy.glbonds <- function() {
   o <- do.call(what=py$openbb$economy$glbonds, args=as.list(rlang::call_match())[-1])
   o
@@ -5018,6 +5354,7 @@ economy.glbonds <- function() {
 #' @examples
 #' economy.index(interval='1d', column='Adj Close', returns=FALSE)
 #' @export
+#* @get /economy.index
 economy.index <- function(indices, interval = "1d", start_date, end_date, column = "Adj Close", returns = FALSE) {
   o <- do.call(what=py$openbb$economy$index, args=as.list(rlang::call_match())[-1])
   o
@@ -5039,6 +5376,7 @@ economy.index <- function(indices, interval = "1d", start_date, end_date, column
 #' @examples
 #' economy.index_chart(interval='1d', column='Adj Close', returns=FALSE, raw=FALSE)
 #' @export
+#* @get /economy.index_chart
 economy.index_chart <- function(indices, interval = "1d", start_date, end_date, column = "Adj Close", returns = FALSE, raw = FALSE, external_axes, export = "", sheet_name) {
   o <- do.call(what=py$openbb$economy$index_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5050,6 +5388,7 @@ economy.index_chart <- function(indices, interval = "1d", start_date, end_date, 
 #' @description Wrapper for Python function economy.indices from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.indices
 economy.indices <- function() {
   o <- do.call(what=py$openbb$economy$indices, args=as.list(rlang::call_match())[-1])
   o
@@ -5066,6 +5405,7 @@ economy.indices <- function() {
 #' @examples
 #' economy.macro(start_date='1900-01-01')
 #' @export
+#* @get /economy.macro
 economy.macro <- function(parameters, countries, transform = "", start_date = "1900-01-01", end_date, symbol = "") {
   o <- do.call(what=py$openbb$economy$macro, args=as.list(rlang::call_match())[-1])
   o
@@ -5090,6 +5430,7 @@ economy.macro <- function(parameters, countries, transform = "", start_date = "1
 #' @examples
 #' economy.macro_chart(start_date='1900-01-01', raw=FALSE)
 #' @export
+#* @get /economy.macro_chart
 economy.macro_chart <- function(parameters, countries, transform = "", start_date = "1900-01-01", end_date, symbol = "", raw = FALSE, external_axes, export = "", sheet_name) {
   o <- do.call(what=py$openbb$economy$macro_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5101,6 +5442,7 @@ economy.macro_chart <- function(parameters, countries, transform = "", start_dat
 #' @description Wrapper for Python function economy.macro_countries from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.macro_countries
 economy.macro_countries <- function() {
   o <- do.call(what=py$openbb$economy$macro_countries, args=as.list(rlang::call_match())[-1])
   o
@@ -5112,6 +5454,7 @@ economy.macro_countries <- function() {
 #' @description Wrapper for Python function economy.macro_parameters from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.macro_parameters
 economy.macro_parameters <- function() {
   o <- do.call(what=py$openbb$economy$macro_parameters, args=as.list(rlang::call_match())[-1])
   o
@@ -5123,6 +5466,7 @@ economy.macro_parameters <- function() {
 #' @description Wrapper for Python function economy.overview from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.overview
 economy.overview <- function() {
   o <- do.call(what=py$openbb$economy$overview, args=as.list(rlang::call_match())[-1])
   o
@@ -5137,6 +5481,7 @@ economy.overview <- function() {
 #' @examples
 #' economy.perfmap(period='1d')
 #' @export
+#* @get /economy.perfmap
 economy.perfmap <- function(period = "1d", map_filter = "sp500") {
   o <- do.call(what=py$openbb$economy$perfmap, args=as.list(rlang::call_match())[-1])
   o
@@ -5153,6 +5498,7 @@ economy.perfmap <- function(period = "1d", map_filter = "sp500") {
 #' @examples
 #' economy.performance(group='sector', sortby='Name', ascend=TRUE)
 #' @export
+#* @get /economy.performance
 economy.performance <- function(group = "sector", sortby = "Name", ascend = TRUE) {
   o <- do.call(what=py$openbb$economy$performance, args=as.list(rlang::call_match())[-1])
   o
@@ -5164,6 +5510,7 @@ economy.performance <- function(group = "sector", sortby = "Name", ascend = TRUE
 #' @description Wrapper for Python function economy.rtps from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.rtps
 economy.rtps <- function() {
   o <- do.call(what=py$openbb$economy$rtps, args=as.list(rlang::call_match())[-1])
   o
@@ -5179,6 +5526,7 @@ economy.rtps <- function() {
 #' @examples
 #' economy.rtps_chart(raw=FALSE)
 #' @export
+#* @get /economy.rtps_chart
 economy.rtps_chart <- function(raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$economy$rtps_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5192,6 +5540,7 @@ economy.rtps_chart <- function(raw = FALSE, export = "", sheet_name, external_ax
 #' @param keyword (Python type: list) The keyword you wish to search for. This can include spaces.
 #' @param limit (integer length 1) The amount of views you want to show, by default this is set to 10.
 #' @export
+#* @get /economy.search_index
 economy.search_index <- function(keyword, limit = 10) {
   o <- do.call(what=py$openbb$economy$search_index, args=as.list(rlang::call_match())[-1])
   o
@@ -5207,6 +5556,7 @@ economy.search_index <- function(keyword, limit = 10) {
 #' @examples
 #' economy.spectrum(group='sector')
 #' @export
+#* @get /economy.spectrum
 economy.spectrum <- function(group = "sector", export = "", sheet_name) {
   o <- do.call(what=py$openbb$economy$spectrum, args=as.list(rlang::call_match())[-1])
   o
@@ -5222,6 +5572,7 @@ economy.spectrum <- function(group = "sector", export = "", sheet_name) {
 #' @examples
 #' economy.treasury(frequency='monthly', start_date='1900-01-01')
 #' @export
+#* @get /economy.treasury
 economy.treasury <- function(instruments, maturities, frequency = "monthly", start_date = "1900-01-01", end_date) {
   o <- do.call(what=py$openbb$economy$treasury, args=as.list(rlang::call_match())[-1])
   o
@@ -5239,6 +5590,7 @@ economy.treasury <- function(instruments, maturities, frequency = "monthly", sta
 #' @examples
 #' economy.treasury_chart(frequency='monthly', start_date='1900-01-01', raw=FALSE)
 #' @export
+#* @get /economy.treasury_chart
 economy.treasury_chart <- function(instruments, maturities, frequency = "monthly", start_date = "1900-01-01", end_date, raw = FALSE, external_axes, export = "", sheet_name) {
   o <- do.call(what=py$openbb$economy$treasury_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5250,6 +5602,7 @@ economy.treasury_chart <- function(instruments, maturities, frequency = "monthly
 #' @description Wrapper for Python function economy.treasury_maturities from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.treasury_maturities
 economy.treasury_maturities <- function() {
   o <- do.call(what=py$openbb$economy$treasury_maturities, args=as.list(rlang::call_match())[-1])
   o
@@ -5261,6 +5614,7 @@ economy.treasury_maturities <- function() {
 #' @description Wrapper for Python function economy.usbonds from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /economy.usbonds
 economy.usbonds <- function() {
   o <- do.call(what=py$openbb$economy$usbonds, args=as.list(rlang::call_match())[-1])
   o
@@ -5277,6 +5631,7 @@ economy.usbonds <- function() {
 #' @examples
 #' economy.valuation(group='sector', sortby='Name', ascend=TRUE)
 #' @export
+#* @get /economy.valuation
 economy.valuation <- function(group = "sector", sortby = "Name", ascend = TRUE) {
   o <- do.call(what=py$openbb$economy$valuation, args=as.list(rlang::call_match())[-1])
   o
@@ -5287,6 +5642,7 @@ economy.valuation <- function(group = "sector", sortby = "Name", ascend = TRUE) 
 #' @description Wrapper for Python function etf.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /etf.about
 etf.about <- function() {
   o <- do.call(what=py$openbb$etf$about, args=as.list(rlang::call_match())[-1])
   o
@@ -5311,6 +5667,7 @@ etf.about <- function() {
 #' @examples
 #' etf.candle(symbol='AMZN', use_matplotlib=TRUE, intraday=FALSE, add_trend=FALSE, interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, raw=FALSE, yscale='linear')
 #' @export
+#* @get /etf.candle
 etf.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE, add_trend = FALSE, ma, asset_type = "", start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, external_axes, raw = FALSE, yscale = "linear") {
   o <- do.call(what=py$openbb$etf$candle, args=as.list(rlang::call_match())[-1])
   o
@@ -5322,6 +5679,7 @@ etf.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE, ad
 #' @description Wrapper for Python function etf.compare from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /etf.compare
 etf.compare <- function(symbols) {
   o <- do.call(what=py$openbb$etf$compare, args=as.list(rlang::call_match())[-1])
   o
@@ -5334,6 +5692,7 @@ etf.compare <- function(symbols) {
 #'
 #' @param category (character length 1) Search by category to find ETFs matching the criteria.
 #' @export
+#* @get /etf.etf_by_category
 etf.etf_by_category <- function(category) {
   o <- do.call(what=py$openbb$etf$etf_by_category, args=as.list(rlang::call_match())[-1])
   o
@@ -5346,6 +5705,7 @@ etf.etf_by_category <- function(category) {
 #'
 #' @param name_to_search (character length 1) ETF name to match
 #' @export
+#* @get /etf.etf_by_name
 etf.etf_by_name <- function(name_to_search) {
   o <- do.call(what=py$openbb$etf$etf_by_name, args=as.list(rlang::call_match())[-1])
   o
@@ -5360,6 +5720,7 @@ etf.etf_by_name <- function(name_to_search) {
 #' @examples
 #' etf.holdings(symbol='AMZN')
 #' @export
+#* @get /etf.holdings
 etf.holdings <- function(symbol) {
   o <- do.call(what=py$openbb$etf$holdings, args=as.list(rlang::call_match())[-1])
   o
@@ -5372,6 +5733,7 @@ etf.holdings <- function(symbol) {
 #'
 #' @param description (character length 1) Search by description to find ETFs matching the criteria.
 #' @export
+#* @get /etf.ld
 etf.ld <- function(description) {
   o <- do.call(what=py$openbb$etf$ld, args=as.list(rlang::call_match())[-1])
   o
@@ -5384,6 +5746,7 @@ etf.ld <- function(description) {
 #'
 #' @param name (character length 1) Search by name to find ETFs matching the criteria.
 #' @export
+#* @get /etf.ln
 etf.ln <- function(name) {
   o <- do.call(what=py$openbb$etf$ln, args=as.list(rlang::call_match())[-1])
   o
@@ -5404,6 +5767,7 @@ etf.ln <- function(name) {
 #' @examples
 #' etf.load(symbol='AMZN', interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, verbose=TRUE)
 #' @export
+#* @get /etf.load
 etf.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE) {
   o <- do.call(what=py$openbb$etf$load, args=as.list(rlang::call_match())[-1])
   o
@@ -5420,6 +5784,7 @@ etf.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FA
 #' @examples
 #' etf.news(show_newest=TRUE)
 #' @export
+#* @get /etf.news
 etf.news <- function(query, limit = 10, start_date, show_newest = TRUE, sources = "") {
   o <- do.call(what=py$openbb$etf$news, args=as.list(rlang::call_match())[-1])
   o
@@ -5438,6 +5803,7 @@ etf.news <- function(query, limit = 10, start_date, show_newest = TRUE, sources 
 #' @examples
 #' etf.news_chart(limit=3, show_newest=TRUE)
 #' @export
+#* @get /etf.news_chart
 etf.news_chart <- function(query, limit = 3, start_date, show_newest = TRUE, sources = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$etf$news_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5449,6 +5815,7 @@ etf.news_chart <- function(query, limit = 3, start_date, show_newest = TRUE, sou
 #' @description Wrapper for Python function etf.overview from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /etf.overview
 etf.overview <- function(symbol) {
   o <- do.call(what=py$openbb$etf$overview, args=as.list(rlang::call_match())[-1])
   o
@@ -5460,6 +5827,7 @@ etf.overview <- function(symbol) {
 #' @description Wrapper for Python function etf.symbols from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /etf.symbols
 etf.symbols <- function() {
   o <- do.call(what=py$openbb$etf$symbols, args=as.list(rlang::call_match())[-1])
   o
@@ -5472,6 +5840,7 @@ etf.symbols <- function() {
 #'
 #' @param name (character length 1) ETF name
 #' @export
+#* @get /etf.weights
 etf.weights <- function(name) {
   o <- do.call(what=py$openbb$etf$weights, args=as.list(rlang::call_match())[-1])
   o
@@ -5482,6 +5851,7 @@ etf.weights <- function(name) {
 #' @description Wrapper for Python function etf.disc.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /etf.disc.about
 etf.disc.about <- function() {
   o <- do.call(what=py$openbb$etf$disc$about, args=as.list(rlang::call_match())[-1])
   o
@@ -5496,6 +5866,7 @@ etf.disc.about <- function() {
 #' @examples
 #' etf.disc.mover(sort_type='gainers')
 #' @export
+#* @get /etf.disc.mover
 etf.disc.mover <- function(sort_type = "gainers", export = FALSE) {
   o <- do.call(what=py$openbb$etf$disc$mover, args=as.list(rlang::call_match())[-1])
   o
@@ -5506,6 +5877,7 @@ etf.disc.mover <- function(sort_type = "gainers", export = FALSE) {
 #' @description Wrapper for Python function fixedincome.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /fixedincome.about
 fixedincome.about <- function() {
   o <- do.call(what=py$openbb$fixedincome$about, args=as.list(rlang::call_match())[-1])
   o
@@ -5529,6 +5901,7 @@ fixedincome.about <- function() {
 #'         "30_day_ma": "AMBOR30",
 #'         "90_day_ma": "AMBOR90",
 #' @export
+#* @get /fixedincome.ameribor
 fixedincome.ameribor <- function(parameter = "overnight", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$ameribor, args=as.list(rlang::call_match())[-1])
   o
@@ -5543,6 +5916,7 @@ fixedincome.ameribor <- function(parameter = "overnight", start_date, end_date) 
 #' @param category (character length 1) The category you want to see, either "asset_backed", "financial" or "non_financial"
 #' @param grade (character length 1) The type of grade you want to see, either "a2_p2" or "aa"
 #' @export
+#* @get /fixedincome.cp
 fixedincome.cp <- function(maturity = "30d", category = "financial", grade = "aa", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$cp, args=as.list(rlang::call_match())[-1])
   o
@@ -5560,6 +5934,7 @@ fixedincome.cp <- function(maturity = "30d", category = "financial", grade = "aa
 #'         "daily"
 #'         "annual"
 #' @export
+#* @get /fixedincome.dwpcr
 fixedincome.dwpcr <- function(parameter = "daily_excl_weekend", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$dwpcr, args=as.list(rlang::call_match())[-1])
   o
@@ -5571,6 +5946,7 @@ fixedincome.dwpcr <- function(parameter = "daily_excl_weekend", start_date, end_
 #' @description Wrapper for Python function fixedincome.ecb from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /fixedincome.ecb
 fixedincome.ecb <- function(interest_type, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$ecb, args=as.list(rlang::call_match())[-1])
   o
@@ -5586,6 +5962,7 @@ fixedincome.ecb <- function(interest_type, start_date, end_date) {
 #' @param return_date (logical length 1) If True, returns date of yield curve
 #' @param detailed (logical length 1) If True, returns detailed data. Note that this is very slow.
 #' @export
+#* @get /fixedincome.ecbycrv
 fixedincome.ecbycrv <- function(date = "", yield_type = "spot_rate", return_date = FALSE, detailed = FALSE, any_rating = TRUE) {
   o <- do.call(what=py$openbb$fixedincome$ecbycrv, args=as.list(rlang::call_match())[-1])
   o
@@ -5598,6 +5975,7 @@ fixedincome.ecbycrv <- function(date = "", yield_type = "spot_rate", return_date
 #'
 #' @param parameter (character length 1) The parameter to get data for.
 #' @export
+#* @get /fixedincome.estr
 fixedincome.estr <- function(parameter = "volume_weighted_trimmed_mean_rate", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$estr, args=as.list(rlang::call_match())[-1])
   o
@@ -5620,6 +5998,7 @@ fixedincome.estr <- function(parameter = "volume_weighted_trimmed_mean_rate", st
 #' @param quantiles (logical length 1) Whether you want to see the 1, 25, 75 and 99 percentiles
 #' @param target (logical length 1) Whether you want to see the high and low target range
 #' @export
+#* @get /fixedincome.fed
 fixedincome.fed <- function(parameter = "monthly", start_date, end_date, overnight = FALSE, quantiles = FALSE, target = FALSE) {
   o <- do.call(what=py$openbb$fixedincome$fed, args=as.list(rlang::call_match())[-1])
   o
@@ -5632,6 +6011,7 @@ fixedincome.fed <- function(parameter = "monthly", start_date, end_date, overnig
 #'
 #' @param parameter (character length 1) FRED ID of FFRMC data to plot
 #' @export
+#* @get /fixedincome.ffrmc
 fixedincome.ffrmc <- function(parameter = "10_year", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$ffrmc, args=as.list(rlang::call_match())[-1])
   o
@@ -5644,6 +6024,7 @@ fixedincome.ffrmc <- function(parameter = "10_year", start_date, end_date) {
 #'
 #' @param par (logical length 1) Whether you wish to plot the par yield curve as well
 #' @export
+#* @get /fixedincome.hqm
 fixedincome.hqm <- function(date, par = FALSE) {
   o <- do.call(what=py$openbb$fixedincome$hqm, args=as.list(rlang::call_match())[-1])
   o
@@ -5661,6 +6042,7 @@ fixedincome.hqm <- function(date, par = FALSE) {
 #'     "high_grade", "high_yield", "non_financial", "non_sovereign", "private_sector", "public_sector"
 #' @param options (logical length 1) Set to True to obtain the available options.
 #' @export
+#* @get /fixedincome.icebofa
 fixedincome.icebofa <- function(data_type = "yield", category = "all", area = "us", grade = "non_sovereign", options = FALSE, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$icebofa, args=as.list(rlang::call_match())[-1])
   o
@@ -5676,6 +6058,7 @@ fixedincome.icebofa <- function(data_type = "yield", category = "all", area = "u
 #' @param grade (character length 1) The type of grade you want to see, either "a", "aa", "aaa", "b", "bb", "bbb", "ccc", "crossover",
 #'     "high_grade", "high_yield", "non_financial", "non_sovereign", "private_sector", "public_sector"
 #' @export
+#* @get /fixedincome.icespread
 fixedincome.icespread <- function(category = "all", area = "us", grade = "non_sovereign", options = FALSE, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$icespread, args=as.list(rlang::call_match())[-1])
   o
@@ -5687,6 +6070,7 @@ fixedincome.icespread <- function(category = "all", area = "us", grade = "non_so
 #' @description Wrapper for Python function fixedincome.iorb from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /fixedincome.iorb
 fixedincome.iorb <- function(start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$iorb, args=as.list(rlang::call_match())[-1])
   o
@@ -5699,6 +6083,7 @@ fixedincome.iorb <- function(start_date, end_date) {
 #'
 #' @param data_type (character length 1) The type of data you want to see, either "aaa" or "baa"
 #' @export
+#* @get /fixedincome.moody
 fixedincome.moody <- function(data_type = "aaa", spread, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$moody, args=as.list(rlang::call_match())[-1])
   o
@@ -5711,6 +6096,7 @@ fixedincome.moody <- function(data_type = "aaa", spread, start_date, end_date) {
 #'
 #' @param long_run (logical length 1) Whether to obtain data for the long run projection.
 #' @export
+#* @get /fixedincome.projection
 fixedincome.projection <- function(long_run = FALSE) {
   o <- do.call(what=py$openbb$fixedincome$projection, args=as.list(rlang::call_match())[-1])
   o
@@ -5728,6 +6114,7 @@ fixedincome.projection <- function(long_run = FALSE) {
 #'         "180_day_average"
 #'         "index"
 #' @export
+#* @get /fixedincome.sofr
 fixedincome.sofr <- function(parameter = "overnight", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$sofr, args=as.list(rlang::call_match())[-1])
   o
@@ -5740,6 +6127,7 @@ fixedincome.sofr <- function(parameter = "overnight", start_date, end_date) {
 #'
 #' @param parameter (character length 1) The parameter to get data for.
 #' @export
+#* @get /fixedincome.sonia
 fixedincome.sonia <- function(parameter = "rate", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$sonia, args=as.list(rlang::call_match())[-1])
   o
@@ -5751,6 +6139,7 @@ fixedincome.sonia <- function(parameter = "rate", start_date, end_date) {
 #' @description Wrapper for Python function fixedincome.spot from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /fixedincome.spot
 fixedincome.spot <- function(maturity, category, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$spot, args=as.list(rlang::call_match())[-1])
   o
@@ -5763,6 +6152,7 @@ fixedincome.spot <- function(maturity, category, start_date, end_date) {
 #'
 #' @param parameter (character length 1) FRED ID of TBFFR data to plot, options: ['3_month', '6_month']
 #' @export
+#* @get /fixedincome.tbffr
 fixedincome.tbffr <- function(parameter = "3_month", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$tbffr, args=as.list(rlang::call_match())[-1])
   o
@@ -5775,6 +6165,7 @@ fixedincome.tbffr <- function(parameter = "3_month", start_date, end_date) {
 #'
 #' @param parameter (character length 1) FRED ID of TMC data to plot, options: ['T10Y3M', 'T10Y3M']
 #' @export
+#* @get /fixedincome.tmc
 fixedincome.tmc <- function(parameter = "3_month", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$tmc, args=as.list(rlang::call_match())[-1])
   o
@@ -5787,6 +6178,7 @@ fixedincome.tmc <- function(parameter = "3_month", start_date, end_date) {
 #'
 #' @param forecast (logical length 1) If True, plot forecasts for short term interest rates
 #' @export
+#* @get /fixedincome.treasury
 fixedincome.treasury <- function(short_term, long_term, forecast = FALSE, start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$treasury, args=as.list(rlang::call_match())[-1])
   o
@@ -5812,6 +6204,7 @@ fixedincome.treasury <- function(short_term, long_term, forecast = FALSE, start_
 #'         "20_year": {"tips": "DFII20", "cmn": "DGS20"},
 #'         "30_year": {"tips": "DFII30", "cmn": "DGS30"},
 #' @export
+#* @get /fixedincome.usrates
 fixedincome.usrates <- function(parameter = "tbills", maturity = "3_months", start_date, end_date) {
   o <- do.call(what=py$openbb$fixedincome$usrates, args=as.list(rlang::call_match())[-1])
   o
@@ -5825,6 +6218,7 @@ fixedincome.usrates <- function(parameter = "tbills", maturity = "3_months", sta
 #' @param date (character length 1) Date to get curve for. If empty, gets most recent date (format yyyy-mm-dd)
 #' @param return_date (logical length 1) If True, returns date of yield curve
 #' @export
+#* @get /fixedincome.ycrv
 fixedincome.ycrv <- function(date = "", return_date = FALSE, inflation_adjusted = FALSE, spot_or_par) {
   o <- do.call(what=py$openbb$fixedincome$ycrv, args=as.list(rlang::call_match())[-1])
   o
@@ -5835,6 +6229,7 @@ fixedincome.ycrv <- function(date = "", return_date = FALSE, inflation_adjusted 
 #' @description Wrapper for Python function forecast.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.about
 forecast.about <- function() {
   o <- do.call(what=py$openbb$forecast$about, args=as.list(rlang::call_match())[-1])
   o
@@ -5846,6 +6241,7 @@ forecast.about <- function() {
 #' @description Wrapper for Python function forecast.anom from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.anom
 forecast.anom <- function(data, target_column = "close", train_split = 0.6) {
   o <- do.call(what=py$openbb$forecast$anom, args=as.list(rlang::call_match())[-1])
   o
@@ -5857,6 +6253,7 @@ forecast.anom <- function(data, target_column = "close", train_split = 0.6) {
 #' @description Wrapper for Python function forecast.anom_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.anom_chart
 forecast.anom_chart <- function(data, dataset_name, target_column = "close", train_split = 0.6, start_date, end_date, external_axes) {
   o <- do.call(what=py$openbb$forecast$anom_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5868,6 +6265,7 @@ forecast.anom_chart <- function(data, dataset_name, target_column = "close", tra
 #' @description Wrapper for Python function forecast.atr from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.atr
 forecast.atr <- function(dataset, close_column = "close", high_column = "high", low_column = "low") {
   o <- do.call(what=py$openbb$forecast$atr, args=as.list(rlang::call_match())[-1])
   o
@@ -5887,6 +6285,7 @@ forecast.atr <- function(dataset, close_column = "close", high_column = "high", 
 #' @examples
 #' forecast.autoarima(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.autoarima
 forecast.autoarima <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$autoarima, args=as.list(rlang::call_match())[-1])
   o
@@ -5912,6 +6311,7 @@ forecast.autoarima <- function(data, target_column = "close", seasonal_periods =
 #' @examples
 #' forecast.autoarima_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.autoarima_chart
 forecast.autoarima_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$autoarima_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5931,6 +6331,7 @@ forecast.autoarima_chart <- function(data, target_column = "close", dataset_name
 #' @examples
 #' forecast.autoces(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.autoces
 forecast.autoces <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$autoces, args=as.list(rlang::call_match())[-1])
   o
@@ -5956,6 +6357,7 @@ forecast.autoces <- function(data, target_column = "close", seasonal_periods = 7
 #' @examples
 #' forecast.autoces_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.autoces_chart
 forecast.autoces_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$autoces_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -5975,6 +6377,7 @@ forecast.autoces_chart <- function(data, target_column = "close", dataset_name =
 #' @examples
 #' forecast.autoets(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.autoets
 forecast.autoets <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$autoets, args=as.list(rlang::call_match())[-1])
   o
@@ -6000,6 +6403,7 @@ forecast.autoets <- function(data, target_column = "close", seasonal_periods = 7
 #' @examples
 #' forecast.autoets_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.autoets_chart
 forecast.autoets_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$autoets_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6019,6 +6423,7 @@ forecast.autoets_chart <- function(data, target_column = "close", dataset_name =
 #' @examples
 #' forecast.autoselect(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.autoselect
 forecast.autoselect <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$autoselect, args=as.list(rlang::call_match())[-1])
   o
@@ -6044,6 +6449,7 @@ forecast.autoselect <- function(data, target_column = "close", seasonal_periods 
 #' @examples
 #' forecast.autoselect_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.autoselect_chart
 forecast.autoselect_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$autoselect_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6074,6 +6480,7 @@ forecast.autoselect_chart <- function(data, target_column = "close", dataset_nam
 #' @examples
 #' forecast.brnn(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, model_type='LSTM', n_rnn_layers=1, dropout=0, batch_size=32, n_epochs=100, learning_rate=0.001, model_save_name='brnn_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.brnn
 forecast.brnn <- function(data, target_column = "close", n_predict = 5, train_split = 0.85, past_covariates, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, model_type = "LSTM", n_rnn_layers = 1, dropout = 0.0, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "brnn_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$brnn, args=as.list(rlang::call_match())[-1])
   o
@@ -6112,6 +6519,7 @@ forecast.brnn <- function(data, target_column = "close", n_predict = 5, train_sp
 #' @examples
 #' forecast.brnn_chart(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, model_type='LSTM', n_rnn_layers=1, dropout=0, batch_size=16, n_epochs=100, learning_rate=0.001, model_save_name='rnn_model', force_reset=TRUE, save_checkpoints=TRUE, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.brnn_chart
 forecast.brnn_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, model_type = "LSTM", n_rnn_layers = 1, dropout = 0.0, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "brnn_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$brnn_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6124,6 +6532,7 @@ forecast.brnn_chart <- function(data, target_column = "close", dataset_name = ""
 #'
 #' @param dataset (data.frame) The dataset you wish to clean
 #' @export
+#* @get /forecast.clean
 forecast.clean <- function(dataset, fill, drop, limit) {
   o <- do.call(what=py$openbb$forecast$clean, args=as.list(rlang::call_match())[-1])
   o
@@ -6139,6 +6548,7 @@ forecast.clean <- function(dataset, fill, drop, limit) {
 #' @param column (character length 1) The column to transfer
 #' @param dataset (character length 1) A name for df2 (shows in name of new column)
 #' @export
+#* @get /forecast.combine
 forecast.combine <- function(df1, df2, column, dataset = "") {
   o <- do.call(what=py$openbb$forecast$combine, args=as.list(rlang::call_match())[-1])
   o
@@ -6151,6 +6561,7 @@ forecast.combine <- function(df1, df2, column, dataset = "") {
 #'
 #' @param data (data.frame) The df to produce statistics for
 #' @export
+#* @get /forecast.corr
 forecast.corr <- function(data) {
   o <- do.call(what=py$openbb$forecast$corr, args=as.list(rlang::call_match())[-1])
   o
@@ -6164,6 +6575,7 @@ forecast.corr <- function(data) {
 #' @param dataset (data.frame) The dataset fore calculating correlation coefficients
 #' @param export (character length 1) Format to export image
 #' @export
+#* @get /forecast.corr_chart
 forecast.corr_chart <- function(dataset, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$forecast$corr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6177,6 +6589,7 @@ forecast.corr_chart <- function(dataset, export = "", sheet_name, external_axes)
 #' @param data (data.frame) The dataframe to delete a column from
 #' @param column (character length 1) The column to delete
 #' @export
+#* @get /forecast.delete
 forecast.delete <- function(data, column) {
   o <- do.call(what=py$openbb$forecast$delete, args=as.list(rlang::call_match())[-1])
   o
@@ -6188,6 +6601,7 @@ forecast.delete <- function(data, column) {
 #' @description Wrapper for Python function forecast.delta from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.delta
 forecast.delta <- function(dataset, target_column = "close") {
   o <- do.call(what=py$openbb$forecast$delta, args=as.list(rlang::call_match())[-1])
   o
@@ -6200,6 +6614,7 @@ forecast.delta <- function(dataset, target_column = "close") {
 #'
 #' @param data (data.frame) The df to produce statistics for
 #' @export
+#* @get /forecast.desc
 forecast.desc <- function(data) {
   o <- do.call(what=py$openbb$forecast$desc, args=as.list(rlang::call_match())[-1])
   o
@@ -6214,6 +6629,7 @@ forecast.desc <- function(data) {
 #' @param name (character length 1) The name of the dataframe
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /forecast.desc_chart
 forecast.desc_chart <- function(data, name = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$forecast$desc_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6230,6 +6646,7 @@ forecast.desc_chart <- function(data, name = "", export = "", sheet_name) {
 #' @examples
 #' forecast.ema(target_column='close', period=10)
 #' @export
+#* @get /forecast.ema
 forecast.ema <- function(dataset, target_column = "close", period = 10) {
   o <- do.call(what=py$openbb$forecast$ema, args=as.list(rlang::call_match())[-1])
   o
@@ -6255,6 +6672,7 @@ forecast.ema <- function(dataset, target_column = "close", period = 10) {
 #' @examples
 #' forecast.expo(target_column='close', trend='A', seasonal='A', seasonal_periods=7, dampen='F', n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.expo
 forecast.expo <- function(data, target_column = "close", trend = "A", seasonal = "A", seasonal_periods = 7, dampen = "F", n_predict = 5, start_window = 0.85, forecast_horizon = 5, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$expo, args=as.list(rlang::call_match())[-1])
   o
@@ -6287,6 +6705,7 @@ forecast.expo <- function(data, target_column = "close", trend = "A", seasonal =
 #' @examples
 #' forecast.expo_chart(target_column='close', trend='A', seasonal='A', seasonal_periods=7, dampen='F', n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.expo_chart
 forecast.expo_chart <- function(data, target_column = "close", dataset_name = "", trend = "A", seasonal = "A", seasonal_periods = 7, dampen = "F", n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$expo_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6301,6 +6720,7 @@ forecast.expo_chart <- function(data, target_column = "close", dataset_name = ""
 #' @param export (character length 1) The format to export the dataframe to
 #' @param name (character length 1) The name of the dataframe
 #' @export
+#* @get /forecast.export
 forecast.export <- function(data, export, name = "", sheet_name) {
   o <- do.call(what=py$openbb$forecast$export, args=as.list(rlang::call_match())[-1])
   o
@@ -6320,6 +6740,7 @@ forecast.export <- function(data, export, name = "", sheet_name) {
 #' @examples
 #' forecast.linregr(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, output_chunk_length=5)
 #' @export
+#* @get /forecast.linregr
 forecast.linregr <- function(data, target_column = "close", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, output_chunk_length = 5, lags, random_state, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$linregr, args=as.list(rlang::call_match())[-1])
   o
@@ -6346,6 +6767,7 @@ forecast.linregr <- function(data, target_column = "close", n_predict = 5, past_
 #' @examples
 #' forecast.linregr_chart(n_predict=5, forecast_horizon=5, output_chunk_length=1, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.linregr_chart
 forecast.linregr_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, output_chunk_length = 5, lags, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, explainability_raw = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$linregr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6358,6 +6780,7 @@ forecast.linregr_chart <- function(data, target_column = "close", dataset_name =
 #'
 #' @param file (character length 1) Path to file
 #' @export
+#* @get /forecast.load
 forecast.load <- function(file, data_files, data_examples) {
   o <- do.call(what=py$openbb$forecast$load, args=as.list(rlang::call_match())[-1])
   o
@@ -6374,6 +6797,7 @@ forecast.load <- function(file, data_files, data_examples) {
 #' @examples
 #' forecast.mom(target_column='close', period=10)
 #' @export
+#* @get /forecast.mom
 forecast.mom <- function(dataset, target_column = "close", period = 10) {
   o <- do.call(what=py$openbb$forecast$mom, args=as.list(rlang::call_match())[-1])
   o
@@ -6393,6 +6817,7 @@ forecast.mom <- function(dataset, target_column = "close", period = 10) {
 #' @examples
 #' forecast.mstl(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.mstl
 forecast.mstl <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$mstl, args=as.list(rlang::call_match())[-1])
   o
@@ -6418,6 +6843,7 @@ forecast.mstl <- function(data, target_column = "close", seasonal_periods = 7, n
 #' @examples
 #' forecast.mstl_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.mstl_chart
 forecast.mstl_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$mstl_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6452,6 +6878,7 @@ forecast.mstl_chart <- function(data, target_column = "close", dataset_name = ""
 #' @examples
 #' forecast.nbeats(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, num_stacks=10, num_blocks=3, num_layers=4, layer_widths=512, batch_size=800, n_epochs=100, learning_rate=0.001, model_save_name='nbeats_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.nbeats
 forecast.nbeats <- function(data, target_column = "close", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, num_stacks = 10, num_blocks = 3, num_layers = 4, layer_widths = 512, batch_size = 800, n_epochs = 300, learning_rate = 0.001, model_save_name = "nbeats_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$nbeats, args=as.list(rlang::call_match())[-1])
   o
@@ -6494,6 +6921,7 @@ forecast.nbeats <- function(data, target_column = "close", n_predict = 5, past_c
 #' @examples
 #' forecast.nbeats_chart(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, num_stacks=10, num_blocks=3, num_layers=4, layer_widths=512, batch_size=800, n_epochs=100, learning_rate=0.001, model_save_name='nbeats_model', force_reset=TRUE, save_checkpoints=TRUE, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.nbeats_chart
 forecast.nbeats_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, num_stacks = 10, num_blocks = 3, num_layers = 4, layer_widths = 512, n_epochs = 300, learning_rate = 0.001, batch_size = 800, model_save_name = "nbeats_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$nbeats_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6532,6 +6960,7 @@ forecast.nbeats_chart <- function(data, target_column = "close", dataset_name = 
 #' @examples
 #' forecast.nhits(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, num_stacks=3, num_blocks=1, num_layers=2, layer_widths=512, dropout=0.1, activation='ReLU', max_pool_1d=TRUE, batch_size=32, n_epochs=100, learning_rate=0.001, model_save_name='brnn_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.nhits
 forecast.nhits <- function(data, target_column = "close", n_predict = 5, train_split = 0.85, past_covariates, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, num_stacks = 3, num_blocks = 1, num_layers = 2, layer_widths = 512, pooling_kernel_sizes, n_freq_downsample, dropout = 0.1, activation = "ReLU", max_pool_1d = TRUE, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "nhits_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$nhits, args=as.list(rlang::call_match())[-1])
   o
@@ -6578,6 +7007,7 @@ forecast.nhits <- function(data, target_column = "close", n_predict = 5, train_s
 #' @examples
 #' forecast.nhits_chart(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, num_stacks=3, num_blocks=1, num_layers=2, layer_widths=512, dropout=0.1, activation='ReLU', max_pool_1d=TRUE, batch_size=32, n_epochs=100, learning_rate=0.001, model_save_name='rnn_model', force_reset=TRUE, save_checkpoints=TRUE, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.nhits_chart
 forecast.nhits_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, num_stacks = 3, num_blocks = 1, num_layers = 2, layer_widths = 512, pooling_kernel_sizes, n_freq_downsample, dropout = 0.1, activation = "ReLU", max_pool_1d = TRUE, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "nhits_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$nhits_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6591,6 +7021,7 @@ forecast.nhits_chart <- function(data, target_column = "close", dataset_name = "
 #' @param data (data.frame) The dataframe to plot
 #' @param export (character length 1) Format to export image
 #' @export
+#* @get /forecast.plot
 forecast.plot <- function(data, columns, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$forecast$plot, args=as.list(rlang::call_match())[-1])
   o
@@ -6604,6 +7035,7 @@ forecast.plot <- function(data, columns, export = "", sheet_name, external_axes)
 #' @param data (data.frame) The dataframe to plot
 #' @param export (character length 1) Format to export image
 #' @export
+#* @get /forecast.plot_chart
 forecast.plot_chart <- function(data, columns, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$forecast$plot_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6623,6 +7055,7 @@ forecast.plot_chart <- function(data, columns, export = "", sheet_name, external
 #' @examples
 #' forecast.regr(n_predict=5, target_column='close', train_split=0.85, forecast_horizon=5, output_chunk_length=1)
 #' @export
+#* @get /forecast.regr
 forecast.regr <- function(data, target_column = "close", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, output_chunk_length = 5, lags, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$regr, args=as.list(rlang::call_match())[-1])
   o
@@ -6648,6 +7081,7 @@ forecast.regr <- function(data, target_column = "close", n_predict = 5, past_cov
 #' @examples
 #' forecast.regr_chart(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, output_chunk_length=1, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.regr_chart
 forecast.regr_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, output_chunk_length = 5, lags, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, explainability_raw = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$regr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6662,6 +7096,7 @@ forecast.regr_chart <- function(data, target_column = "close", dataset_name = ""
 #' @param old_column (character length 1) The column that will have its name changed
 #' @param new_column (character length 1) The name to update to
 #' @export
+#* @get /forecast.rename
 forecast.rename <- function(data, old_column, new_column) {
   o <- do.call(what=py$openbb$forecast$rename, args=as.list(rlang::call_match())[-1])
   o
@@ -6691,6 +7126,7 @@ forecast.rename <- function(data, old_column, new_column) {
 #' @examples
 #' forecast.rnn(n_predict=5, target_column='close', train_split=0.85, forecast_horizon=5, model_type='LSTM', hidden_dim=20, dropout=0, batch_size=16, n_epochs=100, learning_rate=0.001, model_save_name='rnn_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.rnn
 forecast.rnn <- function(data, target_column = "close", n_predict = 5, train_split = 0.85, forecast_horizon = 5, model_type = "LSTM", hidden_dim = 20, dropout = 0.0, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "rnn_model", training_length = 20, input_chunk_size = 14, force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$rnn, args=as.list(rlang::call_match())[-1])
   o
@@ -6726,6 +7162,7 @@ forecast.rnn <- function(data, target_column = "close", n_predict = 5, train_spl
 #' @examples
 #' forecast.rnn_chart(n_predict=5, target_column='close', train_split=0.85, forecast_horizon=5, model_type='LSTM', hidden_dim=20, dropout=0, batch_size=16, n_epochs=100, learning_rate=0.001, model_save_name='rnn_model', force_reset=TRUE, save_checkpoints=TRUE, forecast_only=FALSE, residuals=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.rnn_chart
 forecast.rnn_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, train_split = 0.85, forecast_horizon = 5, model_type = "LSTM", hidden_dim = 20, dropout = 0.0, batch_size = 32, n_epochs = 100, learning_rate = 0.001, model_save_name = "rnn_model", training_length = 20, input_chunk_size = 14, force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$rnn_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6742,6 +7179,7 @@ forecast.rnn_chart <- function(data, target_column = "close", dataset_name = "",
 #' @examples
 #' forecast.roc(target_column='close', period=10)
 #' @export
+#* @get /forecast.roc
 forecast.roc <- function(dataset, target_column = "close", period = 10) {
   o <- do.call(what=py$openbb$forecast$roc, args=as.list(rlang::call_match())[-1])
   o
@@ -6758,6 +7196,7 @@ forecast.roc <- function(dataset, target_column = "close", period = 10) {
 #' @examples
 #' forecast.rsi(target_column='close', period=10)
 #' @export
+#* @get /forecast.rsi
 forecast.rsi <- function(dataset, target_column = "close", period = 10) {
   o <- do.call(what=py$openbb$forecast$rsi, args=as.list(rlang::call_match())[-1])
   o
@@ -6775,6 +7214,7 @@ forecast.rsi <- function(dataset, target_column = "close", period = 10) {
 #' @examples
 #' forecast.rwd(target_column='close', n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.rwd
 forecast.rwd <- function(data, target_column = "close", n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$rwd, args=as.list(rlang::call_match())[-1])
   o
@@ -6798,6 +7238,7 @@ forecast.rwd <- function(data, target_column = "close", n_predict = 5, start_win
 #' @examples
 #' forecast.rwd_chart(target_column='close', n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.rwd_chart
 forecast.rwd_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$rwd_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6816,6 +7257,7 @@ forecast.rwd_chart <- function(data, target_column = "close", dataset_name = "",
 #' @examples
 #' forecast.season_chart(column='close', max_lag=24, alpha=0.05)
 #' @export
+#* @get /forecast.season_chart
 forecast.season_chart <- function(data, column = "close", export = "", sheet_name, m, max_lag = 24, alpha = 0.05, external_axes) {
   o <- do.call(what=py$openbb$forecast$season_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6835,6 +7277,7 @@ forecast.season_chart <- function(data, column = "close", export = "", sheet_nam
 #' @examples
 #' forecast.seasonalnaive(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.seasonalnaive
 forecast.seasonalnaive <- function(data, target_column = "close", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5) {
   o <- do.call(what=py$openbb$forecast$seasonalnaive, args=as.list(rlang::call_match())[-1])
   o
@@ -6860,6 +7303,7 @@ forecast.seasonalnaive <- function(data, target_column = "close", seasonal_perio
 #' @examples
 #' forecast.seasonalnaive_chart(target_column='close', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.seasonalnaive_chart
 forecast.seasonalnaive_chart <- function(data, target_column = "close", dataset_name = "", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, external_axes) {
   o <- do.call(what=py$openbb$forecast$seasonalnaive_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -6876,6 +7320,7 @@ forecast.seasonalnaive_chart <- function(data, target_column = "close", dataset_
 #' @param name (character length 1) The name of the dataframe
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /forecast.show
 forecast.show <- function(data, limit = 15, limit_col = 10, name = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$forecast$show, args=as.list(rlang::call_match())[-1])
   o
@@ -6888,6 +7333,7 @@ forecast.show <- function(data, limit = 15, limit_col = 10, name = "", export = 
 #'
 #' @param dataset (data.frame) The dataset you wish to calculate with
 #' @export
+#* @get /forecast.signal
 forecast.signal <- function(dataset, target_column = "close") {
   o <- do.call(what=py$openbb$forecast$signal, args=as.list(rlang::call_match())[-1])
   o
@@ -6906,6 +7352,7 @@ forecast.signal <- function(dataset, target_column = "close") {
 #' @examples
 #' forecast.sto(period=10)
 #' @export
+#* @get /forecast.sto
 forecast.sto <- function(dataset, close_column = "close", high_column = "high", low_column = "low", period = 10) {
   o <- do.call(what=py$openbb$forecast$sto, args=as.list(rlang::call_match())[-1])
   o
@@ -6938,6 +7385,7 @@ forecast.sto <- function(dataset, close_column = "close", high_column = "high", 
 #' @examples
 #' forecast.tcn(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, dropout=0.1, num_filters=6, weight_norm=TRUE, dilation_base=2, batch_size=800, n_epochs=100, learning_rate=0.001, model_save_name='tcn_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.tcn
 forecast.tcn <- function(data, target_column = "close", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, dropout = 0.1, num_filters = 3, weight_norm = TRUE, dilation_base = 2, n_epochs = 300, learning_rate = 0.001, batch_size = 32, model_save_name = "tcn_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$tcn, args=as.list(rlang::call_match())[-1])
   o
@@ -6976,6 +7424,7 @@ forecast.tcn <- function(data, target_column = "close", n_predict = 5, past_cova
 #' @examples
 #' forecast.tcn_chart(target_column='close', n_predict=5, train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, dropout=0.1, num_filters=6, weight_norm=TRUE, dilation_base=2, batch_size=800, n_epochs=100, learning_rate=0.001, model_save_name='tcn_model', force_reset=TRUE, save_checkpoints=TRUE, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.tcn_chart
 forecast.tcn_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, dropout = 0.1, num_filters = 3, weight_norm = TRUE, dilation_base = 2, n_epochs = 300, learning_rate = 0.001, batch_size = 32, model_save_name = "tcn_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$tcn_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7009,6 +7458,7 @@ forecast.tcn_chart <- function(data, target_column = "close", dataset_name = "",
 #' @examples
 #' forecast.tft(target_column='close')
 #' @export
+#* @get /forecast.tft
 forecast.tft <- function(data, target_column = "close", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, hidden_size = 16, lstm_layers = 1, num_attention_heads = 4, full_attention = FALSE, dropout = 0.1, hidden_continuous_size = 8, n_epochs = 200, batch_size = 32, model_save_name = "tft_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$tft, args=as.list(rlang::call_match())[-1])
   o
@@ -7047,6 +7497,7 @@ forecast.tft <- function(data, target_column = "close", n_predict = 5, past_cova
 #' @examples
 #' forecast.tft_chart(target_column='close', residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.tft_chart
 forecast.tft_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, hidden_size = 16, lstm_layers = 1, num_attention_heads = 4, full_attention = FALSE, dropout = 0.1, hidden_continuous_size = 8, n_epochs = 200, batch_size = 32, model_save_name = "tft_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$tft_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7069,6 +7520,7 @@ forecast.tft_chart <- function(data, target_column = "close", dataset_name = "",
 #' @examples
 #' forecast.theta(target_column='close', seasonal='M', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5)
 #' @export
+#* @get /forecast.theta
 forecast.theta <- function(data, target_column = "close", seasonal = "M", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$theta, args=as.list(rlang::call_match())[-1])
   o
@@ -7098,6 +7550,7 @@ forecast.theta <- function(data, target_column = "close", seasonal = "M", season
 #' @examples
 #' forecast.theta_chart(target_column='close', seasonal='M', seasonal_periods=7, n_predict=5, start_window=0.85, forecast_horizon=5, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.theta_chart
 forecast.theta_chart <- function(data, target_column = "close", dataset_name = "", seasonal = "M", seasonal_periods = 7, n_predict = 5, start_window = 0.85, forecast_horizon = 5, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$theta_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7132,6 +7585,7 @@ forecast.theta_chart <- function(data, target_column = "close", dataset_name = "
 #' @examples
 #' forecast.trans(n_predict=5, target_column='close', train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, d_model=64, nhead=4, num_encoder_layers=3, num_decoder_layers=3, dim_feedforward=512, activation='relu', dropout=0, batch_size=32, n_epochs=100, learning_rate=0.001, model_save_name='trans_model', force_reset=TRUE, save_checkpoints=TRUE)
 #' @export
+#* @get /forecast.trans
 forecast.trans <- function(data, target_column = "close", n_predict = 5, train_split = 0.85, past_covariates, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, d_model = 64, nhead = 4, num_encoder_layers = 3, num_decoder_layers = 3, dim_feedforward = 512, activation = "relu", dropout = 0.0, batch_size = 32, n_epochs = 300, learning_rate = 0.001, model_save_name = "trans_model", force_reset = TRUE, save_checkpoints = TRUE, metric = "mape") {
   o <- do.call(what=py$openbb$forecast$trans, args=as.list(rlang::call_match())[-1])
   o
@@ -7172,6 +7626,7 @@ forecast.trans <- function(data, target_column = "close", n_predict = 5, train_s
 #' @examples
 #' forecast.trans_chart(n_predict=5, target_column='close', train_split=0.85, forecast_horizon=5, input_chunk_length=14, output_chunk_length=5, d_model=64, nhead=4, num_encoder_layers=3, num_decoder_layers=3, dim_feedforward=512, activation='relu', dropout=0.1, n_epochs=100, model_save_name='trans_model', force_reset=TRUE, save_checkpoints=TRUE, residuals=FALSE, forecast_only=FALSE, naive=FALSE)
 #' @export
+#* @get /forecast.trans_chart
 forecast.trans_chart <- function(data, target_column = "close", dataset_name = "", n_predict = 5, past_covariates, train_split = 0.85, forecast_horizon = 5, input_chunk_length = 14, output_chunk_length = 5, d_model = 64, nhead = 4, num_encoder_layers = 3, num_decoder_layers = 3, dim_feedforward = 512, activation = "relu", dropout = 0.0, batch_size = 32, n_epochs = 300, learning_rate = 0.001, model_save_name = "trans_model", force_reset = TRUE, save_checkpoints = TRUE, export = "", sheet_name, residuals = FALSE, forecast_only = FALSE, start_date, end_date, naive = FALSE, export_pred_raw = FALSE, metric = "mape", external_axes) {
   o <- do.call(what=py$openbb$forecast$trans_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7182,6 +7637,7 @@ forecast.trans_chart <- function(data, target_column = "close", dataset_name = "
 #' @description Wrapper for Python function forecast.whisper from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forecast.whisper
 forecast.whisper <- function(video = "", model_name = "base", subtitles_format = "vtt", verbose = FALSE, task = "transcribe", language, breaklines = 0, output_dir = "") {
   o <- do.call(what=py$openbb$forecast$whisper, args=as.list(rlang::call_match())[-1])
   o
@@ -7192,6 +7648,7 @@ forecast.whisper <- function(video = "", model_name = "base", subtitles_format =
 #' @description Wrapper for Python function forex.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forex.about
 forex.about <- function() {
   o <- do.call(what=py$openbb$forex$about, args=as.list(rlang::call_match())[-1])
   o
@@ -7206,6 +7663,7 @@ forex.about <- function() {
 #' @param to_symbol (character length 1) To forex symbol
 #' @param from_symbol (character length 1) From forex symbol
 #' @export
+#* @get /forex.candle
 forex.candle <- function(data, to_symbol = "", from_symbol = "", ma, external_axes, use_matplotlib = TRUE, add_trend = FALSE, yscale = "linear") {
   o <- do.call(what=py$openbb$forex$candle, args=as.list(rlang::call_match())[-1])
   o
@@ -7221,6 +7679,7 @@ forex.candle <- function(data, to_symbol = "", from_symbol = "", ma, external_ax
 #' @examples
 #' forex.fwd(to_symbol='USD', from_symbol='EUR')
 #' @export
+#* @get /forex.fwd
 forex.fwd <- function(to_symbol = "USD", from_symbol = "EUR") {
   o <- do.call(what=py$openbb$forex$fwd, args=as.list(rlang::call_match())[-1])
   o
@@ -7232,6 +7691,7 @@ forex.fwd <- function(to_symbol = "USD", from_symbol = "EUR") {
 #' @description Wrapper for Python function forex.get_currency_list from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forex.get_currency_list
 forex.get_currency_list <- function() {
   o <- do.call(what=py$openbb$forex$get_currency_list, args=as.list(rlang::call_match())[-1])
   o
@@ -7251,6 +7711,7 @@ forex.get_currency_list <- function() {
 #' @examples
 #' forex.load(resolution='d', interval='1day', source='YahooFinance', verbose=FALSE)
 #' @export
+#* @get /forex.load
 forex.load <- function(to_symbol, from_symbol, resolution = "d", interval = "1day", start_date, end_date, source = "YahooFinance", verbose = FALSE) {
   o <- do.call(what=py$openbb$forex$load, args=as.list(rlang::call_match())[-1])
   o
@@ -7266,6 +7727,7 @@ forex.load <- function(to_symbol, from_symbol, resolution = "d", interval = "1da
 #' @examples
 #' forex.quote(symbol='EURUSD', source='YahooFinance')
 #' @export
+#* @get /forex.quote
 forex.quote <- function(symbol, source = "YahooFinance") {
   o <- do.call(what=py$openbb$forex$quote, args=as.list(rlang::call_match())[-1])
   o
@@ -7276,6 +7738,7 @@ forex.quote <- function(symbol, source = "YahooFinance") {
 #' @description Wrapper for Python function forex.oanda.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forex.oanda.about
 forex.oanda.about <- function() {
   o <- do.call(what=py$openbb$forex$oanda$about, args=as.list(rlang::call_match())[-1])
   o
@@ -7290,6 +7753,7 @@ forex.oanda.about <- function() {
 #' @examples
 #' forex.oanda.calendar(days=14)
 #' @export
+#* @get /forex.oanda.calendar
 forex.oanda.calendar <- function(days = 14, instrument) {
   o <- do.call(what=py$openbb$forex$oanda$calendar, args=as.list(rlang::call_match())[-1])
   o
@@ -7305,6 +7769,7 @@ forex.oanda.calendar <- function(days = 14, instrument) {
 #' @examples
 #' forex.oanda.calendar_chart(days=7)
 #' @export
+#* @get /forex.oanda.calendar_chart
 forex.oanda.calendar_chart <- function(instrument, days = 7) {
   o <- do.call(what=py$openbb$forex$oanda$calendar_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7320,6 +7785,7 @@ forex.oanda.calendar_chart <- function(instrument, days = 7) {
 #' @examples
 #' forex.oanda.cancel(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.cancel
 forex.oanda.cancel <- function(orderID, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$cancel, args=as.list(rlang::call_match())[-1])
   o
@@ -7333,6 +7799,7 @@ forex.oanda.cancel <- function(orderID, accountID = "REPLACE_ME") {
 #' @param accountID (character length 1) Oanda user account ID
 #' @param orderID (character length 1) The pending order ID to cancel.
 #' @export
+#* @get /forex.oanda.cancel_chart
 forex.oanda.cancel_chart <- function(accountID, orderID = "") {
   o <- do.call(what=py$openbb$forex$oanda$cancel_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7348,6 +7815,7 @@ forex.oanda.cancel_chart <- function(accountID, orderID = "") {
 #' @examples
 #' forex.oanda.candles(granularity='D', candlecount=180)
 #' @export
+#* @get /forex.oanda.candles
 forex.oanda.candles <- function(instrument, granularity = "D", candlecount = 180) {
   o <- do.call(what=py$openbb$forex$oanda$candles, args=as.list(rlang::call_match())[-1])
   o
@@ -7366,6 +7834,7 @@ forex.oanda.candles <- function(instrument, granularity = "D", candlecount = 180
 #' @examples
 #' forex.oanda.candles_chart(granularity='D', candlecount=180)
 #' @export
+#* @get /forex.oanda.candles_chart
 forex.oanda.candles_chart <- function(instrument = "", granularity = "D", candlecount = 180, additional_charts, external_axes) {
   o <- do.call(what=py$openbb$forex$oanda$candles_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7381,6 +7850,7 @@ forex.oanda.candles_chart <- function(instrument = "", granularity = "D", candle
 #' @examples
 #' forex.oanda.close(units=0, accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.close
 forex.oanda.close <- function(orderID, units, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$close, args=as.list(rlang::call_match())[-1])
   o
@@ -7394,6 +7864,7 @@ forex.oanda.close <- function(orderID, units, accountID = "REPLACE_ME") {
 #' @param accountID (character length 1) Oanda user account ID
 #' @param orderID (character length 1) ID of the order to close
 #' @export
+#* @get /forex.oanda.close_chart
 forex.oanda.close_chart <- function(accountID, orderID = "", units) {
   o <- do.call(what=py$openbb$forex$oanda$close_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7410,6 +7881,7 @@ forex.oanda.close_chart <- function(accountID, orderID = "", units) {
 #' @examples
 #' forex.oanda.listorders(order_state='PENDING', order_count=0, accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.listorders
 forex.oanda.listorders <- function(order_state = "PENDING", order_count = 0, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$listorders, args=as.list(rlang::call_match())[-1])
   o
@@ -7426,6 +7898,7 @@ forex.oanda.listorders <- function(order_state = "PENDING", order_count = 0, acc
 #' @examples
 #' forex.oanda.listorders_chart(order_state='PENDING', order_count=0)
 #' @export
+#* @get /forex.oanda.listorders_chart
 forex.oanda.listorders_chart <- function(accountID, order_state = "PENDING", order_count = 0) {
   o <- do.call(what=py$openbb$forex$oanda$listorders_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7440,6 +7913,7 @@ forex.oanda.listorders_chart <- function(accountID, order_state = "PENDING", ord
 #' @examples
 #' forex.oanda.openpositions(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.openpositions
 forex.oanda.openpositions <- function(accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$openpositions, args=as.list(rlang::call_match())[-1])
   o
@@ -7452,6 +7926,7 @@ forex.oanda.openpositions <- function(accountID = "REPLACE_ME") {
 #'
 #' @param accountID (character length 1) Oanda user account ID
 #' @export
+#* @get /forex.oanda.openpositions_chart
 forex.oanda.openpositions_chart <- function(accountID) {
   o <- do.call(what=py$openbb$forex$oanda$openpositions_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7466,6 +7941,7 @@ forex.oanda.openpositions_chart <- function(accountID) {
 #' @examples
 #' forex.oanda.opentrades(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.opentrades
 forex.oanda.opentrades <- function(accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$opentrades, args=as.list(rlang::call_match())[-1])
   o
@@ -7478,6 +7954,7 @@ forex.oanda.opentrades <- function(accountID = "REPLACE_ME") {
 #'
 #' @param accountID (character length 1) Oanda user account ID
 #' @export
+#* @get /forex.oanda.opentrades_chart
 forex.oanda.opentrades_chart <- function(accountID) {
   o <- do.call(what=py$openbb$forex$oanda$opentrades_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7494,6 +7971,7 @@ forex.oanda.opentrades_chart <- function(accountID) {
 #' @examples
 #' forex.oanda.order(price=0, units=0, accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.order
 forex.oanda.order <- function(price = 0, units = 0, instrument, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$order, args=as.list(rlang::call_match())[-1])
   o
@@ -7511,6 +7989,7 @@ forex.oanda.order <- function(price = 0, units = 0, instrument, accountID = "REP
 #' @examples
 #' forex.oanda.order_chart(price=0, units=0)
 #' @export
+#* @get /forex.oanda.order_chart
 forex.oanda.order_chart <- function(accountID, instrument = "", price = 0, units = 0) {
   o <- do.call(what=py$openbb$forex$oanda$order_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7525,6 +8004,7 @@ forex.oanda.order_chart <- function(accountID, instrument = "", price = 0, units
 #' @examples
 #' forex.oanda.orderbook(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.orderbook
 forex.oanda.orderbook <- function(instrument, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$orderbook, args=as.list(rlang::call_match())[-1])
   o
@@ -7538,6 +8018,7 @@ forex.oanda.orderbook <- function(instrument, accountID = "REPLACE_ME") {
 #' @param accountID (character length 1) Oanda user account ID
 #' @param instrument (character length 1) The loaded currency pair
 #' @export
+#* @get /forex.oanda.orderbook_chart
 forex.oanda.orderbook_chart <- function(accountID, instrument = "", external_axes) {
   o <- do.call(what=py$openbb$forex$oanda$orderbook_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7552,6 +8033,7 @@ forex.oanda.orderbook_chart <- function(accountID, instrument = "", external_axe
 #' @examples
 #' forex.oanda.pending(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.pending
 forex.oanda.pending <- function(accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$pending, args=as.list(rlang::call_match())[-1])
   o
@@ -7564,6 +8046,7 @@ forex.oanda.pending <- function(accountID = "REPLACE_ME") {
 #'
 #' @param accountID (character length 1) Oanda user account ID
 #' @export
+#* @get /forex.oanda.pending_chart
 forex.oanda.pending_chart <- function(accountID) {
   o <- do.call(what=py$openbb$forex$oanda$pending_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7578,6 +8061,7 @@ forex.oanda.pending_chart <- function(accountID) {
 #' @examples
 #' forex.oanda.positionbook(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.positionbook
 forex.oanda.positionbook <- function(instrument, accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$positionbook, args=as.list(rlang::call_match())[-1])
   o
@@ -7591,6 +8075,7 @@ forex.oanda.positionbook <- function(instrument, accountID = "REPLACE_ME") {
 #' @param accountID (character length 1) Oanda user account ID
 #' @param instrument (character length 1) The loaded currency pair
 #' @export
+#* @get /forex.oanda.positionbook_chart
 forex.oanda.positionbook_chart <- function(accountID, instrument = "", external_axes) {
   o <- do.call(what=py$openbb$forex$oanda$positionbook_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7605,6 +8090,7 @@ forex.oanda.positionbook_chart <- function(accountID, instrument = "", external_
 #' @examples
 #' forex.oanda.price(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.price
 forex.oanda.price <- function(accountID = "REPLACE_ME", instrument) {
   o <- do.call(what=py$openbb$forex$oanda$price, args=as.list(rlang::call_match())[-1])
   o
@@ -7616,6 +8102,7 @@ forex.oanda.price <- function(accountID = "REPLACE_ME", instrument) {
 #' @description Wrapper for Python function forex.oanda.price_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /forex.oanda.price_chart
 forex.oanda.price_chart <- function(account, instrument) {
   o <- do.call(what=py$openbb$forex$oanda$price_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7630,6 +8117,7 @@ forex.oanda.price_chart <- function(account, instrument) {
 #' @examples
 #' forex.oanda.summary(accountID='REPLACE_ME')
 #' @export
+#* @get /forex.oanda.summary
 forex.oanda.summary <- function(accountID = "REPLACE_ME") {
   o <- do.call(what=py$openbb$forex$oanda$summary, args=as.list(rlang::call_match())[-1])
   o
@@ -7642,6 +8130,7 @@ forex.oanda.summary <- function(accountID = "REPLACE_ME") {
 #'
 #' @param accountID (character length 1) Oanda user account ID
 #' @export
+#* @get /forex.oanda.summary_chart
 forex.oanda.summary_chart <- function(accountID) {
   o <- do.call(what=py$openbb$forex$oanda$summary_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7652,6 +8141,7 @@ forex.oanda.summary_chart <- function(accountID) {
 #' @description Wrapper for Python function futures.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /futures.about
 futures.about <- function() {
   o <- do.call(what=py$openbb$futures$about, args=as.list(rlang::call_match())[-1])
   o
@@ -7664,6 +8154,7 @@ futures.about <- function() {
 #'
 #' @param symbol (character length 1) symbol to get forward curve
 #' @export
+#* @get /futures.curve
 futures.curve <- function(symbol = "") {
   o <- do.call(what=py$openbb$futures$curve, args=as.list(rlang::call_match())[-1])
   o
@@ -7680,6 +8171,7 @@ futures.curve <- function(symbol = "") {
 #' @examples
 #' futures.curve_chart(symbol='AMZN', raw=FALSE)
 #' @export
+#* @get /futures.curve_chart
 futures.curve_chart <- function(symbol, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$futures$curve_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7691,6 +8183,7 @@ futures.curve_chart <- function(symbol, raw = FALSE, export = "", sheet_name, ex
 #' @description Wrapper for Python function futures.historical from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /futures.historical
 futures.historical <- function(symbols, start_date, end_date, source, expiry) {
   o <- do.call(what=py$openbb$futures$historical, args=as.list(rlang::call_match())[-1])
   o
@@ -7707,6 +8200,7 @@ futures.historical <- function(symbols, start_date, end_date, source, expiry) {
 #' @examples
 #' futures.historical_chart(raw=FALSE)
 #' @export
+#* @get /futures.historical_chart
 futures.historical_chart <- function(symbols, expiry = "", start_date, end_date, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$futures$historical_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -7721,6 +8215,7 @@ futures.historical_chart <- function(symbols, expiry = "", start_date, end_date,
 #' @param exchange (character length 1) Select the exchange where the future exists
 #' @param description (character length 1) Select the description where the future exists
 #' @export
+#* @get /futures.search
 futures.search <- function(category = "", exchange = "", description = "") {
   o <- do.call(what=py$openbb$futures$search, args=as.list(rlang::call_match())[-1])
   o
@@ -7731,6 +8226,7 @@ futures.search <- function(category = "", exchange = "", description = "") {
 #' @description Wrapper for Python function keys.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /keys.about
 keys.about <- function() {
   o <- do.call(what=py$openbb$keys$about, args=as.list(rlang::call_match())[-1])
   o
@@ -7749,6 +8245,7 @@ keys.about <- function() {
 #' @examples
 #' keys.av(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.av
 keys.av <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$av, args=as.list(rlang::call_match())[-1])
   o
@@ -7768,6 +8265,7 @@ keys.av <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.binance(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.binance
 keys.binance <- function(key, secret, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$binance, args=as.list(rlang::call_match())[-1])
   o
@@ -7786,6 +8284,7 @@ keys.binance <- function(key, secret, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.bitquery(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.bitquery
 keys.bitquery <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$bitquery, args=as.list(rlang::call_match())[-1])
   o
@@ -7804,6 +8303,7 @@ keys.bitquery <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.cmc(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.cmc
 keys.cmc <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$cmc, args=as.list(rlang::call_match())[-1])
   o
@@ -7824,6 +8324,7 @@ keys.cmc <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.coinbase(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.coinbase
 keys.coinbase <- function(key, secret, passphrase, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$coinbase, args=as.list(rlang::call_match())[-1])
   o
@@ -7842,6 +8343,7 @@ keys.coinbase <- function(key, secret, passphrase, persist = FALSE, show_output 
 #' @examples
 #' keys.coinglass(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.coinglass
 keys.coinglass <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$coinglass, args=as.list(rlang::call_match())[-1])
   o
@@ -7860,6 +8362,7 @@ keys.coinglass <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.cpanic(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.cpanic
 keys.cpanic <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$cpanic, args=as.list(rlang::call_match())[-1])
   o
@@ -7876,6 +8379,7 @@ keys.cpanic <- function(key, persist = FALSE, show_output = FALSE) {
 #'     By default, False.
 #' @param show_output (logical length 1) Display status string or not. By default, False.
 #' @export
+#* @get /keys.databento
 keys.databento <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$databento, args=as.list(rlang::call_match())[-1])
   o
@@ -7896,6 +8400,7 @@ keys.databento <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.degiro(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.degiro
 keys.degiro <- function(username, password, secret = "", persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$degiro, args=as.list(rlang::call_match())[-1])
   o
@@ -7914,6 +8419,7 @@ keys.degiro <- function(username, password, secret = "", persist = FALSE, show_o
 #' @examples
 #' keys.eodhd(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.eodhd
 keys.eodhd <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$eodhd, args=as.list(rlang::call_match())[-1])
   o
@@ -7932,6 +8438,7 @@ keys.eodhd <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.ethplorer(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.ethplorer
 keys.ethplorer <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$ethplorer, args=as.list(rlang::call_match())[-1])
   o
@@ -7950,6 +8457,7 @@ keys.ethplorer <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.finnhub(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.finnhub
 keys.finnhub <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$finnhub, args=as.list(rlang::call_match())[-1])
   o
@@ -7968,6 +8476,7 @@ keys.finnhub <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.fmp(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.fmp
 keys.fmp <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$fmp, args=as.list(rlang::call_match())[-1])
   o
@@ -7986,6 +8495,7 @@ keys.fmp <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.fred(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.fred
 keys.fred <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$fred, args=as.list(rlang::call_match())[-1])
   o
@@ -7997,6 +8507,7 @@ keys.fred <- function(key, persist = FALSE, show_output = FALSE) {
 #' @description Wrapper for Python function keys.get_keys_info from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /keys.get_keys_info
 keys.get_keys_info <- function() {
   o <- do.call(what=py$openbb$keys$get_keys_info, args=as.list(rlang::call_match())[-1])
   o
@@ -8015,6 +8526,7 @@ keys.get_keys_info <- function() {
 #' @examples
 #' keys.github(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.github
 keys.github <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$github, args=as.list(rlang::call_match())[-1])
   o
@@ -8033,6 +8545,7 @@ keys.github <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.glassnode(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.glassnode
 keys.glassnode <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$glassnode, args=as.list(rlang::call_match())[-1])
   o
@@ -8051,6 +8564,7 @@ keys.glassnode <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.messari(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.messari
 keys.messari <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$messari, args=as.list(rlang::call_match())[-1])
   o
@@ -8066,6 +8580,7 @@ keys.messari <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.mykeys(show=FALSE)
 #' @export
+#* @get /keys.mykeys
 keys.mykeys <- function(show = FALSE) {
   o <- do.call(what=py$openbb$keys$mykeys, args=as.list(rlang::call_match())[-1])
   o
@@ -8084,6 +8599,7 @@ keys.mykeys <- function(show = FALSE) {
 #' @examples
 #' keys.news(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.news
 keys.news <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$news, args=as.list(rlang::call_match())[-1])
   o
@@ -8104,6 +8620,7 @@ keys.news <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.oanda(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.oanda
 keys.oanda <- function(account, access_token, account_type = "", persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$oanda, args=as.list(rlang::call_match())[-1])
   o
@@ -8120,6 +8637,7 @@ keys.oanda <- function(account, access_token, account_type = "", persist = FALSE
 #'     By default, False.
 #' @param show_output (logical length 1) Display status string or not. By default, False.
 #' @export
+#* @get /keys.openbb
 keys.openbb <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$openbb, args=as.list(rlang::call_match())[-1])
   o
@@ -8138,6 +8656,7 @@ keys.openbb <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.polygon(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.polygon
 keys.polygon <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$polygon, args=as.list(rlang::call_match())[-1])
   o
@@ -8156,6 +8675,7 @@ keys.polygon <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.quandl(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.quandl
 keys.quandl <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$quandl, args=as.list(rlang::call_match())[-1])
   o
@@ -8178,6 +8698,7 @@ keys.quandl <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.reddit(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.reddit
 keys.reddit <- function(client_id, client_secret, password, username, useragent, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$reddit, args=as.list(rlang::call_match())[-1])
   o
@@ -8197,6 +8718,7 @@ keys.reddit <- function(client_id, client_secret, password, username, useragent,
 #' @examples
 #' keys.rh(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.rh
 keys.rh <- function(username, password, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$rh, args=as.list(rlang::call_match())[-1])
   o
@@ -8215,6 +8737,7 @@ keys.rh <- function(username, password, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.santiment(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.santiment
 keys.santiment <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$santiment, args=as.list(rlang::call_match())[-1])
   o
@@ -8232,6 +8755,7 @@ keys.santiment <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.set_keys(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.set_keys
 keys.set_keys <- function(keys_dict, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$set_keys, args=as.list(rlang::call_match())[-1])
   o
@@ -8250,6 +8774,7 @@ keys.set_keys <- function(keys_dict, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.shroom(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.shroom
 keys.shroom <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$shroom, args=as.list(rlang::call_match())[-1])
   o
@@ -8269,6 +8794,7 @@ keys.shroom <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.smartstake(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.smartstake
 keys.smartstake <- function(key, access_token, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$smartstake, args=as.list(rlang::call_match())[-1])
   o
@@ -8287,6 +8813,7 @@ keys.smartstake <- function(key, access_token, persist = FALSE, show_output = FA
 #' @examples
 #' keys.stocksera(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.stocksera
 keys.stocksera <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$stocksera, args=as.list(rlang::call_match())[-1])
   o
@@ -8305,6 +8832,7 @@ keys.stocksera <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.tokenterminal(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.tokenterminal
 keys.tokenterminal <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$tokenterminal, args=as.list(rlang::call_match())[-1])
   o
@@ -8323,6 +8851,7 @@ keys.tokenterminal <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.tradier(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.tradier
 keys.tradier <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$tradier, args=as.list(rlang::call_match())[-1])
   o
@@ -8341,6 +8870,7 @@ keys.tradier <- function(key, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.twitter(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.twitter
 keys.twitter <- function(access_token, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$twitter, args=as.list(rlang::call_match())[-1])
   o
@@ -8359,6 +8889,7 @@ keys.twitter <- function(access_token, persist = FALSE, show_output = FALSE) {
 #' @examples
 #' keys.walert(persist=FALSE, show_output=FALSE)
 #' @export
+#* @get /keys.walert
 keys.walert <- function(key, persist = FALSE, show_output = FALSE) {
   o <- do.call(what=py$openbb$keys$walert, args=as.list(rlang::call_match())[-1])
   o
@@ -8369,6 +8900,7 @@ keys.walert <- function(key, persist = FALSE, show_output = FALSE) {
 #' @description Wrapper for Python function portfolio.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.about
 portfolio.about <- function() {
   o <- do.call(what=py$openbb$portfolio$about, args=as.list(rlang::call_match())[-1])
   o
@@ -8387,6 +8919,7 @@ portfolio.about <- function() {
 #' @examples
 #' portfolio.bench(symbol='AMZN', full_shares=FALSE)
 #' @export
+#* @get /portfolio.bench
 portfolio.bench <- function(portfolio_engine, symbol, full_shares = FALSE) {
   o <- do.call(what=py$openbb$portfolio$bench, args=as.list(rlang::call_match())[-1])
   o
@@ -8403,6 +8936,7 @@ portfolio.bench <- function(portfolio_engine, symbol, full_shares = FALSE) {
 #' @examples
 #' portfolio.distr(window='all')
 #' @export
+#* @get /portfolio.distr
 portfolio.distr <- function(portfolio_engine, window = "all") {
   o <- do.call(what=py$openbb$portfolio$distr, args=as.list(rlang::call_match())[-1])
   o
@@ -8416,6 +8950,7 @@ portfolio.distr <- function(portfolio_engine, window = "all") {
 #' @param raw (logical length 1) Display raw data from cumulative return
 #' @param export (character length 1) Export certain type of data
 #' @export
+#* @get /portfolio.distr_chart
 portfolio.distr_chart <- function(portfolio_engine, window = "all", raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$distr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8432,6 +8967,7 @@ portfolio.distr_chart <- function(portfolio_engine, window = "all", raw = FALSE,
 #' @examples
 #' portfolio.dret(window='all')
 #' @export
+#* @get /portfolio.dret
 portfolio.dret <- function(portfolio_engine, window = "all") {
   o <- do.call(what=py$openbb$portfolio$dret, args=as.list(rlang::call_match())[-1])
   o
@@ -8451,6 +8987,7 @@ portfolio.dret <- function(portfolio_engine, window = "all") {
 #' @examples
 #' portfolio.dret_chart(window='all', limit=10)
 #' @export
+#* @get /portfolio.dret_chart
 portfolio.dret_chart <- function(portfolio_engine, window = "all", raw = FALSE, limit = 10, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$dret_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8469,6 +9006,7 @@ portfolio.dret_chart <- function(portfolio_engine, window = "all", raw = FALSE, 
 #' @examples
 #' portfolio.es(distribution='normal', percentile=99.9)
 #' @export
+#* @get /portfolio.es
 portfolio.es <- function(portfolio_engine, use_mean = FALSE, distribution = "normal", percentile = 99.9) {
   o <- do.call(what=py$openbb$portfolio$es, args=as.list(rlang::call_match())[-1])
   o
@@ -8482,6 +9020,7 @@ portfolio.es <- function(portfolio_engine, use_mean = FALSE, distribution = "nor
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.holdp
 portfolio.holdp <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$holdp, args=as.list(rlang::call_match())[-1])
   o
@@ -8501,6 +9040,7 @@ portfolio.holdp <- function(portfolio_engine) {
 #' @examples
 #' portfolio.holdp_chart(unstack=FALSE, raw=FALSE, limit=10)
 #' @export
+#* @get /portfolio.holdp_chart
 portfolio.holdp_chart <- function(portfolio_engine, unstack = FALSE, raw = FALSE, limit = 10, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$holdp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8514,6 +9054,7 @@ portfolio.holdp_chart <- function(portfolio_engine, unstack = FALSE, raw = FALSE
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.holdv
 portfolio.holdv <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$holdv, args=as.list(rlang::call_match())[-1])
   o
@@ -8533,6 +9074,7 @@ portfolio.holdv <- function(portfolio_engine) {
 #' @examples
 #' portfolio.holdv_chart(unstack=FALSE, raw=FALSE, limit=10)
 #' @export
+#* @get /portfolio.holdv_chart
 portfolio.holdv_chart <- function(portfolio_engine, unstack = FALSE, raw = FALSE, limit = 10, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$holdv_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8551,6 +9093,7 @@ portfolio.holdv_chart <- function(portfolio_engine, unstack = FALSE, raw = FALSE
 #' @examples
 #' portfolio.load(benchmark_symbol='SPY', full_shares=FALSE, risk_free_rate=0)
 #' @export
+#* @get /portfolio.load
 portfolio.load <- function(transactions_file_path, benchmark_symbol = "SPY", full_shares = FALSE, risk_free_rate = 0) {
   o <- do.call(what=py$openbb$portfolio$load, args=as.list(rlang::call_match())[-1])
   o
@@ -8565,6 +9108,7 @@ portfolio.load <- function(transactions_file_path, benchmark_symbol = "SPY", ful
 #' @examples
 #' portfolio.maxdd(is_returns=FALSE)
 #' @export
+#* @get /portfolio.maxdd
 portfolio.maxdd <- function(portfolio_engine, is_returns = FALSE) {
   o <- do.call(what=py$openbb$portfolio$maxdd, args=as.list(rlang::call_match())[-1])
   o
@@ -8577,6 +9121,7 @@ portfolio.maxdd <- function(portfolio_engine, is_returns = FALSE) {
 #'
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /portfolio.maxdd_chart
 portfolio.maxdd_chart <- function(portfolio_engine, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$maxdd_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8593,6 +9138,7 @@ portfolio.maxdd_chart <- function(portfolio_engine, export = "", sheet_name, ext
 #' @examples
 #' portfolio.mret(window='all')
 #' @export
+#* @get /portfolio.mret
 portfolio.mret <- function(portfolio_engine, window = "all") {
   o <- do.call(what=py$openbb$portfolio$mret, args=as.list(rlang::call_match())[-1])
   o
@@ -8612,6 +9158,7 @@ portfolio.mret <- function(portfolio_engine, window = "all") {
 #' @examples
 #' portfolio.mret_chart(window='all')
 #' @export
+#* @get /portfolio.mret_chart
 portfolio.mret_chart <- function(portfolio_engine, window = "all", instrument = "both", graph = FALSE, show_vals = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$mret_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8629,6 +9176,7 @@ portfolio.mret_chart <- function(portfolio_engine, window = "all", instrument = 
 #' @examples
 #' portfolio.om(threshold_start=0, threshold_end=1.5)
 #' @export
+#* @get /portfolio.om
 portfolio.om <- function(portfolio_engine, threshold_start = 0, threshold_end = 1.5) {
   o <- do.call(what=py$openbb$portfolio$om, args=as.list(rlang::call_match())[-1])
   o
@@ -8646,6 +9194,7 @@ portfolio.om <- function(portfolio_engine, threshold_start = 0, threshold_end = 
 #' @examples
 #' portfolio.om_chart(threshold_start=0, threshold_end=1.5)
 #' @export
+#* @get /portfolio.om_chart
 portfolio.om_chart <- function(portfolio_engine, threshold_start = 0, threshold_end = 1.5) {
   o <- do.call(what=py$openbb$portfolio$om_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8662,6 +9211,7 @@ portfolio.om_chart <- function(portfolio_engine, threshold_start = 0, threshold_
 #' @examples
 #' portfolio.perf(show_all_trades=FALSE)
 #' @export
+#* @get /portfolio.perf
 portfolio.perf <- function(portfolio_engine, show_all_trades = FALSE) {
   o <- do.call(what=py$openbb$portfolio$perf, args=as.list(rlang::call_match())[-1])
   o
@@ -8677,6 +9227,7 @@ portfolio.perf <- function(portfolio_engine, show_all_trades = FALSE) {
 #' @examples
 #' portfolio.rbeta(window='1y')
 #' @export
+#* @get /portfolio.rbeta
 portfolio.rbeta <- function(portfolio_engine, window = "1y") {
   o <- do.call(what=py$openbb$portfolio$rbeta, args=as.list(rlang::call_match())[-1])
   o
@@ -8693,6 +9244,7 @@ portfolio.rbeta <- function(portfolio_engine, window = "1y") {
 #' @examples
 #' portfolio.rbeta_chart(window='1y')
 #' @export
+#* @get /portfolio.rbeta_chart
 portfolio.rbeta_chart <- function(portfolio_engine, window = "1y", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$rbeta_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8709,6 +9261,7 @@ portfolio.rbeta_chart <- function(portfolio_engine, window = "1y", export = "", 
 #' @examples
 #' portfolio.rsharpe(risk_free_rate=0, window='1y')
 #' @export
+#* @get /portfolio.rsharpe
 portfolio.rsharpe <- function(portfolio_engine, risk_free_rate = 0, window = "1y") {
   o <- do.call(what=py$openbb$portfolio$rsharpe, args=as.list(rlang::call_match())[-1])
   o
@@ -8725,6 +9278,7 @@ portfolio.rsharpe <- function(portfolio_engine, risk_free_rate = 0, window = "1y
 #' @examples
 #' portfolio.rsharpe_chart(risk_free_rate=0, window='1y')
 #' @export
+#* @get /portfolio.rsharpe_chart
 portfolio.rsharpe_chart <- function(portfolio_engine, risk_free_rate = 0, window = "1y", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$rsharpe_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8741,6 +9295,7 @@ portfolio.rsharpe_chart <- function(portfolio_engine, risk_free_rate = 0, window
 #' @examples
 #' portfolio.rsort(window='1y', risk_free_rate=0)
 #' @export
+#* @get /portfolio.rsort
 portfolio.rsort <- function(portfolio_engine, risk_free_rate = 0, window = "1y") {
   o <- do.call(what=py$openbb$portfolio$rsort, args=as.list(rlang::call_match())[-1])
   o
@@ -8757,6 +9312,7 @@ portfolio.rsort <- function(portfolio_engine, risk_free_rate = 0, window = "1y")
 #' @examples
 #' portfolio.rsort_chart(risk_free_rate=0, window='1y')
 #' @export
+#* @get /portfolio.rsort_chart
 portfolio.rsort_chart <- function(portfolio_engine, risk_free_rate = 0, window = "1y", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$rsort_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8774,6 +9330,7 @@ portfolio.rsort_chart <- function(portfolio_engine, risk_free_rate = 0, window =
 #' @examples
 #' portfolio.rvol(window='1y')
 #' @export
+#* @get /portfolio.rvol
 portfolio.rvol <- function(portfolio_engine, window = "1y") {
   o <- do.call(what=py$openbb$portfolio$rvol, args=as.list(rlang::call_match())[-1])
   o
@@ -8786,6 +9343,7 @@ portfolio.rvol <- function(portfolio_engine, window = "1y") {
 #'
 #' @param export (character length 1) Export to file
 #' @export
+#* @get /portfolio.rvol_chart
 portfolio.rvol_chart <- function(portfolio_engine, window = "1y", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$rvol_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8799,6 +9357,7 @@ portfolio.rvol_chart <- function(portfolio_engine, window = "1y", export = "", s
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.show
 portfolio.show <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$show, args=as.list(rlang::call_match())[-1])
   o
@@ -8816,6 +9375,7 @@ portfolio.show <- function(portfolio_engine) {
 #' @examples
 #' portfolio.summary(window='all', risk_free_rate=0)
 #' @export
+#* @get /portfolio.summary
 portfolio.summary <- function(portfolio_engine, window = "all", risk_free_rate = 0) {
   o <- do.call(what=py$openbb$portfolio$summary, args=as.list(rlang::call_match())[-1])
   o
@@ -8835,6 +9395,7 @@ portfolio.summary <- function(portfolio_engine, window = "all", risk_free_rate =
 #' @examples
 #' portfolio.var(use_mean=FALSE, adjusted_var=FALSE, student_t=FALSE, percentile=99.9)
 #' @export
+#* @get /portfolio.var
 portfolio.var <- function(portfolio_engine, use_mean = FALSE, adjusted_var = FALSE, student_t = FALSE, percentile = 99.9) {
   o <- do.call(what=py$openbb$portfolio$var, args=as.list(rlang::call_match())[-1])
   o
@@ -8851,6 +9412,7 @@ portfolio.var <- function(portfolio_engine, use_mean = FALSE, adjusted_var = FAL
 #' @examples
 #' portfolio.yret(window='all')
 #' @export
+#* @get /portfolio.yret
 portfolio.yret <- function(portfolio_engine, window = "all") {
   o <- do.call(what=py$openbb$portfolio$yret, args=as.list(rlang::call_match())[-1])
   o
@@ -8869,6 +9431,7 @@ portfolio.yret <- function(portfolio_engine, window = "all") {
 #' @examples
 #' portfolio.yret_chart(window='all')
 #' @export
+#* @get /portfolio.yret_chart
 portfolio.yret_chart <- function(portfolio_engine, window = "all", raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$portfolio$yret_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -8879,6 +9442,7 @@ portfolio.yret_chart <- function(portfolio_engine, window = "all", raw = FALSE, 
 #' @description Wrapper for Python function portfolio.alloc.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.alloc.about
 portfolio.alloc.about <- function() {
   o <- do.call(what=py$openbb$portfolio$alloc$about, args=as.list(rlang::call_match())[-1])
   o
@@ -8897,6 +9461,7 @@ portfolio.alloc.about <- function() {
 #' @examples
 #' portfolio.alloc.assets(tables=FALSE, limit=10, recalculate=FALSE)
 #' @export
+#* @get /portfolio.alloc.assets
 portfolio.alloc.assets <- function(portfolio_engine, tables = FALSE, limit = 10, recalculate = FALSE) {
   o <- do.call(what=py$openbb$portfolio$alloc$assets, args=as.list(rlang::call_match())[-1])
   o
@@ -8915,6 +9480,7 @@ portfolio.alloc.assets <- function(portfolio_engine, tables = FALSE, limit = 10,
 #' @examples
 #' portfolio.alloc.countries(tables=FALSE, limit=10, recalculate=FALSE)
 #' @export
+#* @get /portfolio.alloc.countries
 portfolio.alloc.countries <- function(portfolio_engine, limit = 10, tables = FALSE, recalculate = FALSE) {
   o <- do.call(what=py$openbb$portfolio$alloc$countries, args=as.list(rlang::call_match())[-1])
   o
@@ -8933,6 +9499,7 @@ portfolio.alloc.countries <- function(portfolio_engine, limit = 10, tables = FAL
 #' @examples
 #' portfolio.alloc.regions(tables=FALSE, limit=10, recalculate=FALSE)
 #' @export
+#* @get /portfolio.alloc.regions
 portfolio.alloc.regions <- function(portfolio_engine, limit = 10, tables = FALSE, recalculate = FALSE) {
   o <- do.call(what=py$openbb$portfolio$alloc$regions, args=as.list(rlang::call_match())[-1])
   o
@@ -8951,6 +9518,7 @@ portfolio.alloc.regions <- function(portfolio_engine, limit = 10, tables = FALSE
 #' @examples
 #' portfolio.alloc.sectors(tables=FALSE, limit=10, recalculate=FALSE)
 #' @export
+#* @get /portfolio.alloc.sectors
 portfolio.alloc.sectors <- function(portfolio_engine, limit = 10, tables = FALSE, recalculate = FALSE) {
   o <- do.call(what=py$openbb$portfolio$alloc$sectors, args=as.list(rlang::call_match())[-1])
   o
@@ -8961,6 +9529,7 @@ portfolio.alloc.sectors <- function(portfolio_engine, limit = 10, tables = FALSE
 #' @description Wrapper for Python function portfolio.metric.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.metric.about
 portfolio.metric.about <- function() {
   o <- do.call(what=py$openbb$portfolio$metric$about, args=as.list(rlang::call_match())[-1])
   o
@@ -8977,6 +9546,7 @@ portfolio.metric.about <- function() {
 #' @examples
 #' portfolio.metric.calmar(window=756)
 #' @export
+#* @get /portfolio.metric.calmar
 portfolio.metric.calmar <- function(portfolio_engine, window = 756) {
   o <- do.call(what=py$openbb$portfolio$metric$calmar, args=as.list(rlang::call_match())[-1])
   o
@@ -8990,6 +9560,7 @@ portfolio.metric.calmar <- function(portfolio_engine, window = 756) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.commonsense
 portfolio.metric.commonsense <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$commonsense, args=as.list(rlang::call_match())[-1])
   o
@@ -9003,6 +9574,7 @@ portfolio.metric.commonsense <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.gaintopain
 portfolio.metric.gaintopain <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$gaintopain, args=as.list(rlang::call_match())[-1])
   o
@@ -9016,6 +9588,7 @@ portfolio.metric.gaintopain <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.information
 portfolio.metric.information <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$information, args=as.list(rlang::call_match())[-1])
   o
@@ -9033,6 +9606,7 @@ portfolio.metric.information <- function(portfolio_engine) {
 #' @examples
 #' portfolio.metric.jensens(window='1y', risk_free_rate=0)
 #' @export
+#* @get /portfolio.metric.jensens
 portfolio.metric.jensens <- function(portfolio_engine, risk_free_rate = 0, window = "1y") {
   o <- do.call(what=py$openbb$portfolio$metric$jensens, args=as.list(rlang::call_match())[-1])
   o
@@ -9046,6 +9620,7 @@ portfolio.metric.jensens <- function(portfolio_engine, risk_free_rate = 0, windo
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.kelly
 portfolio.metric.kelly <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$kelly, args=as.list(rlang::call_match())[-1])
   o
@@ -9059,6 +9634,7 @@ portfolio.metric.kelly <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.kurtosis
 portfolio.metric.kurtosis <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$kurtosis, args=as.list(rlang::call_match())[-1])
   o
@@ -9072,6 +9648,7 @@ portfolio.metric.kurtosis <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.maxdrawdown
 portfolio.metric.maxdrawdown <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$maxdrawdown, args=as.list(rlang::call_match())[-1])
   o
@@ -9083,6 +9660,7 @@ portfolio.metric.maxdrawdown <- function(portfolio_engine) {
 #' @description Wrapper for Python function portfolio.metric.payoff from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.metric.payoff
 portfolio.metric.payoff <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$payoff, args=as.list(rlang::call_match())[-1])
   o
@@ -9096,6 +9674,7 @@ portfolio.metric.payoff <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.profitfactor
 portfolio.metric.profitfactor <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$profitfactor, args=as.list(rlang::call_match())[-1])
   o
@@ -9109,6 +9688,7 @@ portfolio.metric.profitfactor <- function(portfolio_engine) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.rsquare
 portfolio.metric.rsquare <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$rsquare, args=as.list(rlang::call_match())[-1])
   o
@@ -9125,6 +9705,7 @@ portfolio.metric.rsquare <- function(portfolio_engine) {
 #' @examples
 #' portfolio.metric.sharpe(risk_free_rate=0)
 #' @export
+#* @get /portfolio.metric.sharpe
 portfolio.metric.sharpe <- function(portfolio_engine, risk_free_rate = 0) {
   o <- do.call(what=py$openbb$portfolio$metric$sharpe, args=as.list(rlang::call_match())[-1])
   o
@@ -9136,6 +9717,7 @@ portfolio.metric.sharpe <- function(portfolio_engine, risk_free_rate = 0) {
 #' @description Wrapper for Python function portfolio.metric.skew from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.metric.skew
 portfolio.metric.skew <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$skew, args=as.list(rlang::call_match())[-1])
   o
@@ -9152,6 +9734,7 @@ portfolio.metric.skew <- function(portfolio_engine) {
 #' @examples
 #' portfolio.metric.sortino(risk_free_rate=0)
 #' @export
+#* @get /portfolio.metric.sortino
 portfolio.metric.sortino <- function(portfolio_engine, risk_free_rate = 0) {
   o <- do.call(what=py$openbb$portfolio$metric$sortino, args=as.list(rlang::call_match())[-1])
   o
@@ -9168,6 +9751,7 @@ portfolio.metric.sortino <- function(portfolio_engine, risk_free_rate = 0) {
 #' @examples
 #' portfolio.metric.tail(window=252)
 #' @export
+#* @get /portfolio.metric.tail
 portfolio.metric.tail <- function(portfolio_engine, window = 252) {
   o <- do.call(what=py$openbb$portfolio$metric$tail, args=as.list(rlang::call_match())[-1])
   o
@@ -9184,6 +9768,7 @@ portfolio.metric.tail <- function(portfolio_engine, window = 252) {
 #' @examples
 #' portfolio.metric.trackerr(window=252)
 #' @export
+#* @get /portfolio.metric.trackerr
 portfolio.metric.trackerr <- function(portfolio_engine, window = 252) {
   o <- do.call(what=py$openbb$portfolio$metric$trackerr, args=as.list(rlang::call_match())[-1])
   o
@@ -9197,6 +9782,7 @@ portfolio.metric.trackerr <- function(portfolio_engine, window = 252) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_engine.PortfolioEngine) PortfolioEngine class instance, this will hold transactions and perform calculations.
 #'     Use `portfolio.load` to create a PortfolioEngine.
 #' @export
+#* @get /portfolio.metric.volatility
 portfolio.metric.volatility <- function(portfolio_engine) {
   o <- do.call(what=py$openbb$portfolio$metric$volatility, args=as.list(rlang::call_match())[-1])
   o
@@ -9207,6 +9793,7 @@ portfolio.metric.volatility <- function(portfolio_engine) {
 #' @description Wrapper for Python function portfolio.po.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.about
 portfolio.po.about <- function() {
   o <- do.call(what=py$openbb$portfolio$po$about, args=as.list(rlang::call_match())[-1])
   o
@@ -9218,6 +9805,7 @@ portfolio.po.about <- function() {
 #' @description Wrapper for Python function portfolio.po.blacklitterman from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.blacklitterman
 portfolio.po.blacklitterman <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$blacklitterman, args=as.list(rlang::call_match())[-1])
   o
@@ -9229,6 +9817,7 @@ portfolio.po.blacklitterman <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.ef from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.ef
 portfolio.po.ef <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$ef, args=as.list(rlang::call_match())[-1])
   o
@@ -9240,6 +9829,7 @@ portfolio.po.ef <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.ef_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.ef_chart
 portfolio.po.ef_chart <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$ef_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9254,6 +9844,7 @@ portfolio.po.ef_chart <- function(portfolio_engine, kwargs) {
 #'     Use `portfolio.po.load` to load a portfolio engine
 #' @param parameters_file_path (character length 1) Parameters file full path, by default None
 #' @export
+#* @get /portfolio.po.file
 portfolio.po.file <- function(portfolio_engine, parameters_file_path) {
   o <- do.call(what=py$openbb$portfolio$po$file, args=as.list(rlang::call_match())[-1])
   o
@@ -9265,6 +9856,7 @@ portfolio.po.file <- function(portfolio_engine, parameters_file_path) {
 #' @description Wrapper for Python function portfolio.po.herc from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.herc
 portfolio.po.herc <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$herc, args=as.list(rlang::call_match())[-1])
   o
@@ -9276,6 +9868,7 @@ portfolio.po.herc <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.hrp from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.hrp
 portfolio.po.hrp <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$hrp, args=as.list(rlang::call_match())[-1])
   o
@@ -9287,6 +9880,7 @@ portfolio.po.hrp <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.load from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.load
 portfolio.po.load <- function(symbols_categories, symbols_file_path, parameters_file_path) {
   o <- do.call(what=py$openbb$portfolio$po$load, args=as.list(rlang::call_match())[-1])
   o
@@ -9299,6 +9893,7 @@ portfolio.po.load <- function(symbols_categories, symbols_file_path, parameters_
 #'
 #' @param excel_file (character length 1) The location of the Excel file that needs to be loaded.
 #' @export
+#* @get /portfolio.po.load_bl_views
 portfolio.po.load_bl_views <- function(excel_file = "") {
   o <- do.call(what=py$openbb$portfolio$po$load_bl_views, args=as.list(rlang::call_match())[-1])
   o
@@ -9310,6 +9905,7 @@ portfolio.po.load_bl_views <- function(excel_file = "") {
 #' @description Wrapper for Python function portfolio.po.maxdecorr from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.maxdecorr
 portfolio.po.maxdecorr <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$maxdecorr, args=as.list(rlang::call_match())[-1])
   o
@@ -9321,6 +9917,7 @@ portfolio.po.maxdecorr <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.maxdiv from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.maxdiv
 portfolio.po.maxdiv <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$maxdiv, args=as.list(rlang::call_match())[-1])
   o
@@ -9332,6 +9929,7 @@ portfolio.po.maxdiv <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.maxret from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.maxret
 portfolio.po.maxret <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$maxret, args=as.list(rlang::call_match())[-1])
   o
@@ -9343,6 +9941,7 @@ portfolio.po.maxret <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.maxsharpe from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.maxsharpe
 portfolio.po.maxsharpe <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$maxsharpe, args=as.list(rlang::call_match())[-1])
   o
@@ -9354,6 +9953,7 @@ portfolio.po.maxsharpe <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.maxutil from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.maxutil
 portfolio.po.maxutil <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$maxutil, args=as.list(rlang::call_match())[-1])
   o
@@ -9365,6 +9965,7 @@ portfolio.po.maxutil <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.minrisk from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.minrisk
 portfolio.po.minrisk <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$minrisk, args=as.list(rlang::call_match())[-1])
   o
@@ -9376,6 +9977,7 @@ portfolio.po.minrisk <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.nco from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.nco
 portfolio.po.nco <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$nco, args=as.list(rlang::call_match())[-1])
   o
@@ -9391,6 +9993,7 @@ portfolio.po.nco <- function(portfolio_engine, kwargs) {
 #' @examples
 #' portfolio.po.plot(chart_type='pie')
 #' @export
+#* @get /portfolio.po.plot
 portfolio.po.plot <- function(portfolio_engine, chart_type = "pie", kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$plot, args=as.list(rlang::call_match())[-1])
   o
@@ -9406,6 +10009,7 @@ portfolio.po.plot <- function(portfolio_engine, chart_type = "pie", kwargs) {
 #' @examples
 #' portfolio.po.plot_chart(chart_type='pie')
 #' @export
+#* @get /portfolio.po.plot_chart
 portfolio.po.plot_chart <- function(portfolio_engine, chart_type = "pie", kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$plot_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9417,6 +10021,7 @@ portfolio.po.plot_chart <- function(portfolio_engine, chart_type = "pie", kwargs
 #' @description Wrapper for Python function portfolio.po.relriskparity from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.relriskparity
 portfolio.po.relriskparity <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$relriskparity, args=as.list(rlang::call_match())[-1])
   o
@@ -9428,6 +10033,7 @@ portfolio.po.relriskparity <- function(portfolio_engine, kwargs) {
 #' @description Wrapper for Python function portfolio.po.riskparity from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /portfolio.po.riskparity
 portfolio.po.riskparity <- function(portfolio_engine, kwargs) {
   o <- do.call(what=py$openbb$portfolio$po$riskparity, args=as.list(rlang::call_match())[-1])
   o
@@ -9441,6 +10047,7 @@ portfolio.po.riskparity <- function(portfolio_engine, kwargs) {
 #' @param portfolio_engine (Python type: openbb_terminal.portfolio.portfolio_optimization.po_engine.PoEngine) Portfolio optimization engine
 #'     Use `portfolio.po.load` to load a portfolio engine
 #' @export
+#* @get /portfolio.po.show
 portfolio.po.show <- function(portfolio_engine, category) {
   o <- do.call(what=py$openbb$portfolio$po$show, args=as.list(rlang::call_match())[-1])
   o
@@ -9451,6 +10058,7 @@ portfolio.po.show <- function(portfolio_engine, category) {
 #' @description Wrapper for Python function qa.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /qa.about
 qa.about <- function() {
   o <- do.call(what=py$openbb$qa$about, args=as.list(rlang::call_match())[-1])
   o
@@ -9468,6 +10076,7 @@ qa.about <- function() {
 #' @examples
 #' qa.acf(lags=15)
 #' @export
+#* @get /qa.acf
 qa.acf <- function(data, target, symbol = "", lags = 15, external_axes) {
   o <- do.call(what=py$openbb$qa$acf, args=as.list(rlang::call_match())[-1])
   o
@@ -9485,6 +10094,7 @@ qa.acf <- function(data, target, symbol = "", lags = 15, external_axes) {
 #' @examples
 #' qa.bw(yearly=TRUE)
 #' @export
+#* @get /qa.bw
 qa.bw <- function(data, target, symbol = "", yearly = TRUE, external_axes) {
   o <- do.call(what=py$openbb$qa$bw, args=as.list(rlang::call_match())[-1])
   o
@@ -9501,6 +10111,7 @@ qa.bw <- function(data, target, symbol = "", yearly = TRUE, external_axes) {
 #' @param std (numeric length 1) standard deviation of data
 #' @param mean (numeric length 1) mean of data
 #' @export
+#* @get /qa.calculate_adjusted_var
 qa.calculate_adjusted_var <- function(kurtosis, skew, ndp, std, mean) {
   o <- do.call(what=py$openbb$qa$calculate_adjusted_var, args=as.list(rlang::call_match())[-1])
   o
@@ -9516,6 +10127,7 @@ qa.calculate_adjusted_var <- function(kurtosis, skew, ndp, std, mean) {
 #' @param symbol (character length 1) Name of dataset
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /qa.cdf
 qa.cdf <- function(data, target, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$cdf, args=as.list(rlang::call_match())[-1])
   o
@@ -9533,6 +10145,7 @@ qa.cdf <- function(data, target, symbol = "", export = "", sheet_name, external_
 #' @examples
 #' qa.cusum(threshold=5, drift=2.1)
 #' @export
+#* @get /qa.cusum
 qa.cusum <- function(data, target, threshold = 5, drift = 2.1, external_axes) {
   o <- do.call(what=py$openbb$qa$cusum, args=as.list(rlang::call_match())[-1])
   o
@@ -9548,6 +10161,7 @@ qa.cusum <- function(data, target, threshold = 5, drift = 2.1, external_axes) {
 #' @examples
 #' qa.decompose(multiplicative=FALSE)
 #' @export
+#* @get /qa.decompose
 qa.decompose <- function(data, multiplicative = FALSE) {
   o <- do.call(what=py$openbb$qa$decompose, args=as.list(rlang::call_match())[-1])
   o
@@ -9565,6 +10179,7 @@ qa.decompose <- function(data, multiplicative = FALSE) {
 #' @examples
 #' qa.es(use_mean=FALSE, distribution='normal', percentile=99.9, portfolio=FALSE)
 #' @export
+#* @get /qa.es
 qa.es <- function(data, use_mean = FALSE, distribution = "normal", percentile, portfolio = FALSE) {
   o <- do.call(what=py$openbb$qa$es, args=as.list(rlang::call_match())[-1])
   o
@@ -9584,6 +10199,7 @@ qa.es <- function(data, use_mean = FALSE, distribution = "normal", percentile, p
 #' @examples
 #' qa.es_chart(distribution='normal', percentile=99, portfolio=FALSE)
 #' @export
+#* @get /qa.es_chart
 qa.es_chart <- function(data, symbol = "", use_mean = FALSE, distribution = "normal", percentile = 99.9, portfolio = FALSE) {
   o <- do.call(what=py$openbb$qa$es_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9601,6 +10217,7 @@ qa.es_chart <- function(data, symbol = "", use_mean = FALSE, distribution = "nor
 #' @examples
 #' qa.hist(bins=15)
 #' @export
+#* @get /qa.hist
 qa.hist <- function(data, target, symbol = "", bins = 15, external_axes) {
   o <- do.call(what=py$openbb$qa$hist, args=as.list(rlang::call_match())[-1])
   o
@@ -9616,6 +10233,7 @@ qa.hist <- function(data, target, symbol = "", bins = 15, external_axes) {
 #' @examples
 #' qa.kurtosis(window=14)
 #' @export
+#* @get /qa.kurtosis
 qa.kurtosis <- function(data, window = 14) {
   o <- do.call(what=py$openbb$qa$kurtosis, args=as.list(rlang::call_match())[-1])
   o
@@ -9634,6 +10252,7 @@ qa.kurtosis <- function(data, window = 14) {
 #' @examples
 #' qa.kurtosis_chart(symbol='AMZN', window=14)
 #' @export
+#* @get /qa.kurtosis_chart
 qa.kurtosis_chart <- function(symbol, data, target, window = 14, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$kurtosis_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9651,6 +10270,7 @@ qa.kurtosis_chart <- function(symbol, data, target, window = 14, export = "", sh
 #' @examples
 #' qa.line(log_y=TRUE)
 #' @export
+#* @get /qa.line
 qa.line <- function(data, title = "", log_y = TRUE, markers_lines, markers_scatter, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$line, args=as.list(rlang::call_match())[-1])
   o
@@ -9663,6 +10283,7 @@ qa.line <- function(data, title = "", log_y = TRUE, markers_lines, markers_scatt
 #'
 #' @param data (data.frame) Dataframe of targeted data
 #' @export
+#* @get /qa.normality
 qa.normality <- function(data) {
   o <- do.call(what=py$openbb$qa$normality, args=as.list(rlang::call_match())[-1])
   o
@@ -9677,6 +10298,7 @@ qa.normality <- function(data) {
 #' @param target (character length 1) Column in data to look at
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /qa.normality_chart
 qa.normality_chart <- function(data, target, export = "", sheet_name) {
   o <- do.call(what=py$openbb$qa$normality_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9693,6 +10315,7 @@ qa.normality_chart <- function(data, target, export = "", sheet_name) {
 #' @examples
 #' qa.omega(threshold_start=0, threshold_end=1.5)
 #' @export
+#* @get /qa.omega
 qa.omega <- function(data, threshold_start = 0, threshold_end = 1.5) {
   o <- do.call(what=py$openbb$qa$omega, args=as.list(rlang::call_match())[-1])
   o
@@ -9709,6 +10332,7 @@ qa.omega <- function(data, threshold_start = 0, threshold_end = 1.5) {
 #' @examples
 #' qa.omega_chart(threshold_start=0, threshold_end=1.5)
 #' @export
+#* @get /qa.omega_chart
 qa.omega_chart <- function(data, threshold_start = 0, threshold_end = 1.5) {
   o <- do.call(what=py$openbb$qa$omega_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9723,6 +10347,7 @@ qa.omega_chart <- function(data, threshold_start = 0, threshold_end = 1.5) {
 #' @param target (character length 1) Column in data to look at
 #' @param symbol (character length 1) Stock ticker
 #' @export
+#* @get /qa.qqplot
 qa.qqplot <- function(data, target, symbol = "", external_axes) {
   o <- do.call(what=py$openbb$qa$qqplot, args=as.list(rlang::call_match())[-1])
   o
@@ -9739,6 +10364,7 @@ qa.qqplot <- function(data, target, symbol = "", external_axes) {
 #' @examples
 #' qa.quantile(window=14, quantile_pct=0.5)
 #' @export
+#* @get /qa.quantile
 qa.quantile <- function(data, window = 14, quantile_pct = 0.5) {
   o <- do.call(what=py$openbb$qa$quantile, args=as.list(rlang::call_match())[-1])
   o
@@ -9758,6 +10384,7 @@ qa.quantile <- function(data, window = 14, quantile_pct = 0.5) {
 #' @examples
 #' qa.quantile_chart(window=14, quantile=0.5)
 #' @export
+#* @get /qa.quantile_chart
 qa.quantile_chart <- function(data, target, symbol = "", window = 14, quantile = 0.5, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$quantile_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9773,6 +10400,7 @@ qa.quantile_chart <- function(data, target, symbol = "", window = 14, quantile =
 #' @examples
 #' qa.rolling(window=14)
 #' @export
+#* @get /qa.rolling
 qa.rolling <- function(data, window = 14) {
   o <- do.call(what=py$openbb$qa$rolling, args=as.list(rlang::call_match())[-1])
   o
@@ -9791,6 +10419,7 @@ qa.rolling <- function(data, window = 14) {
 #' @examples
 #' qa.rolling_chart(window=14)
 #' @export
+#* @get /qa.rolling_chart
 qa.rolling_chart <- function(data, target, symbol = "", window = 14, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$rolling_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9807,6 +10436,7 @@ qa.rolling_chart <- function(data, target, symbol = "", window = 14, export = ""
 #' @examples
 #' qa.sharpe(rfr=0, window=252)
 #' @export
+#* @get /qa.sharpe
 qa.sharpe <- function(data, rfr = 0, window = 252) {
   o <- do.call(what=py$openbb$qa$sharpe, args=as.list(rlang::call_match())[-1])
   o
@@ -9823,6 +10453,7 @@ qa.sharpe <- function(data, rfr = 0, window = 252) {
 #' @examples
 #' qa.sharpe_chart(rfr=0, window=252)
 #' @export
+#* @get /qa.sharpe_chart
 qa.sharpe_chart <- function(data, rfr = 0, window = 252) {
   o <- do.call(what=py$openbb$qa$sharpe_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9838,6 +10469,7 @@ qa.sharpe_chart <- function(data, rfr = 0, window = 252) {
 #' @examples
 #' qa.skew(window=14)
 #' @export
+#* @get /qa.skew
 qa.skew <- function(data, window = 14) {
   o <- do.call(what=py$openbb$qa$skew, args=as.list(rlang::call_match())[-1])
   o
@@ -9856,6 +10488,7 @@ qa.skew <- function(data, window = 14) {
 #' @examples
 #' qa.skew_chart(symbol='AMZN', window=14)
 #' @export
+#* @get /qa.skew_chart
 qa.skew_chart <- function(symbol, data, target, window = 14, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$skew_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9873,6 +10506,7 @@ qa.skew_chart <- function(symbol, data, target, window = 14, export = "", sheet_
 #' @examples
 #' qa.sortino(target_return=0, window=252, adjusted=FALSE)
 #' @export
+#* @get /qa.sortino
 qa.sortino <- function(data, target_return = 0, window = 252, adjusted = FALSE) {
   o <- do.call(what=py$openbb$qa$sortino, args=as.list(rlang::call_match())[-1])
   o
@@ -9888,6 +10522,7 @@ qa.sortino <- function(data, target_return = 0, window = 252, adjusted = FALSE) 
 #' @param window (numeric length 1) length of the rolling window
 #' @param adjusted (logical length 1) adjust the sortino ratio
 #' @export
+#* @get /qa.sortino_chart
 qa.sortino_chart <- function(data, target_return, window, adjusted = TRUE) {
   o <- do.call(what=py$openbb$qa$sortino_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9903,6 +10538,7 @@ qa.sortino_chart <- function(data, target_return, window, adjusted = TRUE) {
 #' @examples
 #' qa.spread(window=14)
 #' @export
+#* @get /qa.spread
 qa.spread <- function(data, window = 14) {
   o <- do.call(what=py$openbb$qa$spread, args=as.list(rlang::call_match())[-1])
   o
@@ -9921,6 +10557,7 @@ qa.spread <- function(data, window = 14) {
 #' @examples
 #' qa.spread_chart(window=14)
 #' @export
+#* @get /qa.spread_chart
 qa.spread_chart <- function(data, target, symbol = "", window = 14, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$qa$spread_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9933,6 +10570,7 @@ qa.spread_chart <- function(data, target, symbol = "", window = 14, export = "",
 #'
 #' @param data (data.frame) Dataframe to get summary statistics for
 #' @export
+#* @get /qa.summary
 qa.summary <- function(data) {
   o <- do.call(what=py$openbb$qa$summary, args=as.list(rlang::call_match())[-1])
   o
@@ -9946,6 +10584,7 @@ qa.summary <- function(data) {
 #' @param data (data.frame) DataFrame to get statistics of
 #' @param export (character length 1) Format to export data
 #' @export
+#* @get /qa.summary_chart
 qa.summary_chart <- function(data, export = "", sheet_name) {
   o <- do.call(what=py$openbb$qa$summary_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9962,6 +10601,7 @@ qa.summary_chart <- function(data, export = "", sheet_name) {
 #' @examples
 #' qa.unitroot(fuller_reg='c', kpss_reg='c')
 #' @export
+#* @get /qa.unitroot
 qa.unitroot <- function(data, fuller_reg = "c", kpss_reg = "c") {
   o <- do.call(what=py$openbb$qa$unitroot, args=as.list(rlang::call_match())[-1])
   o
@@ -9980,6 +10620,7 @@ qa.unitroot <- function(data, fuller_reg = "c", kpss_reg = "c") {
 #' @examples
 #' qa.unitroot_chart(fuller_reg='c', kpss_reg='c')
 #' @export
+#* @get /qa.unitroot_chart
 qa.unitroot_chart <- function(data, target, fuller_reg = "c", kpss_reg = "c", export = "", sheet_name) {
   o <- do.call(what=py$openbb$qa$unitroot_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -9998,6 +10639,7 @@ qa.unitroot_chart <- function(data, target, fuller_reg = "c", kpss_reg = "c", ex
 #' @examples
 #' qa.var(use_mean=FALSE, adjusted_var=FALSE, student_t=FALSE, percentile=99.9, portfolio=FALSE)
 #' @export
+#* @get /qa.var
 qa.var <- function(data, use_mean = FALSE, adjusted_var = FALSE, student_t = FALSE, percentile, portfolio = FALSE) {
   o <- do.call(what=py$openbb$qa$var, args=as.list(rlang::call_match())[-1])
   o
@@ -10019,6 +10661,7 @@ qa.var <- function(data, use_mean = FALSE, adjusted_var = FALSE, student_t = FAL
 #' @examples
 #' qa.var_chart(use_mean=FALSE, adjusted_var=FALSE, student_t=FALSE, percentile=99, data_range=0, portfolio=FALSE)
 #' @export
+#* @get /qa.var_chart
 qa.var_chart <- function(data, symbol = "", use_mean = FALSE, adjusted_var = FALSE, student_t = FALSE, percentile = 99.9, data_range = 0, portfolio = FALSE) {
   o <- do.call(what=py$openbb$qa$var_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10029,6 +10672,7 @@ qa.var_chart <- function(data, symbol = "", use_mean = FALSE, adjusted_var = FAL
 #' @description Wrapper for Python function stocks.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.about
 stocks.about <- function() {
   o <- do.call(what=py$openbb$stocks$about, args=as.list(rlang::call_match())[-1])
   o
@@ -10053,6 +10697,7 @@ stocks.about <- function() {
 #' @examples
 #' stocks.candle(symbol='AMZN', use_matplotlib=TRUE, intraday=FALSE, add_trend=FALSE, interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, raw=FALSE, yscale='linear')
 #' @export
+#* @get /stocks.candle
 stocks.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE, add_trend = FALSE, ma, asset_type = "", start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, external_axes, raw = FALSE, yscale = "linear") {
   o <- do.call(what=py$openbb$stocks$candle, args=as.list(rlang::call_match())[-1])
   o
@@ -10073,6 +10718,7 @@ stocks.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE,
 #' @examples
 #' stocks.load(symbol='AMZN', interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, verbose=TRUE)
 #' @export
+#* @get /stocks.load
 stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE) {
   o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1])
   o
@@ -10085,6 +10731,7 @@ stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost =
 #'
 #' @param data (data.frame) Stock dataframe.
 #' @export
+#* @get /stocks.process_candle
 stocks.process_candle <- function(data) {
   o <- do.call(what=py$openbb$stocks$process_candle, args=as.list(rlang::call_match())[-1])
   o
@@ -10099,6 +10746,7 @@ stocks.process_candle <- function(data) {
 #' @examples
 #' stocks.quote(symbol='AMZN')
 #' @export
+#* @get /stocks.quote
 stocks.quote <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$quote, args=as.list(rlang::call_match())[-1])
   o
@@ -10119,6 +10767,7 @@ stocks.quote <- function(symbol) {
 #' @examples
 #' stocks.search(limit=0)
 #' @export
+#* @get /stocks.search
 stocks.search <- function(query = "", country = "", sector = "", industry_group = "", industry = "", exchange_country = "", all_exchanges = FALSE, limit = 0) {
   o <- do.call(what=py$openbb$stocks$search, args=as.list(rlang::call_match())[-1])
   o
@@ -10134,6 +10783,7 @@ stocks.search <- function(query = "", country = "", sector = "", industry_group 
 #' @examples
 #' stocks.tob(symbol='AMZN', exchange='BZX')
 #' @export
+#* @get /stocks.tob
 stocks.tob <- function(symbol, exchange = "BZX") {
   o <- do.call(what=py$openbb$stocks$tob, args=as.list(rlang::call_match())[-1])
   o
@@ -10144,6 +10794,7 @@ stocks.tob <- function(symbol, exchange = "BZX") {
 #' @description Wrapper for Python function stocks.ba.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ba.about
 stocks.ba.about <- function() {
   o <- do.call(what=py$openbb$stocks$ba$about, args=as.list(rlang::call_match())[-1])
   o
@@ -10158,6 +10809,7 @@ stocks.ba.about <- function() {
 #' @examples
 #' stocks.ba.bullbear(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.bullbear
 stocks.ba.bullbear <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ba$bullbear, args=as.list(rlang::call_match())[-1])
   o
@@ -10172,6 +10824,7 @@ stocks.ba.bullbear <- function(symbol) {
 #' @examples
 #' stocks.ba.cnews(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.cnews
 stocks.ba.cnews <- function(symbol, start_date, end_date) {
   o <- do.call(what=py$openbb$stocks$ba$cnews, args=as.list(rlang::call_match())[-1])
   o
@@ -10189,6 +10842,7 @@ stocks.ba.cnews <- function(symbol, start_date, end_date) {
 #' @examples
 #' stocks.ba.getdd(symbol='AMZN', limit=5, n_days=3, show_all_flairs=FALSE)
 #' @export
+#* @get /stocks.ba.getdd
 stocks.ba.getdd <- function(symbol, limit = 5, n_days = 3, show_all_flairs = FALSE) {
   o <- do.call(what=py$openbb$stocks$ba$getdd, args=as.list(rlang::call_match())[-1])
   o
@@ -10203,6 +10857,7 @@ stocks.ba.getdd <- function(symbol, limit = 5, n_days = 3, show_all_flairs = FAL
 #' @examples
 #' stocks.ba.headlines(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.headlines
 stocks.ba.headlines <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ba$headlines, args=as.list(rlang::call_match())[-1])
   o
@@ -10219,6 +10874,7 @@ stocks.ba.headlines <- function(symbol) {
 #' @examples
 #' stocks.ba.headlines_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.headlines_chart
 stocks.ba.headlines_chart <- function(symbol, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ba$headlines_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10234,6 +10890,7 @@ stocks.ba.headlines_chart <- function(symbol, raw = FALSE, export = "", sheet_na
 #' @examples
 #' stocks.ba.infer(symbol='AMZN', limit=100)
 #' @export
+#* @get /stocks.ba.infer
 stocks.ba.infer <- function(symbol, limit = 100, start_date, end_date) {
   o <- do.call(what=py$openbb$stocks$ba$infer, args=as.list(rlang::call_match())[-1])
   o
@@ -10250,6 +10907,7 @@ stocks.ba.infer <- function(symbol, limit = 100, start_date, end_date) {
 #' @examples
 #' stocks.ba.infer_chart(symbol='AMZN', limit=100)
 #' @export
+#* @get /stocks.ba.infer_chart
 stocks.ba.infer_chart <- function(symbol, limit = 100, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ba$infer_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10264,6 +10922,7 @@ stocks.ba.infer_chart <- function(symbol, limit = 100, export = "", sheet_name) 
 #' @examples
 #' stocks.ba.mentions(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.mentions
 stocks.ba.mentions <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ba$mentions, args=as.list(rlang::call_match())[-1])
   o
@@ -10280,6 +10939,7 @@ stocks.ba.mentions <- function(symbol) {
 #' @examples
 #' stocks.ba.mentions_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.mentions_chart
 stocks.ba.mentions_chart <- function(symbol, start_date = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ba$mentions_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10295,6 +10955,7 @@ stocks.ba.mentions_chart <- function(symbol, start_date = "", export = "", sheet
 #' @examples
 #' stocks.ba.messages(symbol='AMZN', limit=30)
 #' @export
+#* @get /stocks.ba.messages
 stocks.ba.messages <- function(symbol, limit = 30) {
   o <- do.call(what=py$openbb$stocks$ba$messages, args=as.list(rlang::call_match())[-1])
   o
@@ -10311,6 +10972,7 @@ stocks.ba.messages <- function(symbol, limit = 30) {
 #' @examples
 #' stocks.ba.popular(limit=10, post_limit=50)
 #' @export
+#* @get /stocks.ba.popular
 stocks.ba.popular <- function(limit = 10, post_limit = 50, subreddits = "") {
   o <- do.call(what=py$openbb$stocks$ba$popular, args=as.list(rlang::call_match())[-1])
   o
@@ -10326,6 +10988,7 @@ stocks.ba.popular <- function(limit = 10, post_limit = 50, subreddits = "") {
 #' @examples
 #' stocks.ba.queries(symbol='AMZN', limit=10)
 #' @export
+#* @get /stocks.ba.queries
 stocks.ba.queries <- function(symbol, limit = 10) {
   o <- do.call(what=py$openbb$stocks$ba$queries, args=as.list(rlang::call_match())[-1])
   o
@@ -10345,6 +11008,7 @@ stocks.ba.queries <- function(symbol, limit = 10) {
 #' @examples
 #' stocks.ba.redditsent(symbol='AMZN', limit=100, sortby='relevance', time_frame='week', full_search=TRUE, subreddits='all')
 #' @export
+#* @get /stocks.ba.redditsent
 stocks.ba.redditsent <- function(symbol, limit = 100, sortby = "relevance", time_frame = "week", full_search = TRUE, subreddits = "all") {
   o <- do.call(what=py$openbb$stocks$ba$redditsent, args=as.list(rlang::call_match())[-1])
   o
@@ -10359,6 +11023,7 @@ stocks.ba.redditsent <- function(symbol, limit = 100, sortby = "relevance", time
 #' @examples
 #' stocks.ba.regions(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.regions
 stocks.ba.regions <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ba$regions, args=as.list(rlang::call_match())[-1])
   o
@@ -10375,6 +11040,7 @@ stocks.ba.regions <- function(symbol) {
 #' @examples
 #' stocks.ba.regions_chart(symbol='AMZN', limit=5)
 #' @export
+#* @get /stocks.ba.regions_chart
 stocks.ba.regions_chart <- function(symbol, limit = 5, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ba$regions_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10390,6 +11056,7 @@ stocks.ba.regions_chart <- function(symbol, limit = 5, export = "", sheet_name, 
 #' @examples
 #' stocks.ba.rise(symbol='AMZN', limit=10)
 #' @export
+#* @get /stocks.ba.rise
 stocks.ba.rise <- function(symbol, limit = 10) {
   o <- do.call(what=py$openbb$stocks$ba$rise, args=as.list(rlang::call_match())[-1])
   o
@@ -10406,6 +11073,7 @@ stocks.ba.rise <- function(symbol, limit = 10) {
 #' @examples
 #' stocks.ba.sentiment(symbol='AMZN', n_tweets=15, n_days_past=2)
 #' @export
+#* @get /stocks.ba.sentiment
 stocks.ba.sentiment <- function(symbol, n_tweets = 15, n_days_past = 2) {
   o <- do.call(what=py$openbb$stocks$ba$sentiment, args=as.list(rlang::call_match())[-1])
   o
@@ -10424,6 +11092,7 @@ stocks.ba.sentiment <- function(symbol, n_tweets = 15, n_days_past = 2) {
 #' @examples
 #' stocks.ba.sentiment_chart(symbol='AMZN', n_tweets=15, n_days_past=2, compare=FALSE)
 #' @export
+#* @get /stocks.ba.sentiment_chart
 stocks.ba.sentiment_chart <- function(symbol, n_tweets = 15, n_days_past = 2, compare = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ba$sentiment_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10438,6 +11107,7 @@ stocks.ba.sentiment_chart <- function(symbol, n_tweets = 15, n_days_past = 2, co
 #' @examples
 #' stocks.ba.snews(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.snews
 stocks.ba.snews <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ba$snews, args=as.list(rlang::call_match())[-1])
   o
@@ -10453,6 +11123,7 @@ stocks.ba.snews <- function(symbol) {
 #' @examples
 #' stocks.ba.snews_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.ba.snews_chart
 stocks.ba.snews_chart <- function(symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ba$snews_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10467,6 +11138,7 @@ stocks.ba.snews_chart <- function(symbol, export = "", sheet_name, external_axes
 #' @examples
 #' stocks.ba.spac(limit=5)
 #' @export
+#* @get /stocks.ba.spac
 stocks.ba.spac <- function(limit = 5) {
   o <- do.call(what=py$openbb$stocks$ba$spac, args=as.list(rlang::call_match())[-1])
   o
@@ -10482,6 +11154,7 @@ stocks.ba.spac <- function(limit = 5) {
 #' @examples
 #' stocks.ba.spacc(limit=10, popular=FALSE)
 #' @export
+#* @get /stocks.ba.spacc
 stocks.ba.spacc <- function(limit = 10, popular = FALSE) {
   o <- do.call(what=py$openbb$stocks$ba$spacc, args=as.list(rlang::call_match())[-1])
   o
@@ -10497,6 +11170,7 @@ stocks.ba.spacc <- function(limit = 10, popular = FALSE) {
 #' @examples
 #' stocks.ba.stalker(limit=30)
 #' @export
+#* @get /stocks.ba.stalker
 stocks.ba.stalker <- function(user, limit = 30) {
   o <- do.call(what=py$openbb$stocks$ba$stalker, args=as.list(rlang::call_match())[-1])
   o
@@ -10508,6 +11182,7 @@ stocks.ba.stalker <- function(user, limit = 30) {
 #' @description Wrapper for Python function stocks.ba.text_sent from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ba.text_sent
 stocks.ba.text_sent <- function(post_data) {
   o <- do.call(what=py$openbb$stocks$ba$text_sent, args=as.list(rlang::call_match())[-1])
   o
@@ -10519,6 +11194,7 @@ stocks.ba.text_sent <- function(post_data) {
 #' @description Wrapper for Python function stocks.ba.trending from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ba.trending
 stocks.ba.trending <- function() {
   o <- do.call(what=py$openbb$stocks$ba$trending, args=as.list(rlang::call_match())[-1])
   o
@@ -10533,6 +11209,7 @@ stocks.ba.trending <- function() {
 #' @examples
 #' stocks.ba.watchlist(limit=5)
 #' @export
+#* @get /stocks.ba.watchlist
 stocks.ba.watchlist <- function(limit = 5) {
   o <- do.call(what=py$openbb$stocks$ba$watchlist, args=as.list(rlang::call_match())[-1])
   o
@@ -10548,6 +11225,7 @@ stocks.ba.watchlist <- function(limit = 5) {
 #' @examples
 #' stocks.ba.wsb(limit=10, new=FALSE)
 #' @export
+#* @get /stocks.ba.wsb
 stocks.ba.wsb <- function(limit = 10, new = FALSE) {
   o <- do.call(what=py$openbb$stocks$ba$wsb, args=as.list(rlang::call_match())[-1])
   o
@@ -10558,6 +11236,7 @@ stocks.ba.wsb <- function(limit = 10, new = FALSE) {
 #' @description Wrapper for Python function stocks.ca.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ca.about
 stocks.ca.about <- function() {
   o <- do.call(what=py$openbb$stocks$ca$about, args=as.list(rlang::call_match())[-1])
   o
@@ -10573,6 +11252,7 @@ stocks.ca.about <- function() {
 #' @examples
 #' stocks.ca.balance(timeframe='2021', quarter=FALSE)
 #' @export
+#* @get /stocks.ca.balance
 stocks.ca.balance <- function(similar, timeframe = "2022", quarter = FALSE) {
   o <- do.call(what=py$openbb$stocks$ca$balance, args=as.list(rlang::call_match())[-1])
   o
@@ -10588,6 +11268,7 @@ stocks.ca.balance <- function(similar, timeframe = "2022", quarter = FALSE) {
 #' @examples
 #' stocks.ca.cashflow(timeframe='2021', quarter=FALSE)
 #' @export
+#* @get /stocks.ca.cashflow
 stocks.ca.cashflow <- function(similar, timeframe = "2022", quarter = FALSE) {
   o <- do.call(what=py$openbb$stocks$ca$cashflow, args=as.list(rlang::call_match())[-1])
   o
@@ -10602,6 +11283,7 @@ stocks.ca.cashflow <- function(similar, timeframe = "2022", quarter = FALSE) {
 #' @examples
 #' stocks.ca.hcorr(candle_type='a')
 #' @export
+#* @get /stocks.ca.hcorr
 stocks.ca.hcorr <- function(similar, start_date, end_date, candle_type = "a") {
   o <- do.call(what=py$openbb$stocks$ca$hcorr, args=as.list(rlang::call_match())[-1])
   o
@@ -10619,6 +11301,7 @@ stocks.ca.hcorr <- function(similar, start_date, end_date, candle_type = "a") {
 #' @examples
 #' stocks.ca.hcorr_chart(candle_type='a', display_full_matrix=FALSE, raw=FALSE)
 #' @export
+#* @get /stocks.ca.hcorr_chart
 stocks.ca.hcorr_chart <- function(similar, start_date, end_date, candle_type = "a", display_full_matrix = FALSE, raw = FALSE, external_axes, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ca$hcorr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10633,6 +11316,7 @@ stocks.ca.hcorr_chart <- function(similar, start_date, end_date, candle_type = "
 #' @examples
 #' stocks.ca.hist(candle_type='a')
 #' @export
+#* @get /stocks.ca.hist
 stocks.ca.hist <- function(similar, start_date, end_date, candle_type = "a") {
   o <- do.call(what=py$openbb$stocks$ca$hist, args=as.list(rlang::call_match())[-1])
   o
@@ -10649,6 +11333,7 @@ stocks.ca.hist <- function(similar, start_date, end_date, candle_type = "a") {
 #' @examples
 #' stocks.ca.hist_chart(candle_type='a', normalize=TRUE)
 #' @export
+#* @get /stocks.ca.hist_chart
 stocks.ca.hist_chart <- function(similar, start_date, end_date, candle_type = "a", normalize = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ca$hist_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10664,6 +11349,7 @@ stocks.ca.hist_chart <- function(similar, start_date, end_date, candle_type = "a
 #' @examples
 #' stocks.ca.income(timeframe='2021', quarter=FALSE)
 #' @export
+#* @get /stocks.ca.income
 stocks.ca.income <- function(similar, timeframe = "2022", quarter = FALSE) {
   o <- do.call(what=py$openbb$stocks$ca$income, args=as.list(rlang::call_match())[-1])
   o
@@ -10680,6 +11366,7 @@ stocks.ca.income <- function(similar, timeframe = "2022", quarter = FALSE) {
 #' @examples
 #' stocks.ca.income_chart(timeframe='2021', quarter=FALSE)
 #' @export
+#* @get /stocks.ca.income_chart
 stocks.ca.income_chart <- function(symbols, timeframe = "2022", quarter = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ca$income_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10691,6 +11378,7 @@ stocks.ca.income_chart <- function(symbols, timeframe = "2022", quarter = FALSE,
 #' @description Wrapper for Python function stocks.ca.scorr from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ca.scorr
 stocks.ca.scorr <- function(similar) {
   o <- do.call(what=py$openbb$stocks$ca$scorr, args=as.list(rlang::call_match())[-1])
   o
@@ -10706,6 +11394,7 @@ stocks.ca.scorr <- function(similar) {
 #' @examples
 #' stocks.ca.scorr_chart(raw=FALSE)
 #' @export
+#* @get /stocks.ca.scorr_chart
 stocks.ca.scorr_chart <- function(similar, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ca$scorr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10720,6 +11409,7 @@ stocks.ca.scorr_chart <- function(similar, raw = FALSE, export = "", sheet_name,
 #' @examples
 #' stocks.ca.screener(data_type='overview')
 #' @export
+#* @get /stocks.ca.screener
 stocks.ca.screener <- function(similar, data_type = "overview") {
   o <- do.call(what=py$openbb$stocks$ca$screener, args=as.list(rlang::call_match())[-1])
   o
@@ -10731,6 +11421,7 @@ stocks.ca.screener <- function(similar, data_type = "overview") {
 #' @description Wrapper for Python function stocks.ca.sentiment from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ca.sentiment
 stocks.ca.sentiment <- function(symbols) {
   o <- do.call(what=py$openbb$stocks$ca$sentiment, args=as.list(rlang::call_match())[-1])
   o
@@ -10746,6 +11437,7 @@ stocks.ca.sentiment <- function(symbols) {
 #' @examples
 #' stocks.ca.sentiment_chart(raw=FALSE)
 #' @export
+#* @get /stocks.ca.sentiment_chart
 stocks.ca.sentiment_chart <- function(similar, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ca$sentiment_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10761,6 +11453,7 @@ stocks.ca.sentiment_chart <- function(similar, raw = FALSE, export = "", sheet_n
 #' @examples
 #' stocks.ca.similar(symbol='AMZN', source='Finviz')
 #' @export
+#* @get /stocks.ca.similar
 stocks.ca.similar <- function(symbol, source) {
   o <- do.call(what=py$openbb$stocks$ca$similar, args=as.list(rlang::call_match())[-1])
   o
@@ -10772,6 +11465,7 @@ stocks.ca.similar <- function(symbol, source) {
 #' @description Wrapper for Python function stocks.ca.volume from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ca.volume
 stocks.ca.volume <- function(similar, start_date, end_date) {
   o <- do.call(what=py$openbb$stocks$ca$volume, args=as.list(rlang::call_match())[-1])
   o
@@ -10784,6 +11478,7 @@ stocks.ca.volume <- function(similar, start_date, end_date) {
 #'
 #' @param export (character length 1) Format to export historical prices, by default ""
 #' @export
+#* @get /stocks.ca.volume_chart
 stocks.ca.volume_chart <- function(similar, start_date, end_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ca$volume_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10794,6 +11489,7 @@ stocks.ca.volume_chart <- function(similar, start_date, end_date, export = "", s
 #' @description Wrapper for Python function stocks.disc.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.about
 stocks.disc.about <- function() {
   o <- do.call(what=py$openbb$stocks$disc$about, args=as.list(rlang::call_match())[-1])
   o
@@ -10805,6 +11501,7 @@ stocks.disc.about <- function() {
 #' @description Wrapper for Python function stocks.disc.active from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.active
 stocks.disc.active <- function() {
   o <- do.call(what=py$openbb$stocks$disc$active, args=as.list(rlang::call_match())[-1])
   o
@@ -10821,6 +11518,7 @@ stocks.disc.active <- function() {
 #' @examples
 #' stocks.disc.arkord(buys_only=FALSE, sells_only=FALSE)
 #' @export
+#* @get /stocks.disc.arkord
 stocks.disc.arkord <- function(buys_only = FALSE, sells_only = FALSE, fund = "") {
   o <- do.call(what=py$openbb$stocks$disc$arkord, args=as.list(rlang::call_match())[-1])
   o
@@ -10832,6 +11530,7 @@ stocks.disc.arkord <- function(buys_only = FALSE, sells_only = FALSE, fund = "")
 #' @description Wrapper for Python function stocks.disc.asc from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.asc
 stocks.disc.asc <- function() {
   o <- do.call(what=py$openbb$stocks$disc$asc, args=as.list(rlang::call_match())[-1])
   o
@@ -10843,6 +11542,7 @@ stocks.disc.asc <- function() {
 #' @description Wrapper for Python function stocks.disc.dividends from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.dividends
 stocks.disc.dividends <- function(date) {
   o <- do.call(what=py$openbb$stocks$disc$dividends, args=as.list(rlang::call_match())[-1])
   o
@@ -10855,6 +11555,7 @@ stocks.disc.dividends <- function(date) {
 #'
 #' @param pages (integer length 1) The range of most-rececnt pages to get entries from (1000 per page; maximum of 30 pages)
 #' @export
+#* @get /stocks.disc.filings
 stocks.disc.filings <- function(pages = 1) {
   o <- do.call(what=py$openbb$stocks$disc$filings, args=as.list(rlang::call_match())[-1])
   o
@@ -10870,6 +11571,7 @@ stocks.disc.filings <- function(pages = 1) {
 #' @param today (logical length 1) Show all from today
 #' @param export (character length 1) Export data as csv, json, or xlsx
 #' @export
+#* @get /stocks.disc.filings_chart
 stocks.disc.filings_chart <- function(pages = 1, limit = 5, today = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$disc$filings_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -10884,6 +11586,7 @@ stocks.disc.filings_chart <- function(pages = 1, limit = 5, today = FALSE, expor
 #' @examples
 #' stocks.disc.fipo(num_days_ahead=5)
 #' @export
+#* @get /stocks.disc.fipo
 stocks.disc.fipo <- function(num_days_ahead = 5, end_date) {
   o <- do.call(what=py$openbb$stocks$disc$fipo, args=as.list(rlang::call_match())[-1])
   o
@@ -10895,6 +11598,7 @@ stocks.disc.fipo <- function(num_days_ahead = 5, end_date) {
 #' @description Wrapper for Python function stocks.disc.gainers from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.gainers
 stocks.disc.gainers <- function() {
   o <- do.call(what=py$openbb$stocks$disc$gainers, args=as.list(rlang::call_match())[-1])
   o
@@ -10906,6 +11610,7 @@ stocks.disc.gainers <- function() {
 #' @description Wrapper for Python function stocks.disc.gtech from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.gtech
 stocks.disc.gtech <- function() {
   o <- do.call(what=py$openbb$stocks$disc$gtech, args=as.list(rlang::call_match())[-1])
   o
@@ -10917,6 +11622,7 @@ stocks.disc.gtech <- function() {
 #' @description Wrapper for Python function stocks.disc.hotpenny from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.hotpenny
 stocks.disc.hotpenny <- function() {
   o <- do.call(what=py$openbb$stocks$disc$hotpenny, args=as.list(rlang::call_match())[-1])
   o
@@ -10928,6 +11634,7 @@ stocks.disc.hotpenny <- function() {
 #' @description Wrapper for Python function stocks.disc.ipo from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.ipo
 stocks.disc.ipo <- function(start_date, end_date) {
   o <- do.call(what=py$openbb$stocks$disc$ipo, args=as.list(rlang::call_match())[-1])
   o
@@ -10939,6 +11646,7 @@ stocks.disc.ipo <- function(start_date, end_date) {
 #' @description Wrapper for Python function stocks.disc.losers from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.losers
 stocks.disc.losers <- function() {
   o <- do.call(what=py$openbb$stocks$disc$losers, args=as.list(rlang::call_match())[-1])
   o
@@ -10950,6 +11658,7 @@ stocks.disc.losers <- function() {
 #' @description Wrapper for Python function stocks.disc.lowfloat from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.lowfloat
 stocks.disc.lowfloat <- function() {
   o <- do.call(what=py$openbb$stocks$disc$lowfloat, args=as.list(rlang::call_match())[-1])
   o
@@ -10966,6 +11675,7 @@ stocks.disc.lowfloat <- function() {
 #' @examples
 #' stocks.disc.news(news_type='Top-News', limit=5)
 #' @export
+#* @get /stocks.disc.news
 stocks.disc.news <- function(news_type = "Top-News", limit = 5) {
   o <- do.call(what=py$openbb$stocks$disc$news, args=as.list(rlang::call_match())[-1])
   o
@@ -10980,6 +11690,7 @@ stocks.disc.news <- function(news_type = "Top-News", limit = 5) {
 #' @examples
 #' stocks.disc.pipo(num_days_behind=5)
 #' @export
+#* @get /stocks.disc.pipo
 stocks.disc.pipo <- function(num_days_behind = 5, start_date) {
   o <- do.call(what=py$openbb$stocks$disc$pipo, args=as.list(rlang::call_match())[-1])
   o
@@ -10991,6 +11702,7 @@ stocks.disc.pipo <- function(num_days_behind = 5, start_date) {
 #' @description Wrapper for Python function stocks.disc.rtat from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.rtat
 stocks.disc.rtat <- function() {
   o <- do.call(what=py$openbb$stocks$disc$rtat, args=as.list(rlang::call_match())[-1])
   o
@@ -11005,6 +11717,7 @@ stocks.disc.rtat <- function() {
 #' @examples
 #' stocks.disc.trending(limit=5)
 #' @export
+#* @get /stocks.disc.trending
 stocks.disc.trending <- function(limit = 5) {
   o <- do.call(what=py$openbb$stocks$disc$trending, args=as.list(rlang::call_match())[-1])
   o
@@ -11016,6 +11729,7 @@ stocks.disc.trending <- function(limit = 5) {
 #' @description Wrapper for Python function stocks.disc.ugs from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.ugs
 stocks.disc.ugs <- function() {
   o <- do.call(what=py$openbb$stocks$disc$ugs, args=as.list(rlang::call_match())[-1])
   o
@@ -11027,6 +11741,7 @@ stocks.disc.ugs <- function() {
 #' @description Wrapper for Python function stocks.disc.ulc from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.disc.ulc
 stocks.disc.ulc <- function() {
   o <- do.call(what=py$openbb$stocks$disc$ulc, args=as.list(rlang::call_match())[-1])
   o
@@ -11041,6 +11756,7 @@ stocks.disc.ulc <- function() {
 #' @examples
 #' stocks.disc.upcoming(limit=10)
 #' @export
+#* @get /stocks.disc.upcoming
 stocks.disc.upcoming <- function(limit = 10) {
   o <- do.call(what=py$openbb$stocks$disc$upcoming, args=as.list(rlang::call_match())[-1])
   o
@@ -11051,6 +11767,7 @@ stocks.disc.upcoming <- function(limit = 10) {
 #' @description Wrapper for Python function stocks.dps.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.dps.about
 stocks.dps.about <- function() {
   o <- do.call(what=py$openbb$stocks$dps$about, args=as.list(rlang::call_match())[-1])
   o
@@ -11062,6 +11779,7 @@ stocks.dps.about <- function() {
 #' @description Wrapper for Python function stocks.dps.ctb from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.dps.ctb
 stocks.dps.ctb <- function() {
   o <- do.call(what=py$openbb$stocks$dps$ctb, args=as.list(rlang::call_match())[-1])
   o
@@ -11076,6 +11794,7 @@ stocks.dps.ctb <- function() {
 #' @examples
 #' stocks.dps.dpotc(symbol='AMZN')
 #' @export
+#* @get /stocks.dps.dpotc
 stocks.dps.dpotc <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$dps$dpotc, args=as.list(rlang::call_match())[-1])
   o
@@ -11091,6 +11810,7 @@ stocks.dps.dpotc <- function(symbol) {
 #' @examples
 #' stocks.dps.dpotc_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.dps.dpotc_chart
 stocks.dps.dpotc_chart <- function(symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$dpotc_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11106,6 +11826,7 @@ stocks.dps.dpotc_chart <- function(symbol, export = "", sheet_name, external_axe
 #' @examples
 #' stocks.dps.ftd(symbol='AMZN', limit=0)
 #' @export
+#* @get /stocks.dps.ftd
 stocks.dps.ftd <- function(symbol, start_date, end_date, limit = 0) {
   o <- do.call(what=py$openbb$stocks$dps$ftd, args=as.list(rlang::call_match())[-1])
   o
@@ -11123,6 +11844,7 @@ stocks.dps.ftd <- function(symbol, start_date, end_date, limit = 0) {
 #' @examples
 #' stocks.dps.ftd_chart(symbol='AMZN', limit=0, raw=FALSE)
 #' @export
+#* @get /stocks.dps.ftd_chart
 stocks.dps.ftd_chart <- function(symbol, data, start_date, end_date, limit = 0, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$ftd_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11134,6 +11856,7 @@ stocks.dps.ftd_chart <- function(symbol, data, start_date, end_date, limit = 0, 
 #' @description Wrapper for Python function stocks.dps.hsi from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.dps.hsi
 stocks.dps.hsi <- function() {
   o <- do.call(what=py$openbb$stocks$dps$hsi, args=as.list(rlang::call_match())[-1])
   o
@@ -11152,6 +11875,7 @@ stocks.dps.hsi <- function() {
 #' @examples
 #' stocks.dps.pos(sortby='dpp_dollar', ascend=FALSE)
 #' @export
+#* @get /stocks.dps.pos
 stocks.dps.pos <- function(sortby = "dpp_dollar", ascend = FALSE) {
   o <- do.call(what=py$openbb$stocks$dps$pos, args=as.list(rlang::call_match())[-1])
   o
@@ -11167,6 +11891,7 @@ stocks.dps.pos <- function(sortby = "dpp_dollar", ascend = FALSE) {
 #' @examples
 #' stocks.dps.prom(limit=1000)
 #' @export
+#* @get /stocks.dps.prom
 stocks.dps.prom <- function(limit = 1000, tier_ats = "T1") {
   o <- do.call(what=py$openbb$stocks$dps$prom, args=as.list(rlang::call_match())[-1])
   o
@@ -11186,6 +11911,7 @@ stocks.dps.prom <- function(limit = 1000, tier_ats = "T1") {
 #' @examples
 #' stocks.dps.prom_chart(input_limit=1000, limit=10, tier='T1')
 #' @export
+#* @get /stocks.dps.prom_chart
 stocks.dps.prom_chart <- function(input_limit = 1000, limit = 10, tier = "T1", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$prom_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11201,6 +11927,7 @@ stocks.dps.prom_chart <- function(input_limit = 1000, limit = 10, tier = "T1", e
 #' @examples
 #' stocks.dps.psi_q(symbol='AMZN', nyse=FALSE)
 #' @export
+#* @get /stocks.dps.psi_q
 stocks.dps.psi_q <- function(symbol, nyse = FALSE) {
   o <- do.call(what=py$openbb$stocks$dps$psi_q, args=as.list(rlang::call_match())[-1])
   o
@@ -11219,6 +11946,7 @@ stocks.dps.psi_q <- function(symbol, nyse = FALSE) {
 #' @examples
 #' stocks.dps.psi_q_chart(symbol='AMZN', nyse=FALSE, limit=10, raw=FALSE)
 #' @export
+#* @get /stocks.dps.psi_q_chart
 stocks.dps.psi_q_chart <- function(symbol, nyse = FALSE, limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$psi_q_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11233,6 +11961,7 @@ stocks.dps.psi_q_chart <- function(symbol, nyse = FALSE, limit = 10, raw = FALSE
 #' @examples
 #' stocks.dps.psi_sg(symbol='AMZN')
 #' @export
+#* @get /stocks.dps.psi_sg
 stocks.dps.psi_sg <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$dps$psi_sg, args=as.list(rlang::call_match())[-1])
   o
@@ -11250,6 +11979,7 @@ stocks.dps.psi_sg <- function(symbol) {
 #' @examples
 #' stocks.dps.psi_sg_chart(symbol='AMZN', limit=84, raw=FALSE)
 #' @export
+#* @get /stocks.dps.psi_sg_chart
 stocks.dps.psi_sg_chart <- function(symbol, limit = 84, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$psi_sg_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11261,6 +11991,7 @@ stocks.dps.psi_sg_chart <- function(symbol, limit = 84, raw = FALSE, export = ""
 #' @description Wrapper for Python function stocks.dps.shorted from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.dps.shorted
 stocks.dps.shorted <- function() {
   o <- do.call(what=py$openbb$stocks$dps$shorted, args=as.list(rlang::call_match())[-1])
   o
@@ -11276,6 +12007,7 @@ stocks.dps.shorted <- function() {
 #' @examples
 #' stocks.dps.sidtc(sortby='float')
 #' @export
+#* @get /stocks.dps.sidtc
 stocks.dps.sidtc <- function(sortby = "float") {
   o <- do.call(what=py$openbb$stocks$dps$sidtc, args=as.list(rlang::call_match())[-1])
   o
@@ -11290,6 +12022,7 @@ stocks.dps.sidtc <- function(sortby = "float") {
 #' @examples
 #' stocks.dps.spos(symbol='AMZN')
 #' @export
+#* @get /stocks.dps.spos
 stocks.dps.spos <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$dps$spos, args=as.list(rlang::call_match())[-1])
   o
@@ -11307,6 +12040,7 @@ stocks.dps.spos <- function(symbol) {
 #' @examples
 #' stocks.dps.spos_chart(symbol='AMZN', limit=84, raw=FALSE)
 #' @export
+#* @get /stocks.dps.spos_chart
 stocks.dps.spos_chart <- function(symbol, limit = 84, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$dps$spos_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11317,6 +12051,7 @@ stocks.dps.spos_chart <- function(symbol, limit = 84, raw = FALSE, export = "", 
 #' @description Wrapper for Python function stocks.fa.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.fa.about
 stocks.fa.about <- function() {
   o <- do.call(what=py$openbb$stocks$fa$about, args=as.list(rlang::call_match())[-1])
   o
@@ -11331,6 +12066,7 @@ stocks.fa.about <- function() {
 #' @examples
 #' stocks.fa.analysis(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.analysis
 stocks.fa.analysis <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$analysis, args=as.list(rlang::call_match())[-1])
   o
@@ -11343,6 +12079,7 @@ stocks.fa.analysis <- function(symbol) {
 #'
 #' @param symbol (character length 1) Stock ticker symbol
 #' @export
+#* @get /stocks.fa.analyst
 stocks.fa.analyst <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$analyst, args=as.list(rlang::call_match())[-1])
   o
@@ -11361,6 +12098,7 @@ stocks.fa.analyst <- function(symbol) {
 #' @examples
 #' stocks.fa.balance(symbol='AMZN', source='YahooFinance', quarterly=FALSE, ratios=FALSE, limit=10)
 #' @export
+#* @get /stocks.fa.balance
 stocks.fa.balance <- function(symbol, quarterly = FALSE, ratios = FALSE, source = "YahooFinance", limit = 10) {
   o <- do.call(what=py$openbb$stocks$fa$balance, args=as.list(rlang::call_match())[-1])
   o
@@ -11375,6 +12113,7 @@ stocks.fa.balance <- function(symbol, quarterly = FALSE, ratios = FALSE, source 
 #' @examples
 #' stocks.fa.cal(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.cal
 stocks.fa.cal <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$cal, args=as.list(rlang::call_match())[-1])
   o
@@ -11393,6 +12132,7 @@ stocks.fa.cal <- function(symbol) {
 #' @examples
 #' stocks.fa.cash(symbol='AMZN', source='YahooFinance', quarterly=FALSE, ratios=FALSE, limit=10)
 #' @export
+#* @get /stocks.fa.cash
 stocks.fa.cash <- function(symbol, quarterly = FALSE, ratios = FALSE, source = "YahooFinance", limit = 10) {
   o <- do.call(what=py$openbb$stocks$fa$cash, args=as.list(rlang::call_match())[-1])
   o
@@ -11406,6 +12146,7 @@ stocks.fa.cash <- function(symbol, quarterly = FALSE, ratios = FALSE, source = "
 #' @param symbol (character length 1) Ticker to select customers from
 #' @param limit (integer length 1) The maximum number of rows to show
 #' @export
+#* @get /stocks.fa.customer
 stocks.fa.customer <- function(symbol, limit = 50) {
   o <- do.call(what=py$openbb$stocks$fa$customer, args=as.list(rlang::call_match())[-1])
   o
@@ -11420,6 +12161,7 @@ stocks.fa.customer <- function(symbol, limit = 50) {
 #' @examples
 #' stocks.fa.data(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.data
 stocks.fa.data <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$data, args=as.list(rlang::call_match())[-1])
   o
@@ -11436,6 +12178,7 @@ stocks.fa.data <- function(symbol) {
 #' @examples
 #' stocks.fa.dcf(symbol='AMZN', limit=5, quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.dcf
 stocks.fa.dcf <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$dcf, args=as.list(rlang::call_match())[-1])
   o
@@ -11450,6 +12193,7 @@ stocks.fa.dcf <- function(symbol, limit = 5, quarterly = FALSE) {
 #' @param limit (integer length 1) Number to get
 #' @param quarterly (logical length 1) Flag to get quarterly data, by default False
 #' @export
+#* @get /stocks.fa.dcfc
 stocks.fa.dcfc <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$dcfc, args=as.list(rlang::call_match())[-1])
   o
@@ -11464,6 +12208,7 @@ stocks.fa.dcfc <- function(symbol, limit = 5, quarterly = FALSE) {
 #' @examples
 #' stocks.fa.divs(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.divs
 stocks.fa.divs <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$divs, args=as.list(rlang::call_match())[-1])
   o
@@ -11481,6 +12226,7 @@ stocks.fa.divs <- function(symbol) {
 #' @examples
 #' stocks.fa.divs_chart(symbol='AMZN', limit=12, plot=TRUE)
 #' @export
+#* @get /stocks.fa.divs_chart
 stocks.fa.divs_chart <- function(symbol, limit = 12, plot = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$fa$divs_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11495,6 +12241,7 @@ stocks.fa.divs_chart <- function(symbol, limit = 12, plot = TRUE, export = "", s
 #' @examples
 #' stocks.fa.dupont(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.dupont
 stocks.fa.dupont <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$dupont, args=as.list(rlang::call_match())[-1])
   o
@@ -11511,6 +12258,7 @@ stocks.fa.dupont <- function(symbol) {
 #' @examples
 #' stocks.fa.earnings(symbol='AMZN', source='YahooFinance', quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.earnings
 stocks.fa.earnings <- function(symbol, source = "YahooFinance", quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$earnings, args=as.list(rlang::call_match())[-1])
   o
@@ -11527,6 +12275,7 @@ stocks.fa.earnings <- function(symbol, source = "YahooFinance", quarterly = FALS
 #' @examples
 #' stocks.fa.enterprise(symbol='AMZN', limit=5, quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.enterprise
 stocks.fa.enterprise <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$enterprise, args=as.list(rlang::call_match())[-1])
   o
@@ -11539,6 +12288,7 @@ stocks.fa.enterprise <- function(symbol, limit = 5, quarterly = FALSE) {
 #'
 #' @param ticker (character length 1) ticker of company
 #' @export
+#* @get /stocks.fa.epsfc
 stocks.fa.epsfc <- function(ticker) {
   o <- do.call(what=py$openbb$stocks$fa$epsfc, args=as.list(rlang::call_match())[-1])
   o
@@ -11551,6 +12301,7 @@ stocks.fa.epsfc <- function(ticker) {
 #'
 #' @param symbol (character length 1) Ticker to get analysts' estimates
 #' @export
+#* @get /stocks.fa.est
 stocks.fa.est <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$est, args=as.list(rlang::call_match())[-1])
   o
@@ -11565,6 +12316,7 @@ stocks.fa.est <- function(symbol) {
 #' @examples
 #' stocks.fa.fama_coe(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.fama_coe
 stocks.fa.fama_coe <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$fama_coe, args=as.list(rlang::call_match())[-1])
   o
@@ -11576,6 +12328,7 @@ stocks.fa.fama_coe <- function(symbol) {
 #' @description Wrapper for Python function stocks.fa.fama_raw from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.fa.fama_raw
 stocks.fa.fama_raw <- function() {
   o <- do.call(what=py$openbb$stocks$fa$fama_raw, args=as.list(rlang::call_match())[-1])
   o
@@ -11591,6 +12344,7 @@ stocks.fa.fama_raw <- function() {
 #' @examples
 #' stocks.fa.fraud(symbol='AMZN', detail=FALSE)
 #' @export
+#* @get /stocks.fa.fraud
 stocks.fa.fraud <- function(symbol, detail = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$fraud, args=as.list(rlang::call_match())[-1])
   o
@@ -11607,6 +12361,7 @@ stocks.fa.fraud <- function(symbol, detail = FALSE) {
 #' @examples
 #' stocks.fa.growth(symbol='AMZN', limit=5, quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.growth
 stocks.fa.growth <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$growth, args=as.list(rlang::call_match())[-1])
   o
@@ -11621,6 +12376,7 @@ stocks.fa.growth <- function(symbol, limit = 5, quarterly = FALSE) {
 #' @examples
 #' stocks.fa.historical_5(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.historical_5
 stocks.fa.historical_5 <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$historical_5, args=as.list(rlang::call_match())[-1])
   o
@@ -11639,6 +12395,7 @@ stocks.fa.historical_5 <- function(symbol) {
 #' @examples
 #' stocks.fa.income(symbol='AMZN', source='YahooFinance', quarterly=FALSE, ratios=FALSE, limit=10)
 #' @export
+#* @get /stocks.fa.income
 stocks.fa.income <- function(symbol, quarterly = FALSE, ratios = FALSE, source = "YahooFinance", limit = 10) {
   o <- do.call(what=py$openbb$stocks$fa$income, args=as.list(rlang::call_match())[-1])
   o
@@ -11653,6 +12410,7 @@ stocks.fa.income <- function(symbol, quarterly = FALSE, ratios = FALSE, source =
 #' @examples
 #' stocks.fa.info(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.info
 stocks.fa.info <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$info, args=as.list(rlang::call_match())[-1])
   o
@@ -11667,6 +12425,7 @@ stocks.fa.info <- function(symbol) {
 #' @examples
 #' stocks.fa.key(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.key
 stocks.fa.key <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$key, args=as.list(rlang::call_match())[-1])
   o
@@ -11683,6 +12442,7 @@ stocks.fa.key <- function(symbol) {
 #' @examples
 #' stocks.fa.metrics(symbol='AMZN', limit=5, quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.metrics
 stocks.fa.metrics <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$metrics, args=as.list(rlang::call_match())[-1])
   o
@@ -11697,6 +12457,7 @@ stocks.fa.metrics <- function(symbol, limit = 5, quarterly = FALSE) {
 #' @examples
 #' stocks.fa.mgmt(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.mgmt
 stocks.fa.mgmt <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$mgmt, args=as.list(rlang::call_match())[-1])
   o
@@ -11711,6 +12472,7 @@ stocks.fa.mgmt <- function(symbol) {
 #' @examples
 #' stocks.fa.mktcap(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.mktcap
 stocks.fa.mktcap <- function(symbol, start_date) {
   o <- do.call(what=py$openbb$stocks$fa$mktcap, args=as.list(rlang::call_match())[-1])
   o
@@ -11726,6 +12488,7 @@ stocks.fa.mktcap <- function(symbol, start_date) {
 #' @examples
 #' stocks.fa.mktcap_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.mktcap_chart
 stocks.fa.mktcap_chart <- function(symbol, start_date, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$fa$mktcap_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11738,6 +12501,7 @@ stocks.fa.mktcap_chart <- function(symbol, start_date, export = "", sheet_name, 
 #'
 #' @param symbol (character length 1) Stock ticker symbol
 #' @export
+#* @get /stocks.fa.news
 stocks.fa.news <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$news, args=as.list(rlang::call_match())[-1])
   o
@@ -11752,6 +12516,7 @@ stocks.fa.news <- function(symbol) {
 #' @examples
 #' stocks.fa.overview(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.overview
 stocks.fa.overview <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$overview, args=as.list(rlang::call_match())[-1])
   o
@@ -11766,6 +12531,7 @@ stocks.fa.overview <- function(symbol) {
 #' @examples
 #' stocks.fa.profile(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.profile
 stocks.fa.profile <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$profile, args=as.list(rlang::call_match())[-1])
   o
@@ -11778,6 +12544,7 @@ stocks.fa.profile <- function(symbol) {
 #'
 #' @param symbol (character length 1) Ticker symbol
 #' @export
+#* @get /stocks.fa.pt
 stocks.fa.pt <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$pt, args=as.list(rlang::call_match())[-1])
   o
@@ -11793,6 +12560,7 @@ stocks.fa.pt <- function(symbol) {
 #' @param raw (logical length 1) Display raw data only
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /stocks.fa.pt_chart
 stocks.fa.pt_chart <- function(symbol, data, start_date, limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$fa$pt_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11805,6 +12573,7 @@ stocks.fa.pt_chart <- function(symbol, data, start_date, limit = 10, raw = FALSE
 #'
 #' @param symbol (character length 1) Stock ticker symbol
 #' @export
+#* @get /stocks.fa.rating
 stocks.fa.rating <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$rating, args=as.list(rlang::call_match())[-1])
   o
@@ -11821,6 +12590,7 @@ stocks.fa.rating <- function(symbol) {
 #' @examples
 #' stocks.fa.ratios(symbol='AMZN', limit=5, quarterly=FALSE)
 #' @export
+#* @get /stocks.fa.ratios
 stocks.fa.ratios <- function(symbol, limit = 5, quarterly = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$ratios, args=as.list(rlang::call_match())[-1])
   o
@@ -11833,6 +12603,7 @@ stocks.fa.ratios <- function(symbol, limit = 5, quarterly = FALSE) {
 #'
 #' @param ticker (character length 1) ticker of company
 #' @export
+#* @get /stocks.fa.revfc
 stocks.fa.revfc <- function(ticker) {
   o <- do.call(what=py$openbb$stocks$fa$revfc, args=as.list(rlang::call_match())[-1])
   o
@@ -11845,6 +12616,7 @@ stocks.fa.revfc <- function(ticker) {
 #'
 #' @param symbol (character length 1) Ticker symbol to get ratings from
 #' @export
+#* @get /stocks.fa.rot
 stocks.fa.rot <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$rot, args=as.list(rlang::call_match())[-1])
   o
@@ -11859,6 +12631,7 @@ stocks.fa.rot <- function(symbol) {
 #' @param raw (logical length 1) Display raw data only
 #' @param export (character length 1) Export dataframe data to csv,json,xlsx file
 #' @export
+#* @get /stocks.fa.rot_chart
 stocks.fa.rot_chart <- function(symbol, limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$fa$rot_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11874,6 +12647,7 @@ stocks.fa.rot_chart <- function(symbol, limit = 10, raw = FALSE, export = "", sh
 #' @examples
 #' stocks.fa.score(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.score
 stocks.fa.score <- function(symbol, years) {
   o <- do.call(what=py$openbb$stocks$fa$score, args=as.list(rlang::call_match())[-1])
   o
@@ -11886,6 +12660,7 @@ stocks.fa.score <- function(symbol, years) {
 #'
 #' @param symbol (character length 1) Stock ticker symbol
 #' @export
+#* @get /stocks.fa.sec
 stocks.fa.sec <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$sec, args=as.list(rlang::call_match())[-1])
   o
@@ -11898,6 +12673,7 @@ stocks.fa.sec <- function(symbol) {
 #'
 #' @param pages (integer length 1) The range of most-rececnt pages to get entries from (1000 per page; maximum of 30 pages)
 #' @export
+#* @get /stocks.fa.sec_fmp
 stocks.fa.sec_fmp <- function(pages = 1) {
   o <- do.call(what=py$openbb$stocks$fa$sec_fmp, args=as.list(rlang::call_match())[-1])
   o
@@ -11912,6 +12688,7 @@ stocks.fa.sec_fmp <- function(pages = 1) {
 #' @param limit (integer length 1) Limit the number of entries to display (default: 20)
 #' @param export (character length 1) Export data as csv, json, or xlsx
 #' @export
+#* @get /stocks.fa.sec_fmp_chart
 stocks.fa.sec_fmp_chart <- function(ticker = "", pages = 1, limit = 20, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$fa$sec_fmp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11927,6 +12704,7 @@ stocks.fa.sec_fmp_chart <- function(ticker = "", pages = 1, limit = 20, export =
 #' @examples
 #' stocks.fa.shrs(symbol='AMZN', holder='institutional')
 #' @export
+#* @get /stocks.fa.shrs
 stocks.fa.shrs <- function(symbol, holder = "institutional") {
   o <- do.call(what=py$openbb$stocks$fa$shrs, args=as.list(rlang::call_match())[-1])
   o
@@ -11943,6 +12721,7 @@ stocks.fa.shrs <- function(symbol, holder = "institutional") {
 #' @examples
 #' stocks.fa.similar_dfs(symbol='AMZN', no_filter=FALSE)
 #' @export
+#* @get /stocks.fa.similar_dfs
 stocks.fa.similar_dfs <- function(symbol, info, n, no_filter = FALSE) {
   o <- do.call(what=py$openbb$stocks$fa$similar_dfs, args=as.list(rlang::call_match())[-1])
   o
@@ -11957,6 +12736,7 @@ stocks.fa.similar_dfs <- function(symbol, info, n, no_filter = FALSE) {
 #' @examples
 #' stocks.fa.splits(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.splits
 stocks.fa.splits <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$fa$splits, args=as.list(rlang::call_match())[-1])
   o
@@ -11972,6 +12752,7 @@ stocks.fa.splits <- function(symbol) {
 #' @examples
 #' stocks.fa.splits_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.fa.splits_chart
 stocks.fa.splits_chart <- function(symbol, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$fa$splits_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -11985,6 +12766,7 @@ stocks.fa.splits_chart <- function(symbol, export = "", sheet_name, external_axe
 #' @param symbol (character length 1) Ticker to select suppliers from
 #' @param limit (integer length 1) The maximum number of rows to show
 #' @export
+#* @get /stocks.fa.supplier
 stocks.fa.supplier <- function(symbol, limit = 50) {
   o <- do.call(what=py$openbb$stocks$fa$supplier, args=as.list(rlang::call_match())[-1])
   o
@@ -11995,6 +12777,7 @@ stocks.fa.supplier <- function(symbol, limit = 50) {
 #' @description Wrapper for Python function stocks.gov.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.gov.about
 stocks.gov.about <- function() {
   o <- do.call(what=py$openbb$stocks$gov$about, args=as.list(rlang::call_match())[-1])
   o
@@ -12010,6 +12793,7 @@ stocks.gov.about <- function() {
 #' @examples
 #' stocks.gov.contracts(symbol='AMZN', past_transaction_days=10)
 #' @export
+#* @get /stocks.gov.contracts
 stocks.gov.contracts <- function(symbol, past_transaction_days = 10) {
   o <- do.call(what=py$openbb$stocks$gov$contracts, args=as.list(rlang::call_match())[-1])
   o
@@ -12027,6 +12811,7 @@ stocks.gov.contracts <- function(symbol, past_transaction_days = 10) {
 #' @examples
 #' stocks.gov.contracts_chart(symbol='AMZN', past_transaction_days=10, raw=FALSE)
 #' @export
+#* @get /stocks.gov.contracts_chart
 stocks.gov.contracts_chart <- function(symbol, past_transaction_days = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$contracts_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12043,6 +12828,7 @@ stocks.gov.contracts_chart <- function(symbol, past_transaction_days = 10, raw =
 #' @examples
 #' stocks.gov.government_trading(gov_type='congress')
 #' @export
+#* @get /stocks.gov.government_trading
 stocks.gov.government_trading <- function(gov_type = "congress", symbol = "") {
   o <- do.call(what=py$openbb$stocks$gov$government_trading, args=as.list(rlang::call_match())[-1])
   o
@@ -12059,6 +12845,7 @@ stocks.gov.government_trading <- function(gov_type = "congress", symbol = "") {
 #' @examples
 #' stocks.gov.gtrades(symbol='AMZN', gov_type='congress', past_transactions_months=6)
 #' @export
+#* @get /stocks.gov.gtrades
 stocks.gov.gtrades <- function(symbol, gov_type = "congress", past_transactions_months = 6) {
   o <- do.call(what=py$openbb$stocks$gov$gtrades, args=as.list(rlang::call_match())[-1])
   o
@@ -12077,6 +12864,7 @@ stocks.gov.gtrades <- function(symbol, gov_type = "congress", past_transactions_
 #' @examples
 #' stocks.gov.gtrades_chart(symbol='AMZN', gov_type='congress', past_transactions_months=6, raw=FALSE)
 #' @export
+#* @get /stocks.gov.gtrades_chart
 stocks.gov.gtrades_chart <- function(symbol, gov_type = "congress", past_transactions_months = 6, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$gtrades_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12091,6 +12879,7 @@ stocks.gov.gtrades_chart <- function(symbol, gov_type = "congress", past_transac
 #' @examples
 #' stocks.gov.histcont(symbol='AMZN')
 #' @export
+#* @get /stocks.gov.histcont
 stocks.gov.histcont <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$gov$histcont, args=as.list(rlang::call_match())[-1])
   o
@@ -12107,6 +12896,7 @@ stocks.gov.histcont <- function(symbol) {
 #' @examples
 #' stocks.gov.histcont_chart(symbol='AMZN', raw=FALSE)
 #' @export
+#* @get /stocks.gov.histcont_chart
 stocks.gov.histcont_chart <- function(symbol, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$histcont_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12121,6 +12911,7 @@ stocks.gov.histcont_chart <- function(symbol, raw = FALSE, export = "", sheet_na
 #' @examples
 #' stocks.gov.lastcontracts(past_transaction_days=2)
 #' @export
+#* @get /stocks.gov.lastcontracts
 stocks.gov.lastcontracts <- function(past_transaction_days = 2) {
   o <- do.call(what=py$openbb$stocks$gov$lastcontracts, args=as.list(rlang::call_match())[-1])
   o
@@ -12138,6 +12929,7 @@ stocks.gov.lastcontracts <- function(past_transaction_days = 2) {
 #' @examples
 #' stocks.gov.lastcontracts_chart(past_transaction_days=2, limit=20, sum_contracts=FALSE)
 #' @export
+#* @get /stocks.gov.lastcontracts_chart
 stocks.gov.lastcontracts_chart <- function(past_transaction_days = 2, limit = 20, sum_contracts = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$lastcontracts_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12154,6 +12946,7 @@ stocks.gov.lastcontracts_chart <- function(past_transaction_days = 2, limit = 20
 #' @examples
 #' stocks.gov.lasttrades(gov_type='congress', limit=-1)
 #' @export
+#* @get /stocks.gov.lasttrades
 stocks.gov.lasttrades <- function(gov_type = "congress", limit = -1, representative = "") {
   o <- do.call(what=py$openbb$stocks$gov$lasttrades, args=as.list(rlang::call_match())[-1])
   o
@@ -12169,6 +12962,7 @@ stocks.gov.lasttrades <- function(gov_type = "congress", limit = -1, representat
 #' @examples
 #' stocks.gov.lobbying(symbol='AMZN', limit=10)
 #' @export
+#* @get /stocks.gov.lobbying
 stocks.gov.lobbying <- function(symbol, limit = 10) {
   o <- do.call(what=py$openbb$stocks$gov$lobbying, args=as.list(rlang::call_match())[-1])
   o
@@ -12184,6 +12978,7 @@ stocks.gov.lobbying <- function(symbol, limit = 10) {
 #' @examples
 #' stocks.gov.qtrcontracts(analysis='total', limit=5)
 #' @export
+#* @get /stocks.gov.qtrcontracts
 stocks.gov.qtrcontracts <- function(analysis = "total", limit = 5) {
   o <- do.call(what=py$openbb$stocks$gov$qtrcontracts, args=as.list(rlang::call_match())[-1])
   o
@@ -12201,6 +12996,7 @@ stocks.gov.qtrcontracts <- function(analysis = "total", limit = 5) {
 #' @examples
 #' stocks.gov.qtrcontracts_chart(analysis='total', limit=5, raw=FALSE)
 #' @export
+#* @get /stocks.gov.qtrcontracts_chart
 stocks.gov.qtrcontracts_chart <- function(analysis = "total", limit = 5, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$qtrcontracts_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12216,6 +13012,7 @@ stocks.gov.qtrcontracts_chart <- function(analysis = "total", limit = 5, raw = F
 #' @examples
 #' stocks.gov.topbuys(gov_type='congress', past_transactions_months=6)
 #' @export
+#* @get /stocks.gov.topbuys
 stocks.gov.topbuys <- function(gov_type = "congress", past_transactions_months = 6) {
   o <- do.call(what=py$openbb$stocks$gov$topbuys, args=as.list(rlang::call_match())[-1])
   o
@@ -12234,6 +13031,7 @@ stocks.gov.topbuys <- function(gov_type = "congress", past_transactions_months =
 #' @examples
 #' stocks.gov.topbuys_chart(gov_type='congress', past_transactions_months=6, limit=10, raw=FALSE)
 #' @export
+#* @get /stocks.gov.topbuys_chart
 stocks.gov.topbuys_chart <- function(gov_type = "congress", past_transactions_months = 6, limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$topbuys_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12245,6 +13043,7 @@ stocks.gov.topbuys_chart <- function(gov_type = "congress", past_transactions_mo
 #' @description Wrapper for Python function stocks.gov.toplobbying from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.gov.toplobbying
 stocks.gov.toplobbying <- function() {
   o <- do.call(what=py$openbb$stocks$gov$toplobbying, args=as.list(rlang::call_match())[-1])
   o
@@ -12261,6 +13060,7 @@ stocks.gov.toplobbying <- function() {
 #' @examples
 #' stocks.gov.toplobbying_chart(limit=10, raw=FALSE)
 #' @export
+#* @get /stocks.gov.toplobbying_chart
 stocks.gov.toplobbying_chart <- function(limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$toplobbying_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12276,6 +13076,7 @@ stocks.gov.toplobbying_chart <- function(limit = 10, raw = FALSE, export = "", s
 #' @examples
 #' stocks.gov.topsells(gov_type='congress', past_transactions_months=6)
 #' @export
+#* @get /stocks.gov.topsells
 stocks.gov.topsells <- function(gov_type = "congress", past_transactions_months = 6) {
   o <- do.call(what=py$openbb$stocks$gov$topsells, args=as.list(rlang::call_match())[-1])
   o
@@ -12294,6 +13095,7 @@ stocks.gov.topsells <- function(gov_type = "congress", past_transactions_months 
 #' @examples
 #' stocks.gov.topsells_chart(gov_type='congress', past_transactions_months=6, limit=10, raw=FALSE)
 #' @export
+#* @get /stocks.gov.topsells_chart
 stocks.gov.topsells_chart <- function(gov_type = "congress", past_transactions_months = 6, limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$gov$topsells_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12304,6 +13106,7 @@ stocks.gov.topsells_chart <- function(gov_type = "congress", past_transactions_m
 #' @description Wrapper for Python function stocks.ins.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.about
 stocks.ins.about <- function() {
   o <- do.call(what=py$openbb$stocks$ins$about, args=as.list(rlang::call_match())[-1])
   o
@@ -12318,6 +13121,7 @@ stocks.ins.about <- function() {
 #' @examples
 #' stocks.ins.act(symbol='AMZN')
 #' @export
+#* @get /stocks.ins.act
 stocks.ins.act <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ins$act, args=as.list(rlang::call_match())[-1])
   o
@@ -12337,6 +13141,7 @@ stocks.ins.act <- function(symbol) {
 #' @examples
 #' stocks.ins.act_chart(symbol='AMZN', interval='1440min', limit=10, raw=FALSE)
 #' @export
+#* @get /stocks.ins.act_chart
 stocks.ins.act_chart <- function(data, symbol, start_date, interval = "1440min", limit = 10, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$ins$act_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12348,6 +13153,7 @@ stocks.ins.act_chart <- function(data, symbol, start_date, interval = "1440min",
 #' @description Wrapper for Python function stocks.ins.blcp from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blcp
 stocks.ins.blcp <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blcp, args=as.list(rlang::call_match())[-1])
   o
@@ -12359,6 +13165,7 @@ stocks.ins.blcp <- function() {
 #' @description Wrapper for Python function stocks.ins.blcs from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blcs
 stocks.ins.blcs <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blcs, args=as.list(rlang::call_match())[-1])
   o
@@ -12370,6 +13177,7 @@ stocks.ins.blcs <- function() {
 #' @description Wrapper for Python function stocks.ins.blip from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blip
 stocks.ins.blip <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blip, args=as.list(rlang::call_match())[-1])
   o
@@ -12381,6 +13189,7 @@ stocks.ins.blip <- function() {
 #' @description Wrapper for Python function stocks.ins.blis from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blis
 stocks.ins.blis <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blis, args=as.list(rlang::call_match())[-1])
   o
@@ -12392,6 +13201,7 @@ stocks.ins.blis <- function() {
 #' @description Wrapper for Python function stocks.ins.blop from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blop
 stocks.ins.blop <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blop, args=as.list(rlang::call_match())[-1])
   o
@@ -12403,6 +13213,7 @@ stocks.ins.blop <- function() {
 #' @description Wrapper for Python function stocks.ins.blos from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.blos
 stocks.ins.blos <- function() {
   o <- do.call(what=py$openbb$stocks$ins$blos, args=as.list(rlang::call_match())[-1])
   o
@@ -12415,6 +13226,7 @@ stocks.ins.blos <- function() {
 #'
 #' @param preset (character length 1) Name of preset filter
 #' @export
+#* @get /stocks.ins.filter
 stocks.ins.filter <- function(preset) {
   o <- do.call(what=py$openbb$stocks$ins$filter, args=as.list(rlang::call_match())[-1])
   o
@@ -12426,6 +13238,7 @@ stocks.ins.filter <- function(preset) {
 #' @description Wrapper for Python function stocks.ins.lcb from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.lcb
 stocks.ins.lcb <- function() {
   o <- do.call(what=py$openbb$stocks$ins$lcb, args=as.list(rlang::call_match())[-1])
   o
@@ -12440,6 +13253,7 @@ stocks.ins.lcb <- function() {
 #' @examples
 #' stocks.ins.lins(symbol='AMZN')
 #' @export
+#* @get /stocks.ins.lins
 stocks.ins.lins <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ins$lins, args=as.list(rlang::call_match())[-1])
   o
@@ -12456,6 +13270,7 @@ stocks.ins.lins <- function(symbol) {
 #' @examples
 #' stocks.ins.lins_chart(symbol='AMZN', limit=10)
 #' @export
+#* @get /stocks.ins.lins_chart
 stocks.ins.lins_chart <- function(symbol, limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ins$lins_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12467,6 +13282,7 @@ stocks.ins.lins_chart <- function(symbol, limit = 10, export = "", sheet_name) {
 #' @description Wrapper for Python function stocks.ins.lip from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.lip
 stocks.ins.lip <- function() {
   o <- do.call(what=py$openbb$stocks$ins$lip, args=as.list(rlang::call_match())[-1])
   o
@@ -12478,6 +13294,7 @@ stocks.ins.lip <- function() {
 #' @description Wrapper for Python function stocks.ins.lis from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.lis
 stocks.ins.lis <- function() {
   o <- do.call(what=py$openbb$stocks$ins$lis, args=as.list(rlang::call_match())[-1])
   o
@@ -12489,6 +13306,7 @@ stocks.ins.lis <- function() {
 #' @description Wrapper for Python function stocks.ins.lit from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.lit
 stocks.ins.lit <- function() {
   o <- do.call(what=py$openbb$stocks$ins$lit, args=as.list(rlang::call_match())[-1])
   o
@@ -12500,6 +13318,7 @@ stocks.ins.lit <- function() {
 #' @description Wrapper for Python function stocks.ins.lpsb from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ins.lpsb
 stocks.ins.lpsb <- function() {
   o <- do.call(what=py$openbb$stocks$ins$lpsb, args=as.list(rlang::call_match())[-1])
   o
@@ -12514,6 +13333,7 @@ stocks.ins.lpsb <- function() {
 #' @examples
 #' stocks.ins.print_insider_data(type_insider='lcb', limit=10)
 #' @export
+#* @get /stocks.ins.print_insider_data
 stocks.ins.print_insider_data <- function(type_insider = "lcb") {
   o <- do.call(what=py$openbb$stocks$ins$print_insider_data, args=as.list(rlang::call_match())[-1])
   o
@@ -12530,6 +13350,7 @@ stocks.ins.print_insider_data <- function(type_insider = "lcb") {
 #' @examples
 #' stocks.ins.print_insider_data_chart(type_insider='lcb', limit=10)
 #' @export
+#* @get /stocks.ins.print_insider_data_chart
 stocks.ins.print_insider_data_chart <- function(type_insider = "lcb", limit = 10, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ins$print_insider_data_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12542,6 +13363,7 @@ stocks.ins.print_insider_data_chart <- function(type_insider = "lcb", limit = 10
 #'
 #' @param symbol (character length 1) Ticker to get insider stats for
 #' @export
+#* @get /stocks.ins.stats
 stocks.ins.stats <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ins$stats, args=as.list(rlang::call_match())[-1])
   o
@@ -12552,6 +13374,7 @@ stocks.ins.stats <- function(symbol) {
 #' @description Wrapper for Python function stocks.options.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.options.about
 stocks.options.about <- function() {
   o <- do.call(what=py$openbb$stocks$options$about, args=as.list(rlang::call_match())[-1])
   o
@@ -12567,6 +13390,7 @@ stocks.options.about <- function() {
 #' @examples
 #' stocks.options.chains(symbol='AMZN', source='Nasdaq')
 #' @export
+#* @get /stocks.options.chains
 stocks.options.chains <- function(symbol, source = "Nasdaq", expiration) {
   o <- do.call(what=py$openbb$stocks$options$chains, args=as.list(rlang::call_match())[-1])
   o
@@ -12578,6 +13402,7 @@ stocks.options.chains <- function(symbol, source = "Nasdaq", expiration) {
 #' @description Wrapper for Python function stocks.options.dte from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.options.dte
 stocks.options.dte <- function(date_value) {
   o <- do.call(what=py$openbb$stocks$options$dte, args=as.list(rlang::call_match())[-1])
   o
@@ -12592,6 +13417,7 @@ stocks.options.dte <- function(date_value) {
 #' @param date (character length 1) Date to get EOD chain for
 #' @param quiet (logical length 1) Flag to suppress progress bar
 #' @export
+#* @get /stocks.options.eodchain
 stocks.options.eodchain <- function(symbol, date, quiet = FALSE) {
   o <- do.call(what=py$openbb$stocks$options$eodchain, args=as.list(rlang::call_match())[-1])
   o
@@ -12607,6 +13433,7 @@ stocks.options.eodchain <- function(symbol, date, quiet = FALSE) {
 #' @examples
 #' stocks.options.expirations(symbol='AMZN', source='Nasdaq')
 #' @export
+#* @get /stocks.options.expirations
 stocks.options.expirations <- function(symbol, source = "Nasdaq") {
   o <- do.call(what=py$openbb$stocks$options$expirations, args=as.list(rlang::call_match())[-1])
   o
@@ -12618,6 +13445,7 @@ stocks.options.expirations <- function(symbol, source = "Nasdaq") {
 #' @description Wrapper for Python function stocks.options.generate_data from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.options.generate_data
 stocks.options.generate_data <- function(current_price, options, underlying) {
   o <- do.call(what=py$openbb$stocks$options$generate_data, args=as.list(rlang::call_match())[-1])
   o
@@ -12633,6 +13461,7 @@ stocks.options.generate_data <- function(current_price, options, underlying) {
 #' @param expire (character length 1) The date of expiration
 #' @param div_cont (numeric length 1) The dividend continuous rate
 #' @export
+#* @get /stocks.options.greeks
 stocks.options.greeks <- function(current_price, chain, expire, div_cont = 0, rf) {
   o <- do.call(what=py$openbb$stocks$options$greeks, args=as.list(rlang::call_match())[-1])
   o
@@ -12651,6 +13480,7 @@ stocks.options.greeks <- function(current_price, chain, expire, div_cont = 0, rf
 #' @examples
 #' stocks.options.grhist(symbol='AMZN', put=FALSE)
 #' @export
+#* @get /stocks.options.grhist
 stocks.options.grhist <- function(symbol, expiry, strike, chain_id = "", put = FALSE) {
   o <- do.call(what=py$openbb$stocks$options$grhist, args=as.list(rlang::call_match())[-1])
   o
@@ -12671,6 +13501,7 @@ stocks.options.grhist <- function(symbol, expiry, strike, chain_id = "", put = F
 #' @examples
 #' stocks.options.grhist_chart(symbol='AMZN', greek='Delta', put=FALSE, raw=FALSE, limit=20)
 #' @export
+#* @get /stocks.options.grhist_chart
 stocks.options.grhist_chart <- function(symbol, expiry, strike, greek = "Delta", chain_id = "", put = FALSE, raw = FALSE, limit, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$options$grhist_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12688,6 +13519,7 @@ stocks.options.grhist_chart <- function(symbol, expiry, strike, greek = "Delta",
 #' @examples
 #' stocks.options.hist(symbol='AMZN', call=TRUE, source='ChartExchange')
 #' @export
+#* @get /stocks.options.hist
 stocks.options.hist <- function(symbol, exp, strike, call = TRUE, source) {
   o <- do.call(what=py$openbb$stocks$options$hist, args=as.list(rlang::call_match())[-1])
   o
@@ -12702,6 +13534,7 @@ stocks.options.hist <- function(symbol, exp, strike, call = TRUE, source) {
 #' @examples
 #' stocks.options.info(symbol='AMZN')
 #' @export
+#* @get /stocks.options.info
 stocks.options.info <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$options$info, args=as.list(rlang::call_match())[-1])
   o
@@ -12717,6 +13550,7 @@ stocks.options.info <- function(symbol) {
 #' @examples
 #' stocks.options.info_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.options.info_chart
 stocks.options.info_chart <- function(symbol, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$options$info_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12731,6 +13565,7 @@ stocks.options.info_chart <- function(symbol, export = "", sheet_name) {
 #' @examples
 #' stocks.options.last_price(symbol='AMZN')
 #' @export
+#* @get /stocks.options.last_price
 stocks.options.last_price <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$options$last_price, args=as.list(rlang::call_match())[-1])
   o
@@ -12751,6 +13586,7 @@ stocks.options.last_price <- function(symbol) {
 #' @param puts_only (logical length 1) Show puts only
 #' @param export (character length 1) Format to export file
 #' @export
+#* @get /stocks.options.oi
 stocks.options.oi <- function(chain, current_price, symbol, expiry, min_sp = -1, max_sp = -1, calls_only = FALSE, puts_only = FALSE, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$options$oi, args=as.list(rlang::call_match())[-1])
   o
@@ -12766,6 +13602,7 @@ stocks.options.oi <- function(chain, current_price, symbol, expiry, min_sp = -1,
 #' @examples
 #' stocks.options.pcr(symbol='AMZN', window=30)
 #' @export
+#* @get /stocks.options.pcr
 stocks.options.pcr <- function(symbol, window = 30, start_date) {
   o <- do.call(what=py$openbb$stocks$options$pcr, args=as.list(rlang::call_match())[-1])
   o
@@ -12783,6 +13620,7 @@ stocks.options.pcr <- function(symbol, window = 30, start_date) {
 #' @examples
 #' stocks.options.pcr_chart(symbol='AMZN', window=30, start_date='2021-11-24')
 #' @export
+#* @get /stocks.options.pcr_chart
 stocks.options.pcr_chart <- function(symbol, window = 30, start_date = "2022-04-03", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$options$pcr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12796,6 +13634,7 @@ stocks.options.pcr_chart <- function(symbol, window = 30, start_date = "2022-04-
 #' @param symbol (character length 1) Symbol to get chain for
 #' @param source (character length 1) Source to get data from, by default "Nasdaq"
 #' @export
+#* @get /stocks.options.price
 stocks.options.price <- function(symbol, source = "Nasdaq") {
   o <- do.call(what=py$openbb$stocks$options$price, args=as.list(rlang::call_match())[-1])
   o
@@ -12810,6 +13649,7 @@ stocks.options.price <- function(symbol, source = "Nasdaq") {
 #' @examples
 #' stocks.options.unu(limit=100)
 #' @export
+#* @get /stocks.options.unu
 stocks.options.unu <- function(limit = 100) {
   o <- do.call(what=py$openbb$stocks$options$unu, args=as.list(rlang::call_match())[-1])
   o
@@ -12829,6 +13669,7 @@ stocks.options.unu <- function(limit = 100) {
 #' @examples
 #' stocks.options.unu_chart(limit=20, sortby='Vol/OI', ascend=FALSE, calls_only=FALSE, puts_only=FALSE)
 #' @export
+#* @get /stocks.options.unu_chart
 stocks.options.unu_chart <- function(limit = 20, sortby = "Vol/OI", ascend = FALSE, calls_only = FALSE, puts_only = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$options$unu_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12847,6 +13688,7 @@ stocks.options.unu_chart <- function(limit = 20, sortby = "Vol/OI", ascend = FAL
 #' @param max_sp (numeric length 1) Max strike price
 #' @param export (character length 1) Format for exporting data
 #' @export
+#* @get /stocks.options.voi
 stocks.options.voi <- function(chain, current_price, symbol, expiry, min_sp = -1, max_sp = -1, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$options$voi, args=as.list(rlang::call_match())[-1])
   o
@@ -12867,6 +13709,7 @@ stocks.options.voi <- function(chain, current_price, symbol, expiry, min_sp = -1
 #' @param puts_only (logical length 1) Show puts only
 #' @param export (character length 1) Format to export file
 #' @export
+#* @get /stocks.options.vol
 stocks.options.vol <- function(chain, current_price, symbol, expiry, min_sp = -1, max_sp = -1, calls_only = FALSE, puts_only = FALSE, raw = FALSE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$options$vol, args=as.list(rlang::call_match())[-1])
   o
@@ -12881,6 +13724,7 @@ stocks.options.vol <- function(chain, current_price, symbol, expiry, min_sp = -1
 #' @examples
 #' stocks.options.vsurf(symbol='AMZN')
 #' @export
+#* @get /stocks.options.vsurf
 stocks.options.vsurf <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$options$vsurf, args=as.list(rlang::call_match())[-1])
   o
@@ -12897,6 +13741,7 @@ stocks.options.vsurf <- function(symbol) {
 #' @examples
 #' stocks.options.vsurf_chart(symbol='AMZN', z='IV')
 #' @export
+#* @get /stocks.options.vsurf_chart
 stocks.options.vsurf_chart <- function(symbol, export = "", sheet_name, z = "IV", external_axes) {
   o <- do.call(what=py$openbb$stocks$options$vsurf_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12907,6 +13752,7 @@ stocks.options.vsurf_chart <- function(symbol, export = "", sheet_name, z = "IV"
 #' @description Wrapper for Python function stocks.qa.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.qa.about
 stocks.qa.about <- function() {
   o <- do.call(what=py$openbb$stocks$qa$about, args=as.list(rlang::call_match())[-1])
   o
@@ -12923,6 +13769,7 @@ stocks.qa.about <- function() {
 #' @examples
 #' stocks.qa.beta(symbol='AMZN', interval=1440)
 #' @export
+#* @get /stocks.qa.beta
 stocks.qa.beta <- function(symbol, ref_symbol, data, ref_data, interval = 1440) {
   o <- do.call(what=py$openbb$stocks$qa$beta, args=as.list(rlang::call_match())[-1])
   o
@@ -12939,6 +13786,7 @@ stocks.qa.beta <- function(symbol, ref_symbol, data, ref_data, interval = 1440) 
 #' @examples
 #' stocks.qa.beta_chart(symbol='AMZN', interval=1440)
 #' @export
+#* @get /stocks.qa.beta_chart
 stocks.qa.beta_chart <- function(symbol, ref_symbol, data, ref_data, interval = 1440, export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$qa$beta_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -12953,6 +13801,7 @@ stocks.qa.beta_chart <- function(symbol, ref_symbol, data, ref_data, interval = 
 #' @examples
 #' stocks.qa.capm(symbol='AMZN')
 #' @export
+#* @get /stocks.qa.capm
 stocks.qa.capm <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$qa$capm, args=as.list(rlang::call_match())[-1])
   o
@@ -12964,6 +13813,7 @@ stocks.qa.capm <- function(symbol) {
 #' @description Wrapper for Python function stocks.qa.fama_raw from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.qa.fama_raw
 stocks.qa.fama_raw <- function() {
   o <- do.call(what=py$openbb$stocks$qa$fama_raw, args=as.list(rlang::call_match())[-1])
   o
@@ -12978,6 +13828,7 @@ stocks.qa.fama_raw <- function() {
 #' @examples
 #' stocks.qa.historical_5(symbol='AMZN')
 #' @export
+#* @get /stocks.qa.historical_5
 stocks.qa.historical_5 <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$qa$historical_5, args=as.list(rlang::call_match())[-1])
   o
@@ -12988,6 +13839,7 @@ stocks.qa.historical_5 <- function(symbol) {
 #' @description Wrapper for Python function stocks.screener.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.screener.about
 stocks.screener.about <- function() {
   o <- do.call(what=py$openbb$stocks$screener$about, args=as.list(rlang::call_match())[-1])
   o
@@ -13000,6 +13852,7 @@ stocks.screener.about <- function() {
 #'
 #' @param symbol (character length 1) Ticker to get trades for
 #' @export
+#* @get /stocks.screener.arktrades
 stocks.screener.arktrades <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$screener$arktrades, args=as.list(rlang::call_match())[-1])
   o
@@ -13018,6 +13871,7 @@ stocks.screener.arktrades <- function(symbol) {
 #' @examples
 #' stocks.screener.historical(preset_loaded='top_gainers', limit=10, start_date='2022-05-29', type_candle='a', normalize=TRUE)
 #' @export
+#* @get /stocks.screener.historical
 stocks.screener.historical <- function(preset_loaded = "top_gainers", limit = 10, start_date = "2022-10-06", type_candle = "a", normalize = TRUE) {
   o <- do.call(what=py$openbb$stocks$screener$historical, args=as.list(rlang::call_match())[-1])
   o
@@ -13037,6 +13891,7 @@ stocks.screener.historical <- function(preset_loaded = "top_gainers", limit = 10
 #' @examples
 #' stocks.screener.historical_chart(preset_loaded='top_gainers', limit=10, start_date='2022-05-29', type_candle='a', normalize=TRUE)
 #' @export
+#* @get /stocks.screener.historical_chart
 stocks.screener.historical_chart <- function(preset_loaded = "top_gainers", limit = 10, start_date = "2022-10-06", type_candle = "a", normalize = TRUE, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$stocks$screener$historical_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13054,6 +13909,7 @@ stocks.screener.historical_chart <- function(preset_loaded = "top_gainers", limi
 #' @examples
 #' stocks.screener.screener_data(preset_loaded='top_gainers', data_type='overview', limit=10, ascend=FALSE)
 #' @export
+#* @get /stocks.screener.screener_data
 stocks.screener.screener_data <- function(preset_loaded = "top_gainers", data_type = "overview", limit = 10, ascend = FALSE) {
   o <- do.call(what=py$openbb$stocks$screener$screener_data, args=as.list(rlang::call_match())[-1])
   o
@@ -13073,6 +13929,7 @@ stocks.screener.screener_data <- function(preset_loaded = "top_gainers", data_ty
 #' @examples
 #' stocks.screener.screener_data_chart(loaded_preset='top_gainers', data_type='overview', limit=10, ascend=FALSE)
 #' @export
+#* @get /stocks.screener.screener_data_chart
 stocks.screener.screener_data_chart <- function(loaded_preset = "top_gainers", data_type = "overview", limit = 10, ascend = FALSE, sortby = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$screener$screener_data_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13083,6 +13940,7 @@ stocks.screener.screener_data_chart <- function(loaded_preset = "top_gainers", d
 #' @description Wrapper for Python function stocks.ta.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.ta.about
 stocks.ta.about <- function() {
   o <- do.call(what=py$openbb$stocks$ta$about, args=as.list(rlang::call_match())[-1])
   o
@@ -13100,6 +13958,7 @@ stocks.ta.about <- function() {
 #' @examples
 #' stocks.ta.recom(symbol='AMZN', screener='america')
 #' @export
+#* @get /stocks.ta.recom
 stocks.ta.recom <- function(symbol, screener = "america", exchange = "", interval = "") {
   o <- do.call(what=py$openbb$stocks$ta$recom, args=as.list(rlang::call_match())[-1])
   o
@@ -13118,6 +13977,7 @@ stocks.ta.recom <- function(symbol, screener = "america", exchange = "", interva
 #' @examples
 #' stocks.ta.recom_chart(symbol='AMZN', screener='america')
 #' @export
+#* @get /stocks.ta.recom_chart
 stocks.ta.recom_chart <- function(symbol, screener = "america", exchange = "", interval = "", export = "", sheet_name) {
   o <- do.call(what=py$openbb$stocks$ta$recom_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13130,6 +13990,7 @@ stocks.ta.recom_chart <- function(symbol, screener = "america", exchange = "", i
 #'
 #' @param s_ticker (character length 1) Stock Ticker
 #' @export
+#* @get /stocks.ta.rsp
 stocks.ta.rsp <- function(s_ticker = "") {
   o <- do.call(what=py$openbb$stocks$ta$rsp, args=as.list(rlang::call_match())[-1])
   o
@@ -13146,6 +14007,7 @@ stocks.ta.rsp <- function(s_ticker = "") {
 #' @examples
 #' stocks.ta.rsp_chart(tickers_show=FALSE)
 #' @export
+#* @get /stocks.ta.rsp_chart
 stocks.ta.rsp_chart <- function(s_ticker = "", export = "", sheet_name, tickers_show = FALSE) {
   o <- do.call(what=py$openbb$stocks$ta$rsp_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13160,6 +14022,7 @@ stocks.ta.rsp_chart <- function(s_ticker = "", export = "", sheet_name, tickers_
 #' @examples
 #' stocks.ta.summary(symbol='AMZN')
 #' @export
+#* @get /stocks.ta.summary
 stocks.ta.summary <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ta$summary, args=as.list(rlang::call_match())[-1])
   o
@@ -13174,6 +14037,7 @@ stocks.ta.summary <- function(symbol) {
 #' @examples
 #' stocks.ta.summary_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.ta.summary_chart
 stocks.ta.summary_chart <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ta$summary_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13188,6 +14052,7 @@ stocks.ta.summary_chart <- function(symbol) {
 #' @examples
 #' stocks.ta.view(symbol='AMZN')
 #' @export
+#* @get /stocks.ta.view
 stocks.ta.view <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$ta$view, args=as.list(rlang::call_match())[-1])
   o
@@ -13202,6 +14067,7 @@ stocks.ta.view <- function(symbol) {
 #' @examples
 #' stocks.ta.view_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.ta.view_chart
 stocks.ta.view_chart <- function(symbol, external_axes) {
   o <- do.call(what=py$openbb$stocks$ta$view_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13212,6 +14078,7 @@ stocks.ta.view_chart <- function(symbol, external_axes) {
 #' @description Wrapper for Python function stocks.th.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.about
 stocks.th.about <- function() {
   o <- do.call(what=py$openbb$stocks$th$about, args=as.list(rlang::call_match())[-1])
   o
@@ -13223,6 +14090,7 @@ stocks.th.about <- function() {
 #' @description Wrapper for Python function stocks.th.all from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.all
 stocks.th.all <- function() {
   o <- do.call(what=py$openbb$stocks$th$all, args=as.list(rlang::call_match())[-1])
   o
@@ -13234,6 +14102,7 @@ stocks.th.all <- function() {
 #' @description Wrapper for Python function stocks.th.all_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.all_chart
 stocks.th.all_chart <- function() {
   o <- do.call(what=py$openbb$stocks$th$all_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13245,6 +14114,7 @@ stocks.th.all_chart <- function() {
 #' @description Wrapper for Python function stocks.th.check_if_open from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.check_if_open
 stocks.th.check_if_open <- function(bursa, exchange) {
   o <- do.call(what=py$openbb$stocks$th$check_if_open, args=as.list(rlang::call_match())[-1])
   o
@@ -13256,6 +14126,7 @@ stocks.th.check_if_open <- function(bursa, exchange) {
 #' @description Wrapper for Python function stocks.th.closed from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.closed
 stocks.th.closed <- function() {
   o <- do.call(what=py$openbb$stocks$th$closed, args=as.list(rlang::call_match())[-1])
   o
@@ -13267,6 +14138,7 @@ stocks.th.closed <- function() {
 #' @description Wrapper for Python function stocks.th.closed_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.closed_chart
 stocks.th.closed_chart <- function() {
   o <- do.call(what=py$openbb$stocks$th$closed_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13281,6 +14153,7 @@ stocks.th.closed_chart <- function() {
 #' @examples
 #' stocks.th.exchange(symbol='AMZN')
 #' @export
+#* @get /stocks.th.exchange
 stocks.th.exchange <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$th$exchange, args=as.list(rlang::call_match())[-1])
   o
@@ -13295,6 +14168,7 @@ stocks.th.exchange <- function(symbol) {
 #' @examples
 #' stocks.th.exchange_chart(symbol='AMZN')
 #' @export
+#* @get /stocks.th.exchange_chart
 stocks.th.exchange_chart <- function(symbol) {
   o <- do.call(what=py$openbb$stocks$th$exchange_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13306,6 +14180,7 @@ stocks.th.exchange_chart <- function(symbol) {
 #' @description Wrapper for Python function stocks.th.open from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.open
 stocks.th.open <- function() {
   o <- do.call(what=py$openbb$stocks$th$open, args=as.list(rlang::call_match())[-1])
   o
@@ -13317,6 +14192,7 @@ stocks.th.open <- function() {
 #' @description Wrapper for Python function stocks.th.open_chart from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /stocks.th.open_chart
 stocks.th.open_chart <- function() {
   o <- do.call(what=py$openbb$stocks$th$open_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13327,6 +14203,7 @@ stocks.th.open_chart <- function() {
 #' @description Wrapper for Python function ta.about from OpenBB Terminal SDK
 #'
 #' @export
+#* @get /ta.about
 ta.about <- function() {
   o <- do.call(what=py$openbb$ta$about, args=as.list(rlang::call_match())[-1])
   o
@@ -13342,6 +14219,7 @@ ta.about <- function() {
 #' @examples
 #' ta.ad(use_open=FALSE)
 #' @export
+#* @get /ta.ad
 ta.ad <- function(data, use_open = FALSE) {
   o <- do.call(what=py$openbb$ta$ad, args=as.list(rlang::call_match())[-1])
   o
@@ -13359,6 +14237,7 @@ ta.ad <- function(data, use_open = FALSE) {
 #' @examples
 #' ta.ad_chart(use_open=FALSE)
 #' @export
+#* @get /ta.ad_chart
 ta.ad_chart <- function(data, use_open = FALSE, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$ad_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13376,6 +14255,7 @@ ta.ad_chart <- function(data, use_open = FALSE, symbol = "", export = "", sheet_
 #' @examples
 #' ta.adosc(use_open=FALSE, fast=3, slow=10)
 #' @export
+#* @get /ta.adosc
 ta.adosc <- function(data, use_open = FALSE, fast = 3, slow = 10) {
   o <- do.call(what=py$openbb$ta$adosc, args=as.list(rlang::call_match())[-1])
   o
@@ -13395,6 +14275,7 @@ ta.adosc <- function(data, use_open = FALSE, fast = 3, slow = 10) {
 #' @examples
 #' ta.adosc_chart(use_open=FALSE, fast=3, slow=10)
 #' @export
+#* @get /ta.adosc_chart
 ta.adosc_chart <- function(data, fast = 3, slow = 10, use_open = FALSE, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$adosc_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13412,6 +14293,7 @@ ta.adosc_chart <- function(data, fast = 3, slow = 10, use_open = FALSE, symbol =
 #' @examples
 #' ta.adx(window=14, scalar=100, drift=1)
 #' @export
+#* @get /ta.adx
 ta.adx <- function(data, window = 14, scalar = 100, drift = 1) {
   o <- do.call(what=py$openbb$ta$adx, args=as.list(rlang::call_match())[-1])
   o
@@ -13431,6 +14313,7 @@ ta.adx <- function(data, window = 14, scalar = 100, drift = 1) {
 #' @examples
 #' ta.adx_chart(window=14, scalar=100, drift=1)
 #' @export
+#* @get /ta.adx_chart
 ta.adx_chart <- function(data, window = 14, scalar = 100, drift = 1, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$adx_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13447,6 +14330,7 @@ ta.adx_chart <- function(data, window = 14, scalar = 100, drift = 1, symbol = ""
 #' @examples
 #' ta.aroon(window=25, scalar=100)
 #' @export
+#* @get /ta.aroon
 ta.aroon <- function(data, window = 25, scalar = 100) {
   o <- do.call(what=py$openbb$ta$aroon, args=as.list(rlang::call_match())[-1])
   o
@@ -13465,6 +14349,7 @@ ta.aroon <- function(data, window = 25, scalar = 100) {
 #' @examples
 #' ta.aroon_chart(window=25, scalar=100)
 #' @export
+#* @get /ta.aroon_chart
 ta.aroon_chart <- function(data, window = 25, scalar = 100, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$aroon_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13482,6 +14367,7 @@ ta.aroon_chart <- function(data, window = 25, scalar = 100, symbol = "", export 
 #' @examples
 #' ta.atr(window=14, mamode='ema', offset=0)
 #' @export
+#* @get /ta.atr
 ta.atr <- function(data, window = 14, mamode = "ema", offset = 0) {
   o <- do.call(what=py$openbb$ta$atr, args=as.list(rlang::call_match())[-1])
   o
@@ -13499,6 +14385,7 @@ ta.atr <- function(data, window = 14, mamode = "ema", offset = 0) {
 #' @examples
 #' ta.atr_chart(window=14)
 #' @export
+#* @get /ta.atr_chart
 ta.atr_chart <- function(data, symbol = "", window = 14, mamode = "sma", offset = 0, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$atr_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13516,6 +14403,7 @@ ta.atr_chart <- function(data, symbol = "", window = 14, mamode = "sma", offset 
 #' @examples
 #' ta.bbands(window=15, n_std=2, mamode='ema')
 #' @export
+#* @get /ta.bbands
 ta.bbands <- function(data, window = 15, n_std = 2, mamode = "ema") {
   o <- do.call(what=py$openbb$ta$bbands, args=as.list(rlang::call_match())[-1])
   o
@@ -13535,6 +14423,7 @@ ta.bbands <- function(data, window = 15, n_std = 2, mamode = "ema") {
 #' @examples
 #' ta.bbands_chart(window=15, n_std=2, mamode='sma')
 #' @export
+#* @get /ta.bbands_chart
 ta.bbands_chart <- function(data, symbol = "", window = 15, n_std = 2, mamode = "sma", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$bbands_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13550,6 +14439,7 @@ ta.bbands_chart <- function(data, symbol = "", window = 15, n_std = 2, mamode = 
 #' @examples
 #' ta.cci(window=14, scalar=0.0015)
 #' @export
+#* @get /ta.cci
 ta.cci <- function(data, window = 14, scalar = 0.0015) {
   o <- do.call(what=py$openbb$ta$cci, args=as.list(rlang::call_match())[-1])
   o
@@ -13563,6 +14453,7 @@ ta.cci <- function(data, window = 14, scalar = 0.0015) {
 #' @examples
 #' ta.cci_chart(window=14, scalar=0.0015)
 #' @export
+#* @get /ta.cci_chart
 ta.cci_chart <- function(data, window = 14, scalar = 0.0015, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$cci_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13576,6 +14467,7 @@ ta.cci_chart <- function(data, window = 14, scalar = 0.0015, symbol = "", export
 #' @param values (Python type: pandas.core.series.Series) Data to use with close being titled values
 #' @param window (integer length 1) Length for indicator window
 #' @export
+#* @get /ta.cg
 ta.cg <- function(values, window) {
   o <- do.call(what=py$openbb$ta$cg, args=as.list(rlang::call_match())[-1])
   o
@@ -13593,6 +14485,7 @@ ta.cg <- function(values, window) {
 #' @examples
 #' ta.cg_chart(window=14)
 #' @export
+#* @get /ta.cg_chart
 ta.cg_chart <- function(data, window = 14, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$cg_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13608,6 +14501,7 @@ ta.cg_chart <- function(data, window = 14, symbol = "", export = "", sheet_name,
 #' @examples
 #' ta.clenow(window=90)
 #' @export
+#* @get /ta.clenow
 ta.clenow <- function(values, window = 90) {
   o <- do.call(what=py$openbb$ta$clenow, args=as.list(rlang::call_match())[-1])
   o
@@ -13625,6 +14519,7 @@ ta.clenow <- function(values, window = 90) {
 #' @examples
 #' ta.clenow_chart(window=90)
 #' @export
+#* @get /ta.clenow_chart
 ta.clenow_chart <- function(data, symbol = "", window = 90, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$clenow_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13642,6 +14537,7 @@ ta.clenow_chart <- function(data, symbol = "", window = 90, export = "", sheet_n
 #' @param model (character length 1) The model to use for volatility calculation. Choices are:
 #'     ["STD", "Parkinson", "Garman-Klass", "Hodges-Tompkins", "Rogers-Satchell", "Yang-Zhang"]
 #' @export
+#* @get /ta.cones
 ta.cones <- function(data, lower_q = 0.25, upper_q = 0.75, is_crypto = FALSE, model = "STD") {
   o <- do.call(what=py$openbb$ta$cones, args=as.list(rlang::call_match())[-1])
   o
@@ -13660,6 +14556,7 @@ ta.cones <- function(data, lower_q = 0.25, upper_q = 0.75, is_crypto = FALSE, mo
 #'     ["STD", "Parkinson", "Garman-Klass", "Hodges-Tompkins", "Rogers-Satchell", "Yang-Zhang"]
 #' @param is_crypto (logical length 1) If true, volatility is calculated for 365 days instead of 252.
 #' @export
+#* @get /ta.cones_chart
 ta.cones_chart <- function(data, symbol = "", lower_q = 0.25, upper_q = 0.75, model = "STD", is_crypto = FALSE, export = "", sheet_name) {
   o <- do.call(what=py$openbb$ta$cones_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13672,6 +14569,7 @@ ta.cones_chart <- function(data, symbol = "", lower_q = 0.25, upper_q = 0.75, mo
 #'
 #' @param values (Python type: pandas.core.series.Series) Series of close values
 #' @export
+#* @get /ta.demark
 ta.demark <- function(values) {
   o <- do.call(what=py$openbb$ta$demark, args=as.list(rlang::call_match())[-1])
   o
@@ -13689,6 +14587,7 @@ ta.demark <- function(values) {
 #' @examples
 #' ta.demark_chart(min_to_show=5)
 #' @export
+#* @get /ta.demark_chart
 ta.demark_chart <- function(data, symbol = "", min_to_show = 5, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$demark_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13705,6 +14604,7 @@ ta.demark_chart <- function(data, symbol = "", min_to_show = 5, export = "", she
 #' @examples
 #' ta.donchian(upper_length=20, lower_length=20)
 #' @export
+#* @get /ta.donchian
 ta.donchian <- function(data, upper_length = 20, lower_length = 20) {
   o <- do.call(what=py$openbb$ta$donchian, args=as.list(rlang::call_match())[-1])
   o
@@ -13723,6 +14623,7 @@ ta.donchian <- function(data, upper_length = 20, lower_length = 20) {
 #' @examples
 #' ta.donchian_chart(upper_length=20, lower_length=20)
 #' @export
+#* @get /ta.donchian_chart
 ta.donchian_chart <- function(data, symbol = "", upper_length = 20, lower_length = 20, export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$donchian_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13739,6 +14640,7 @@ ta.donchian_chart <- function(data, symbol = "", upper_length = 20, lower_length
 #' @examples
 #' ta.ema(length=50, offset=0)
 #' @export
+#* @get /ta.ema
 ta.ema <- function(data, length = 50, offset = 0) {
   o <- do.call(what=py$openbb$ta$ema, args=as.list(rlang::call_match())[-1])
   o
@@ -13754,6 +14656,7 @@ ta.ema <- function(data, length = 50, offset = 0) {
 #' @examples
 #' ta.fib(limit=120)
 #' @export
+#* @get /ta.fib
 ta.fib <- function(data, limit = 120, start_date, end_date) {
   o <- do.call(what=py$openbb$ta$fib, args=as.list(rlang::call_match())[-1])
   o
@@ -13771,6 +14674,7 @@ ta.fib <- function(data, limit = 120, start_date, end_date) {
 #' @examples
 #' ta.fib_chart(limit=120)
 #' @export
+#* @get /ta.fib_chart
 ta.fib_chart <- function(data, limit = 120, start_date, end_date, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$fib_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13786,6 +14690,7 @@ ta.fib_chart <- function(data, limit = 120, start_date, end_date, symbol = "", e
 #' @examples
 #' ta.fisher(window=14)
 #' @export
+#* @get /ta.fisher
 ta.fisher <- function(data, window = 14) {
   o <- do.call(what=py$openbb$ta$fisher, args=as.list(rlang::call_match())[-1])
   o
@@ -13803,6 +14708,7 @@ ta.fisher <- function(data, window = 14) {
 #' @examples
 #' ta.fisher_chart(window=14)
 #' @export
+#* @get /ta.fisher_chart
 ta.fisher_chart <- function(data, window = 14, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$fisher_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13819,6 +14725,7 @@ ta.fisher_chart <- function(data, window = 14, symbol = "", export = "", sheet_n
 #' @examples
 #' ta.hma(length=50, offset=0)
 #' @export
+#* @get /ta.hma
 ta.hma <- function(data, length = 50, offset = 0) {
   o <- do.call(what=py$openbb$ta$hma, args=as.list(rlang::call_match())[-1])
   o
@@ -13837,6 +14744,7 @@ ta.hma <- function(data, length = 50, offset = 0) {
 #' @examples
 #' ta.kc(window=20, scalar=2, mamode='ema', offset=0)
 #' @export
+#* @get /ta.kc
 ta.kc <- function(data, window = 20, scalar = 2, mamode = "ema", offset = 0) {
   o <- do.call(what=py$openbb$ta$kc, args=as.list(rlang::call_match())[-1])
   o
@@ -13850,6 +14758,7 @@ ta.kc <- function(data, window = 20, scalar = 2, mamode = "ema", offset = 0) {
 #' @examples
 #' ta.kc_chart(window=20, scalar=2, mamode='ema', offset=0)
 #' @export
+#* @get /ta.kc_chart
 ta.kc_chart <- function(data, window = 20, scalar = 2, mamode = "ema", offset = 0, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$kc_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13868,6 +14777,7 @@ ta.kc_chart <- function(data, window = 20, scalar = 2, mamode = "ema", offset = 
 #' @examples
 #' ta.ma(offset=0, ma_type='EMA')
 #' @export
+#* @get /ta.ma
 ta.ma <- function(data, window, offset = 0, ma_type = "EMA", symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$ma, args=as.list(rlang::call_match())[-1])
   o
@@ -13886,6 +14796,7 @@ ta.ma <- function(data, window, offset = 0, ma_type = "EMA", symbol = "", export
 #' @examples
 #' ta.ma_chart(offset=0, ma_type='EMA')
 #' @export
+#* @get /ta.ma_chart
 ta.ma_chart <- function(data, window, offset = 0, ma_type = "EMA", symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$ma_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13903,6 +14814,7 @@ ta.ma_chart <- function(data, window, offset = 0, ma_type = "EMA", symbol = "", 
 #' @examples
 #' ta.macd(n_fast=12, n_slow=26, n_signal=9)
 #' @export
+#* @get /ta.macd
 ta.macd <- function(data, n_fast = 12, n_slow = 26, n_signal = 9) {
   o <- do.call(what=py$openbb$ta$macd, args=as.list(rlang::call_match())[-1])
   o
@@ -13922,6 +14834,7 @@ ta.macd <- function(data, n_fast = 12, n_slow = 26, n_signal = 9) {
 #' @examples
 #' ta.macd_chart(n_fast=12, n_slow=26, n_signal=9)
 #' @export
+#* @get /ta.macd_chart
 ta.macd_chart <- function(data, n_fast = 12, n_slow = 26, n_signal = 9, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$macd_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13934,6 +14847,7 @@ ta.macd_chart <- function(data, n_fast = 12, n_slow = 26, n_signal = 9, symbol =
 #'
 #' @param data (data.frame) Dataframe of OHLC prices
 #' @export
+#* @get /ta.obv
 ta.obv <- function(data) {
   o <- do.call(what=py$openbb$ta$obv, args=as.list(rlang::call_match())[-1])
   o
@@ -13948,6 +14862,7 @@ ta.obv <- function(data) {
 #' @param symbol (character length 1) Ticker
 #' @param export (character length 1) Format to export data as
 #' @export
+#* @get /ta.obv_chart
 ta.obv_chart <- function(data, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$obv_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -13965,6 +14880,7 @@ ta.obv_chart <- function(data, symbol = "", export = "", sheet_name, external_ax
 #' @examples
 #' ta.rsi(window=14, scalar=100, drift=1)
 #' @export
+#* @get /ta.rsi
 ta.rsi <- function(data, window = 14, scalar = 100, drift = 1) {
   o <- do.call(what=py$openbb$ta$rsi, args=as.list(rlang::call_match())[-1])
   o
@@ -13984,6 +14900,7 @@ ta.rsi <- function(data, window = 14, scalar = 100, drift = 1) {
 #' @examples
 #' ta.rsi_chart(window=14, scalar=100, drift=1)
 #' @export
+#* @get /ta.rsi_chart
 ta.rsi_chart <- function(data, window = 14, scalar = 100.0, drift = 1, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$rsi_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -14000,6 +14917,7 @@ ta.rsi_chart <- function(data, window = 14, scalar = 100.0, drift = 1, symbol = 
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (Python type: inspect._empty) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_garman_klass
 ta.rvol_garman_klass <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean) {
   o <- do.call(what=py$openbb$ta$rvol_garman_klass, args=as.list(rlang::call_match())[-1])
   o
@@ -14016,6 +14934,7 @@ ta.rvol_garman_klass <- function(data, window = 30, trading_periods = 252, is_cr
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (Python type: inspect._empty) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_hodges_tompkins
 ta.rvol_hodges_tompkins <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean) {
   o <- do.call(what=py$openbb$ta$rvol_hodges_tompkins, args=as.list(rlang::call_match())[-1])
   o
@@ -14032,6 +14951,7 @@ ta.rvol_hodges_tompkins <- function(data, window = 30, trading_periods = 252, is
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (Python type: inspect._empty) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_parkinson
 ta.rvol_parkinson <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean) {
   o <- do.call(what=py$openbb$ta$rvol_parkinson, args=as.list(rlang::call_match())[-1])
   o
@@ -14048,6 +14968,7 @@ ta.rvol_parkinson <- function(data, window = 30, trading_periods = 252, is_crypt
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (Python type: inspect._empty) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_rogers_satchell
 ta.rvol_rogers_satchell <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean) {
   o <- do.call(what=py$openbb$ta$rvol_rogers_satchell, args=as.list(rlang::call_match())[-1])
   o
@@ -14064,6 +14985,7 @@ ta.rvol_rogers_satchell <- function(data, window = 30, trading_periods = 252, is
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (logical length 1) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_std
 ta.rvol_std <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean = TRUE) {
   o <- do.call(what=py$openbb$ta$rvol_std, args=as.list(rlang::call_match())[-1])
   o
@@ -14080,6 +15002,7 @@ ta.rvol_std <- function(data, window = 30, trading_periods = 252, is_crypto = FA
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (Python type: inspect._empty) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.rvol_yang_zhang
 ta.rvol_yang_zhang <- function(data, window = 30, trading_periods = 252, is_crypto = TRUE, clean) {
   o <- do.call(what=py$openbb$ta$rvol_yang_zhang, args=as.list(rlang::call_match())[-1])
   o
@@ -14096,6 +15019,7 @@ ta.rvol_yang_zhang <- function(data, window = 30, trading_periods = 252, is_cryp
 #' @examples
 #' ta.sma(length=50, offset=0)
 #' @export
+#* @get /ta.sma
 ta.sma <- function(data, length = 50, offset = 0) {
   o <- do.call(what=py$openbb$ta$sma, args=as.list(rlang::call_match())[-1])
   o
@@ -14112,6 +15036,7 @@ ta.sma <- function(data, length = 50, offset = 0) {
 #' @param is_crypto (logical length 1) If true, trading_periods is defined as 365.
 #' @param clean (logical length 1) Whether to clean the data or not by dropping NaN values.
 #' @export
+#* @get /ta.standard_deviation
 ta.standard_deviation <- function(data, window = 30, trading_periods = 252, is_crypto = FALSE, clean = TRUE) {
   o <- do.call(what=py$openbb$ta$standard_deviation, args=as.list(rlang::call_match())[-1])
   o
@@ -14129,6 +15054,7 @@ ta.standard_deviation <- function(data, window = 30, trading_periods = 252, is_c
 #' @examples
 #' ta.stoch(fastkperiod=14, slowdperiod=3, slowkperiod=3)
 #' @export
+#* @get /ta.stoch
 ta.stoch <- function(data, fastkperiod = 14, slowdperiod = 3, slowkperiod = 3) {
   o <- do.call(what=py$openbb$ta$stoch, args=as.list(rlang::call_match())[-1])
   o
@@ -14148,6 +15074,7 @@ ta.stoch <- function(data, fastkperiod = 14, slowdperiod = 3, slowkperiod = 3) {
 #' @examples
 #' ta.stoch_chart(fastkperiod=14, slowdperiod=3, slowkperiod=3)
 #' @export
+#* @get /ta.stoch_chart
 ta.stoch_chart <- function(data, fastkperiod = 14, slowdperiod = 3, slowkperiod = 3, symbol = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$stoch_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -14163,6 +15090,7 @@ ta.stoch_chart <- function(data, fastkperiod = 14, slowdperiod = 3, slowkperiod 
 #' @examples
 #' ta.vwap(offset=0)
 #' @export
+#* @get /ta.vwap
 ta.vwap <- function(data, offset = 0) {
   o <- do.call(what=py$openbb$ta$vwap, args=as.list(rlang::call_match())[-1])
   o
@@ -14181,6 +15109,7 @@ ta.vwap <- function(data, offset = 0) {
 #' @examples
 #' ta.vwap_chart(offset=0)
 #' @export
+#* @get /ta.vwap_chart
 ta.vwap_chart <- function(data, symbol = "", start_date, end_date, offset = 0, interval = "", export = "", sheet_name, external_axes) {
   o <- do.call(what=py$openbb$ta$vwap_chart, args=as.list(rlang::call_match())[-1])
   o
@@ -14197,6 +15126,7 @@ ta.vwap_chart <- function(data, symbol = "", start_date, end_date, offset = 0, i
 #' @examples
 #' ta.wma(length=50, offset=0)
 #' @export
+#* @get /ta.wma
 ta.wma <- function(data, length = 50, offset = 0) {
   o <- do.call(what=py$openbb$ta$wma, args=as.list(rlang::call_match())[-1])
   o
@@ -14213,7 +15143,9 @@ ta.wma <- function(data, length = 50, offset = 0) {
 #' @examples
 #' ta.zlma(length=50, offset=0)
 #' @export
+#* @get /ta.zlma
 ta.zlma <- function(data, length = 50, offset = 0) {
   o <- do.call(what=py$openbb$ta$zlma, args=as.list(rlang::call_match())[-1])
   o
 }
+
