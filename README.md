@@ -8,7 +8,7 @@ The goal of openBBr is to to utilize the OpenBB SDK in an R accesbile function. 
 
 ## Installation
 
-You can install the development version of openBBr from [GitHub](https://github.com/) with:
+You can install the development version of openBBr from [GitHub](https://github.com/jjfantini/openBBr) with:
 
 ``` r
 # install.packages("devtools")
