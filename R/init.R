@@ -1,9 +1,10 @@
 #' Initialize the OpenBB environment
 #'
-#' @description This function sets up the Python virtual environment, imports necessary Python
-#' libraries, and initializes the OpenBB environment.
+#' @description This function sets up the Python virtual environment, imports 
+#' necessary Python libraries, and initializes the OpenBB environment.
 #'
-#' @return A logical value indicating whether the Python environment is available.
+#' @return A logical value indicating whether the Python environment is
+#' available.
 #' @export
 init <- function(assign_py = T) {
     # Specify Python virtual environment
@@ -23,3 +24,5 @@ init <- function(assign_py = T) {
     py <<- reticulate::py
     }
 }
+
+
