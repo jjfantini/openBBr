@@ -17,7 +17,6 @@ init <- function(assign_py = T) {
     reticulate::py_run_string("from openbb_terminal.sdk import openbb")
     reticulate::py_run_string("import pandas as pd")
     reticulate::py_run_string("import numpy as np")
-s
     # Check if Python is available
     o <- reticulate::py_available(initialize = T)
     print(paste("Python Available:", o))
