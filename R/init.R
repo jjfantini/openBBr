@@ -1,12 +1,15 @@
 #' Initialize the OpenBB environment
 #'
-#' @description This function sets up the Python virtual environment, imports 
+#' @description This function sets up the Python virtual environment, imports
 #' necessary Python libraries, and initializes the OpenBB environment.
 #'
 #' @return A logical value indicating whether the Python environment is
 #' available.
 #' @export
 init <- function(assign_py = T) {
+    # Specify python exe
+    reticulate::use_python(here::here("obb/python.exe"))
+
     # Specify Python virtual environment
     reticulate::use_condaenv(here::here("obb"))
 
@@ -14,7 +17,7 @@ init <- function(assign_py = T) {
     reticulate::py_run_string("from openbb_terminal.sdk import openbb")
     reticulate::py_run_string("import pandas as pd")
     reticulate::py_run_string("import numpy as np")
-
+s
     # Check if Python is available
     o <- reticulate::py_available(initialize = T)
     print(paste("Python Available:", o))
