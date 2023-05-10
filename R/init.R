@@ -8,7 +8,7 @@
 #' @export
 init <- function(assign_py = T) {
     # Specify python exe
-    reticulate::use_python(here::here("obb/python.exe"))
+    Sys.setenv(RETICULATE_PYTHON = here::here("obb/python.exe"))
 
     # Specify Python virtual environment
     reticulate::use_condaenv(here::here("obb"))
