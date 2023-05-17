@@ -6,9 +6,13 @@
 #' @return A logical value indicating whether the Python environment is
 #' available.
 #' @export
-init <- function(assign_py = T) {
-    # Specify python exe
-    Sys.setenv(RETICULATE_PYTHON = here::here("obb/python.exe"))
+init <- function(assign_py = TRUE) {
+    # Set RETICULATE_PYTHON based on the operating system
+    if (Sys.info()["sysname"] == "Windows") {
+        Sys.setenv(RETICULATE_PYTHON = here::here("obb/python.exe"))
+    } else {
+        Sys.setenv(RETICULATE_PYTHON = here::here("obb/bin/python3.10"))
+    }
 
     # Specify Python virtual environment
     reticulate::use_condaenv(here::here("obb"))
@@ -17,14 +21,13 @@ init <- function(assign_py = T) {
     reticulate::py_run_string("from openbb_terminal.sdk import openbb")
     reticulate::py_run_string("import pandas as pd")
     reticulate::py_run_string("import numpy as np")
+
     # Check if Python is available
-    o <- reticulate::py_available(initialize = T)
+    o <- reticulate::py_available(initialize = TRUE)
     print(paste("Python Available:", o))
 
     # Assign python __main__ module to 'py' object in R environment
-    if (assign_py == T) {
-    py <<- reticulate::py
+    if (assign_py == TRUE) {
+        py <<- reticulate::py
     }
 }
-
-
