@@ -11,6 +11,7 @@ init <- function(assign_py = TRUE) {
     if (Sys.info()["sysname"] == "Windows") {
         Sys.setenv(RETICULATE_PYTHON = here::here("obb/python.exe"))
     } else {
+        # do i use python or python 3.10??
         Sys.setenv(RETICULATE_PYTHON = here::here("obb/bin/python3.10"))
     }
 
