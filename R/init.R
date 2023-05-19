@@ -1,7 +1,8 @@
 #' Initialize the OpenBB environment
 #'
-#' @description This function sets up the Python virtual environment, imports
-#' necessary Python libraries, and initializes the OpenBB environment.
+#' @description This function sets up the correct path to the Python virtual
+#' environment, imports necessary Python libraries, and initializes the OpenBB
+#' environment.
 #'
 #' @return A logical value indicating whether the Python environment is
 #' available.
@@ -16,7 +17,7 @@ init <- function(assign_py = TRUE) {
     }
 
     # Specify Python virtual environment
-    reticulate::use_condaenv(here::here("obb"))
+    reticulate::use_condaenv(here::here("obb"), required = TRUE)
 
     # Setup OpenBB
     reticulate::py_run_string("from openbb_terminal.sdk import openbb")

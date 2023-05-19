@@ -34,7 +34,7 @@ reticulate::conda_install("obb", packages = c("openbb_terminal.sdk", "pandas", "
 # Activate conda_env
 reticulate::use_condaenv("obb")
 
-#Update conda_env
+# Update conda_env
 reticulate::conda_update("python = 3.10")
 
 
@@ -44,11 +44,13 @@ install.packages("reticulate")
 library(reticulate)
 
 # Step 1: Create a local Conda environment ----
-reticulate::conda_create(envname = here::here("obb"),
- python_version = "3.10")
+reticulate::conda_create(
+    envname = here::here("obb"),
+    python_version = "3.10"
+)
 
 # Step 1.1: Use the created Conda environment
-reticulate::use_python(here::here("obb/python.exe"))
+reticulate::use_python(here::here("obb/python.exe"), required = TRUE)
 
 # Step 1.2: Use Correct Python Executable before initializing the conda env
 reticulate::use_condaenv(here::here("obb"))
