@@ -14,6 +14,5 @@ Imports:
     checkmate,
     data.table,
     here,
-    plumber,
     reticulate,
     tidytable
