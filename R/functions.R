@@ -10719,11 +10719,15 @@ stocks.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE,
 #' stocks.load(symbol='AMZN', interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, verbose=TRUE)
 #' @export
 #* @get /stocks.load
-stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE, R6 = TRUE) {
+stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE, R6 = FALSE) {
 
     if(isTRUE(R6)) {
-        o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1], envir = parent.frame())
+        args <- as.list(rlang::call_match())[-1]
+        args$R6 <- NULL
+        o <- do.call(what=py$openbb$stocks$load, args=args, envir = parent.frame())
     } else {
+        args <- as.list(rlang::call_match())[-1]
+        args$R6 <- NULL
         o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1])
     }
 
