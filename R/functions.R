@@ -10715,12 +10715,19 @@ stocks.candle <- function(symbol, data, use_matplotlib = TRUE, intraday = FALSE,
 #' @param weekly (logical length 1) Flag to get weekly data
 #' @param monthly (logical length 1) Flag to get monthly data
 #' @param verbose (logical length 1) Display verbose information on what was the symbol that was loaded
+#' @param R6 (logical length 1) whether to specify the env to run in should be parent_frame(). For some reason, you need to use explicit call to evaluate objects passed through correctly
 #' @examples
 #' stocks.load(symbol='AMZN', interval=1440, prepost=FALSE, source='YahooFinance', weekly=FALSE, monthly=FALSE, verbose=TRUE)
 #' @export
 #* @get /stocks.load
-stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE) {
-  o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1])
+stocks.load <- function(symbol, start_date, interval = 1440, end_date, prepost = FALSE, source = "YahooFinance", weekly = FALSE, monthly = FALSE, verbose = TRUE, R6 = TRUE) {
+
+  if(isTRUE(R6)) {
+  o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1], envir = parent.frame())
+  } else {
+      o <- do.call(what=py$openbb$stocks$load, args=as.list(rlang::call_match())[-1])
+  }
+
   o
 }
 

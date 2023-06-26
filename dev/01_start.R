@@ -46,7 +46,7 @@ library(reticulate)
 # Step 1: Create a local Conda environment ----
 reticulate::conda_create(
     envname = here::here("obb"),
-    python_version = "3.10"
+    python_version = "3.10.11"
 )
 
 # Step 1.1: Use the created Conda environment
